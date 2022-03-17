@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Webinar_Questions.init({
     webinar_id: DataTypes.INTEGER,
     question: DataTypes.STRING,
-    answer: DataTypes.STRING
+    answer: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Webinar_Questions',

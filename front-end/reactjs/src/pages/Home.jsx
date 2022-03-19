@@ -1,8 +1,24 @@
 import "../style/home.css";
 import Button from "../components/Button";
-import Tag from "../components/Tag"
+import Tag from "../components/Tag";
+import { useNavigate } from 'react-router-dom';
+
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
+    const redirectToApplyPage = () => {
+        navigate('/scholarships');
+    }
+
+    const redirectToDonatePage = () => {
+        navigate('/donate');
+    }
+
+    const redirectToVolunteerPage = () => {
+        navigate('/volunteer');
+    }
+
     return (
         <div className="home">
             <div className="home-text">
@@ -12,15 +28,15 @@ const HomePage = () => {
             
             <div className="home-buttons"> 
                 <div >
-                    <Button className='home-button1' text='Apply'/>
+                    <Button className='home-button1' text='Apply' onClick={redirectToApplyPage}/>
                 </div>
 
                 <div >
-                    <Button className="home-button2" text='Donate'/>
+                    <Button className="home-button2" text='Donate' onClick={redirectToDonatePage}/>
                 </div>
 
                 <div>
-                    <Button  className="home-button3" text='Volunteer'/> 
+                    <Button  className="home-button3" text='Volunteer' onClick={redirectToVolunteerPage}/> 
                 </div>
             </div>
             

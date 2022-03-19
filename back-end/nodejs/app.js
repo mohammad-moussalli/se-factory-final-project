@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var scholorshipRouter = require('./routes/scholarships');
+var scholarshipRouter = require('./routes/scholarships');
 var faqRouter = require('./routes/faqs');
 var faqCategoryRouter = require('./routes/faq_categories');
 var contactUsRouter = require('./routes/contact_us');
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/scholorships', scholorshipRouter);
+app.use('/scholarships', scholarshipRouter);
 app.use('/faqs', faqRouter);
 app.use('/faq-categories', faqCategoryRouter);
 app.use('/contact-us', contactUsRouter);

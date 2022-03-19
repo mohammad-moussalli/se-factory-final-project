@@ -106,8 +106,8 @@ return(
 
                 {showMenuElement4?  
                 <>                
-                    <Link to='/buddy/apply' className='menu-element'>Become A Buddy</Link>
-                    <Link to='/team/apply' className='menu-element'>Join The Team</Link>
+                    <Link to='/volunteer/buddy' className='menu-element'>Become A Buddy</Link>
+                    <Link to='/volunteer/team' className='menu-element'>Join The Team</Link>
                 </>: null
                 }
             </div>

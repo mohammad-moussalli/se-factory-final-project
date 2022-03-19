@@ -1,5 +1,5 @@
 import Button from '../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../style/menu.css';
 
@@ -58,7 +58,7 @@ const MenuPage = () => {
         setShowMenuElement4(false)
         setShowMenuElement1(false)
     }
-  return (
+return(
     <div className="menu">
 
         <div className="menu-button">
@@ -71,10 +71,10 @@ const MenuPage = () => {
 
                 {showMenuElement1?  
                 <>   
-                    <h6 className='menu-element'>About Kaffi</h6>
-                    <h6 className='menu-element'>The Team</h6>
-                    <h6 className='menu-element'>Blog</h6>
-                    <h6 className='menu-element'>Records & Success Stories</h6>
+                    <Link to='/about-us' className='menu-element'>About Kaffi</Link>
+                    <Link to='/team' className='menu-element'>The Team</Link>
+                    <Link to='/blog' className='menu-element'>Blog</Link>
+                    <Link to='/records' className='menu-element'>Records & Success Stories</Link>
                 </>: null
                 }
             </div>
@@ -84,9 +84,9 @@ const MenuPage = () => {
 
                 {showMenuElement2?  
                 <>
-                    <h6 className='menu-element'>Deadlines</h6>
-                    <h6 className='menu-element'>Kaffi Boost</h6>
-                    <h6 className='menu-element'>Kaffi Launch</h6>
+                    <Link to='/scholarships' className='menu-element'>Deadlines</Link>
+                    <Link to='/scholarship/boost' className='menu-element'>Kaffi Boost</Link>
+                    <Link to='/scholarship/launch' className='menu-element'>Kaffi Launch</Link>
                 </>: null
                 }
             </div>
@@ -96,7 +96,7 @@ const MenuPage = () => {
 
                 {showMenuElement3?  
                 <>
-                    <h6 className='menu-element'>How To Donate</h6>
+                    <Link to='/donate' className='menu-element'>How To Donate</Link>
                 </>: null
                 }
             </div>
@@ -106,8 +106,8 @@ const MenuPage = () => {
 
                 {showMenuElement4?  
                 <>                
-                    <h6 className='menu-element'>Become A Buddy</h6>
-                    <h6 className='menu-element'>Join The Team</h6>
+                    <Link to='/buddy/apply' className='menu-element'>Become A Buddy</Link>
+                    <Link to='/team/apply' className='menu-element'>Join The Team</Link>
                 </>: null
                 }
             </div>
@@ -117,15 +117,14 @@ const MenuPage = () => {
 
                 {showMenuElement5?  
                 <>                
-                    <h6 className='menu-element'>Find A Buddy</h6>
-                    <h6 className='menu-element'>CV Tips</h6>
-                    <h6 className='menu-element'>Webinars</h6>
+                    <Link to='/buddy/find' className='menu-element'>Find A Buddy</Link>
+                    <Link to='/cv' className='menu-element'>CV Tips</Link>
+                    <Link to='/webinars' className='menu-element'>Webinars</Link>
                 </>: null
                 }
             </div>
         </div>
     </div>
-  )
-}
+)}
 
 export default MenuPage

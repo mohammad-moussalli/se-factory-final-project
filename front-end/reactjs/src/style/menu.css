@@ -1,0 +1,23 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    background-color: #007EC3;
+    height: 100vh;
+    width: 100vw;
+}
+
+.menu-header{
+    display: flex;
+    margin: 0px 100px;
+}
+
+.menu-option{
+    color:white;
+    width: 20vw;
+}
+
+.close-button{
+    margin: 0px 100px;
+    position: absolute;
+    right: 0;
+}

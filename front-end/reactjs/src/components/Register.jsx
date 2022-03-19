@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";   
+import authService from "../features/auth/authService";
 
 const Register = () => {
 
@@ -16,10 +17,15 @@ const Register = () => {
         profile_picture: '',
     })
 
+    const [typeId, setTypeId] = useState(2);
+
     const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture} = formData
     
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
+       const data = {...formData, user_type_id: typeId};
+       const res = await authService.register(data);
+       console.log(res)
     }
 
     const onChange = (e) => {
@@ -27,6 +33,11 @@ const Register = () => {
           ...prevState,
           [e.target.name]: e.target.value,
         }))
+    }
+
+    const handleType = (val) => {
+        const id = parseInt(val.target.value);
+        setTypeId(id);
     }
 
     return (
@@ -40,6 +51,10 @@ const Register = () => {
 
             <section className='form'>
                 <form onSubmit={onSubmit}>
+                    <select name="type" id="type" onChange={handleType}>
+                        <option value="2">Student</option>
+                        <option value="3">Mentor</option>
+                    </select>
 
                     <div className='form-group'>
                         <input type='text' className='form-control' id='first_name' name='first_name' value={first_name} placeholder='Enter your First Name' onChange={onChange}/>
@@ -76,10 +91,11 @@ const Register = () => {
                     <div className='form-group'>
                         <input type='text' className='form-control' id='city' name='city' value={city} placeholder='Enter your current City' onChange={onChange}/>
                     </div>
-
+                    {typeId === 2 &&
                     <div className='form-group'>
                         <input type='text' className='form-control' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={onChange}/>
                     </div>
+                    }
                     
                     <div className='form-group'>
                         <button type='submit' className='btn'>Submit</button>

@@ -6,9 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var scholorshipRouter = require('./routes/scholorships');
+var scholorshipRouter = require('./routes/scholarships');
 var faqRouter = require('./routes/faqs');
-var faqCategoryRouter = require('./routes/faqs_categories');
+var faqCategoryRouter = require('./routes/faq_categories');
 var contactUsRouter = require('./routes/contact_us');
 var donorRouter = require('./routes/donors');
 var storyRouter = require('./routes/stories');
@@ -17,9 +17,9 @@ var webinarQuestionsRouter = require('./routes/webinars_questions');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());

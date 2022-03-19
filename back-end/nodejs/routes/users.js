@@ -7,5 +7,6 @@ const { update } = require('../services/users');
 router.post('/register', user.register);
 router.post('/login', user.login);
 router.get('/', user.getUser)
+router.get('/all', user.getAllUsers)
 router.post('/update', update)
 module.exports = router;

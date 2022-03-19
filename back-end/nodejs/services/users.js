@@ -7,7 +7,8 @@ module.exports = {
     create,
     login,
     update,
-    getUser
+    getUser,
+    getAllUsers
 };
 
 async function login({ email, password }) {
@@ -23,15 +24,16 @@ async function login({ email, password }) {
 
 
 async function create(params) {
+    console.log(params, "Hello")
+
     // validate
     if (await model.User.findOne({ where: { email: params.email } })) {
-        return {message: 'Email "' + params.email + '" is already taken'};
+        throw new Error (`Email ${params.email} is already taken`);
     }
     //hash password
     if (params.password) {
         params.password = await bcrypt.hash(params.password, 10);
     }
-    const user_type = await model.User_Type.findOne({where:{type: params.user_type}})
     // save user
     await model.University.create({
 
@@ -43,7 +45,7 @@ async function create(params) {
     })
     const university_id = await model.University.max('id');
     await model.User.create({
-        user_type_id: user_type.id,
+        user_type_id: params.user_type_id,
         university_id: university_id,
         first_name: params.first_name,
         last_name: params.last_name,
@@ -58,7 +60,7 @@ async function create(params) {
         nationality: params.nationality,
         profile_picture: params.profile_picture
     });
-    if(user_type.id === 3){
+    if(params.user_type_id === 3){
         const user_id = await model.User.max('id');
         await model.Mentor.create({
             user_id: user_id,
@@ -142,4 +144,12 @@ async function getUser(params){
         return 'User not found';
     } 
     return user;
+}
+
+async function getAllUsers(){
+   const users = await model.User_Type.findAll();
+    if (!users){
+        return 'Users not found';
+    } 
+    return users;
 }

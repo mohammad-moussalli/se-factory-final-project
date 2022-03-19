@@ -17,7 +17,10 @@
 }
 
 .close-button{
-    margin: 0px 100px;
     position: absolute;
-    right: 0;
+    right: 40px;
+}
+
+.menu-button{
+    margin: 40px 100px;
 }

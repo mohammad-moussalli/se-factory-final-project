@@ -1,10 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var scholarshipRouter = require('./routes/scholarships');
 var faqRouter = require('./routes/faqs');
@@ -17,17 +13,23 @@ var webinarQuestionsRouter = require('./routes/webinars_questions');
 
 var app = express();
 
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
 
-app.use('/', indexRouter);
+  if (req.method == "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+
+  next();
+});
+
 app.use('/users', usersRouter);
 app.use('/scholarships', scholarshipRouter);
 app.use('/faqs', faqRouter);
@@ -50,8 +52,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500).json('Something Went Wrong!');
 });
 
 // set port, listen for requests

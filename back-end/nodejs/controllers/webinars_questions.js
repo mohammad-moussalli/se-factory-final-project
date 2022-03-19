@@ -1,4 +1,4 @@
-const webinarQuestionServices = require ("../services/webinar_questions");
+const webinarQuestionServices = require ("../services/webinars_questions");
 
 module.exports = {
     getQuestion,

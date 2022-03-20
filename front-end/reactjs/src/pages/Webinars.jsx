@@ -1,9 +1,12 @@
 import React from 'react'
+import Webinars from '../components/Webinars'
 
-const Webinars = () => {
+const WebinarsPage = () => {
   return (
-    <div>Webinars</div>
+    <div>
+      <Webinars/>
+    </div>
   )
 }
 
-export default Webinars
+export default WebinarsPage

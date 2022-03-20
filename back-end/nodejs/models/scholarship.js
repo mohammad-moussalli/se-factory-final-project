@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Scholarship.init({
-    name: DataTypes.INTEGER
+    name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Scholorship',
+    modelName: 'Scholarship',
   });
   return Scholarship;
 };

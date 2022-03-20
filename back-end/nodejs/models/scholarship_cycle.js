@@ -14,14 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Scholarship_Cycle.init({
-    scholorship_id: DataTypes.INTEGER,
+    scholarship_id: DataTypes.INTEGER,
     cycle: DataTypes.STRING,
     start_date: DataTypes.DATEONLY,
     deadline: DataTypes.DATEONLY,
     results: DataTypes.DATEONLY
   }, {
     sequelize,
-    modelName: 'Scholorship_Cycle',
+    modelName: 'Scholarship_Cycle',
   });
   return Scholarship_Cycle;
 };

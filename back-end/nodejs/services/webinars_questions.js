@@ -9,14 +9,8 @@ module.exports = {
     delete: _delete,
 }
 
-async function getQuestions(country) {
-    
-    const webinar = await model.Webinar.max('id', {where:{country: country}})
-    if (!webinar){
-        return {message: 'Webinar not found'};
-    }
-
-    const webinar_questions = await model.Webinar_Questions.findAll({where:{webinar_id: webinar}})
+async function getQuestions(webinar_id) {
+    const webinar_questions = await model.Webinar_Questions.findAll({where:{webinar_id: webinar_id}})
     if(!webinar_questions){
         return "Webinar questions not found";
     }

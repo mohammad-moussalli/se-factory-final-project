@@ -3,6 +3,7 @@ const model = require('../models')
 module.exports = {
     create,
     getWebinar,
+    getWebinars,
     getWebinarByCountry,
     update,
     delete: _delete,
@@ -26,6 +27,9 @@ async function getWebinar(id) {
     }
     return webinar;
 }
+
+async function getWebinars() {
+    return await model.Webinar.findAll();}
 
 async function getWebinarByCountry(body) {
     const webinar_id = await model.Webinar.max('id', {where:{country: body.country}})

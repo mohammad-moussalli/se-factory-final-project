@@ -1,4 +1,5 @@
 const model = require('../models')
+const { Sequelize } = require('sequelize');
 
 module.exports = {
     getAll,
@@ -9,6 +10,7 @@ module.exports = {
     createCycle,
     getScholarshipCycle,
     delete: _delete,
+    getScholarshipsWithCycle,
 };
 
 async function getAll() {
@@ -63,6 +65,19 @@ async function getScholarship(id) {
         return 'scholarship not found';
     }
     return scholarship;
+}
+
+async function getScholarshipsWithCycle() {
+    const scholarships = await getAll()
+    const temp = scholarships.map( async (scholarship) => {
+        let cycle =  await model.Scholarship_Cycle.findOne({
+            where: {scholarship_id: scholarship.id}, 
+            attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'start_date', 'deadline', 'results', 'cycle']
+        })
+        return {scholarship, cycle}
+    })
+    const scholarshipsWithCycle = await Promise.all(temp)
+    return scholarshipsWithCycle
 }
 
 async function getById(id) {

@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const cors = require('cors');
 
 var usersRouter = require('./routes/users');
 var scholarshipRouter = require('./routes/scholarships');
@@ -15,20 +16,7 @@ var app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-
-  if (req.method == "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-
-  next();
-});
+app.use(cors());
 
 app.use('/users', usersRouter);
 app.use('/scholarships', scholarshipRouter);
@@ -45,15 +33,15 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// // error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500).json('Something Went Wrong!');
-});
+//   // render the error page
+//   res.status(err.status || 500).json('Something Went Wrong!');
+// });
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

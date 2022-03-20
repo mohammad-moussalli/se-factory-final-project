@@ -1,0 +1,44 @@
+.donations{
+    display:flex;
+    flex-direction: column;
+}
+
+.donation-row{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.donation-tag{
+    margin: 15px 30px;
+    height: 184px;
+    width: 503px;
+    border: solid 1px gray;
+    border-radius: 13px;
+    text-align: center;
+}
+
+.donation-title{
+    padding: 100px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 85vw;
+}
+
+.donation-info{
+    width: 100vw;
+    height: 373px;
+    background-color: #007EC3;
+}
+
+.success-stories-button{
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    width: max-content;
+    margin: 10px 0px 20px 100px;
+    padding: 5px 10px;
+
+}

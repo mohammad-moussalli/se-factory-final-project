@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var webinar = require("../controllers/webinars")
 
+router.get('/', webinar.getWebinars);
 router.get('/country', webinar.getWebinarByCountry);
 router.post('/add', webinar.create);
 router.get('/:id', webinar.getWebinar)

@@ -17,6 +17,7 @@ import Scholarships from './pages/Scholarships';
 import Team from './pages/Team';
 import Webinars from './pages/Webinars';
 import Volunteer from './pages/Volunteer'
+import Faq from './pages/Faq'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -28,13 +29,14 @@ function App() {
       <Router>
       
         <div className="App">
-        <Header />
+        {/* <Header /> */}
           <Routes>
             <Route exact path='/' element={ <Home /> } />
             <Route exact path="/register" element={ <Register /> }/>
             <Route exact path='/login' element={ <Login /> } />
             <Route exact path='/dashboard' element={ <Dashboard /> } />
             <Route exact path='/menu' element={ <Menu /> } />
+            <Route exact path='/faq' element={ <Faq /> } />
             <Route exact path='/about-us' element={ <AboutUs /> } />
             <Route exact path='/volunteer/buddy' element={ <BecomeBuddy /> } />
             <Route exact path='/blog' element={ <Blog /> } />

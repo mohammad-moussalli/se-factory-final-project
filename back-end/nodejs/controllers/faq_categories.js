@@ -9,6 +9,7 @@ module.exports = {
 }
 
 function create(req, res, next) {
+    console.log(req.body)
     faqsCategoryServices.create(req.body)
         .then((message) => res.json({message : message}))
         .catch(next);}

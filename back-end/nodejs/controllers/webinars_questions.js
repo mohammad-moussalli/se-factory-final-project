@@ -22,7 +22,7 @@ function getQuestion(req, res, next) {
 }
 
 function getQuestions(req, res, next) {
-    webinarQuestionServices.getQuestions(req.body.country)
+    webinarQuestionServices.getQuestions(req.params.webinar_id)
         .then((response) => res.json(response))
         .catch(next);
 }

@@ -9,7 +9,8 @@ module.exports = {
     update,
     _delete,
     createCycle,
-    getScholarshipCycle
+    getScholarshipCycle,
+    getScholarshipsWithCycle,
 };
 
 function getAll(req, res, next) {
@@ -38,6 +39,11 @@ function getScholarshipCycle(req, res, next) {
         .then((message) => res.json({message : message}))
         .catch(next);}
 
+function getScholarshipsWithCycle(req, res, next) {
+    scholarshipServices.getScholarshipsWithCycle()
+        .then((response) => res.json({response : response}))
+        .catch(next);}
+
 function getById(req, res, next) {
     scholarshipServices.getById(req.params.id)
         .then(scholarship => res.json(scholarship))
@@ -55,3 +61,4 @@ function _delete(req, res, next) {
         .then((message) => res.json({ message: message }))
         .catch(next);
 }
+

@@ -3,6 +3,7 @@ const webinarServices = require ("../services/webinars");
 module.exports = {
     create,
     getWebinar,
+    getWebinars,
     getWebinarByCountry,
     update,
     delete: _delete,
@@ -16,6 +17,12 @@ function create(req, res, next) {
 
 function getWebinar(req, res, next) {
     webinarServices.getWebinar(req.params.id)
+        .then((response) => res.json(response))
+        .catch(next);
+}
+
+function getWebinars(req, res, next) {
+    webinarServices.getWebinars(req.params.id)
         .then((response) => res.json(response))
         .catch(next);
 }

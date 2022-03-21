@@ -85,8 +85,8 @@ return(
                 {showMenuElement2?  
                 <>
                     <Link to='/scholarships' className='menu-element'>Deadlines</Link>
-                    <Link to='/scholarship/boost' className='menu-element'>Kaffi Boost</Link>
-                    <Link to='/scholarship/launch' className='menu-element'>Kaffi Launch</Link>
+                    <Link to='/scholarships/boost' className='menu-element'>Kaffi Boost</Link>
+                    <Link to='/scholarships/launch' className='menu-element'>Kaffi Launch</Link>
                 </>: null
                 }
             </div>

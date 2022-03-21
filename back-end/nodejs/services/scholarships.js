@@ -1,5 +1,5 @@
 const model = require('../models')
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 
 module.exports = {
     getAll,
@@ -52,7 +52,14 @@ async function getScholarshipCycle(params) {
     if(!get_scholarship){
         return 'Scholarship not found'
     }
-    const scholarship = await model.Scholarship_Cycle.findOne({where: { cycle: params.cycle, scholarship_id: get_scholarship.id}});
+    const now = new Date()
+    const d = new Date("2021-01-01")
+    console.log(now, " ", new Date("2021-01-01"))
+    const scholarship = await model.Scholarship_Cycle.findOne(
+        {where: { scholarship_id: get_scholarship.id, 
+                  start_date: {[Op.lt]: new Date()},
+                  deadline: {[Op.gt]: new Date()}},
+         attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'start_date', 'deadline', 'results', 'cycle']});
     if (!scholarship){
         return 'Scholarship cycle not found';
     }

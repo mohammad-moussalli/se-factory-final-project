@@ -35,8 +35,8 @@ function getScholarship(req, res, next) {
         .catch(next);}
 
 function getScholarshipCycle(req, res, next) {
-    scholarshipServices.getScholarshipCycle(req.body)
-        .then((message) => res.json({message : message}))
+    scholarshipServices.getScholarshipCycle(req.params)
+        .then((response) => res.json({response : response}))
         .catch(next);}
 
 function getScholarshipsWithCycle(req, res, next) {

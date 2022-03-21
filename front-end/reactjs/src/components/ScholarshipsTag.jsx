@@ -7,7 +7,7 @@ const ScholarshipsTag = ({image, name, title, text, start_date, deadline, result
 
     const navigate = useNavigate();
     const redirect = () => {
-        navigate('/scholarship/' + name)
+        navigate('/scholarships/' + name)
     }
 
   return (
@@ -41,7 +41,7 @@ const ScholarshipsTag = ({image, name, title, text, start_date, deadline, result
                     <h6>Results</h6>
                     <h6>{results}</h6>
                 </div>
-                <Button className = "scholorships-details-button" text="View Details" onClick={redirect}/>
+                <Button className = "scholarships-details-button" text="View Details" onClick={redirect}/>
             </div>
         </div>
     </div>

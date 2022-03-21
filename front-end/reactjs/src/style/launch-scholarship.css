@@ -1,19 +1,19 @@
-.boost-scholarship-header{
+.launch-scholarship-header{
     display: flex;
     flex-direction: column;
     margin: 0px 150px;
 }
 
-.boost-scholarship-header-row1{
+.launch-scholarship-header-row1{
     display: flex;
 }
 
-.boost-scholarship-header-row2{
+.launch-scholarship-header-row2{
     display: flex;
     justify-content: space-between;
 }
 
-.boost-scholarship-header-row3{
+.launch-scholarship-header-row3{
     display: flex;
 }
 
@@ -28,6 +28,7 @@
 
 }
 
+
 .disabled-scholarship-apply-button{
     border: 1px solid #cccccc;
     background-color: #cccccc;
@@ -36,7 +37,7 @@
     text-align: center;
     width: 100px;
     height: 30px;
-}
+  }
 
 .check-scholarship-button{
     border: 1px solid black;

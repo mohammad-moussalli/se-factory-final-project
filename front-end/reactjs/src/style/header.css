@@ -1,10 +1,11 @@
 .header {
-    position: absolute;
     right: 0;
     left: 0;
+    top:0;
     padding: 25px 115px;
     display: flex;
-    align-items: center;
+    align-items: center; 
+    position: absolute;
 }
 
 .kaffi-logo {

@@ -55,7 +55,10 @@ const BoostScholarship = () => {
             </div>
 
             <div className='boost-scholarship-header-row2-col1'>
-              <Button disabled={!cycle.cycle} text='Apply Here' className='scholarship-apply-button' onClick={redirectToForms} />
+              {cycle.cycle ?
+                <Button text='Apply Here' className='scholarship-apply-button' onClick={redirectToForms} />
+                :<Button disabled text='Apply Soon' className='disabled-scholarship-apply-button'/>
+              }
               <Button text='Check All Programs' className='check-scholarship-button' onClick={redirectToScholarships} />
             </div>
           </div>

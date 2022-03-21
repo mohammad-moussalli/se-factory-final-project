@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import ScholarshipTag from '../components/ScholarshipTag';
 import img1 from '../assets/images/KaffiBoost.png';
 import '../style/boost-scholarship.css'
+import EligibiltyCriteria from '../components/EligibiltyCriteria';
+import HelpfulTips from '../components/HelpfulTips';
+import FaqsTag from '../components/FaqsTag';
 
 
 const BoostScholarship = () => {
@@ -77,6 +80,12 @@ const BoostScholarship = () => {
             />
           </div>
         }
+
+        <div>
+          <EligibiltyCriteria />
+          <HelpfulTips />
+          <FaqsTag />
+        </div>
       </div>  
     )
   }

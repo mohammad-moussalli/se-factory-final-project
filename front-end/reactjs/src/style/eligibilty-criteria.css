@@ -1,0 +1,11 @@
+.eligibilty-criteria{
+    display: flex;
+    color: white;
+    background-color: #007EC8;
+    padding: 0px 150px;
+
+}
+
+.eligibility-list{
+    margin: 0px;
+}

@@ -1,0 +1,84 @@
+
+.ranking-system-row2{
+    display: flex;
+}
+
+.ranking-system-row3{
+    display: flex;
+}
+
+.ranking-system-text{
+    padding-left: 50px;
+}
+
+.ranking-process{
+    background-color: rgba(0, 126, 195, 0.05);
+    width: 100vw;
+}
+
+.ranking-process-title{
+    margin-bottom: 30px;
+}
+
+.ranking-process-text{
+    margin: 5px;
+}
+
+.scholarship-page-header{
+    margin: 0px 150px
+
+}
+
+.ranking-system{
+    margin: 0px 150px
+
+}
+
+.ranking-process-description{
+    margin: 0px 150px;
+    padding: 10px 0px;
+}
+
+.steps-apply-row2{
+    display: flex;
+    margin: 0px 150px;
+
+}
+
+.steps-apply-row1{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 150px;
+
+}
+
+.steps-to-apply1{
+    padding: 20px 20px 20px 0px;
+    text-align: center
+}
+
+.steps-to-apply2{
+    padding: 20px 20px 20px 0px;
+    text-align: center
+}
+
+.steps-to-apply3{
+    padding: 20px 20px 20px 0px;
+    text-align: center
+}
+
+.steps-to-apply4{
+    padding: 20px 0px;
+    text-align: center
+}
+
+.faq-button-scholarships{
+    border: 1px solid black;
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    margin: 0px 150px;
+
+}

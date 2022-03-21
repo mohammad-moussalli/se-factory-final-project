@@ -16,7 +16,8 @@ import Records from './pages/Records';
 import Scholarships from './pages/Scholarships';
 import Team from './pages/Team';
 import Webinars from './pages/Webinars';
-import Volunteer from './pages/Volunteer'
+import Volunteer from './pages/Volunteer';
+import ScholarshipForms from './pages/ScholarshipForms';
 import Faq from './pages/Faq'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -40,17 +41,19 @@ function App() {
             <Route exact path='/about-us' element={ <AboutUs /> } />
             <Route exact path='/volunteer/buddy' element={ <BecomeBuddy /> } />
             <Route exact path='/blog' element={ <Blog /> } />
-            <Route exact path='/scholarship/boost' element={ <BoostScholarship /> } />
+            <Route exact path='/scholarships/boost' element={ <BoostScholarship /> } />
             <Route exact path='/cv' element={ <CvTips /> } />
             <Route exact path='/donate' element={ <Donate /> } />
             <Route exact path='/buddy/find' element={ <FindBuddy /> } />
             <Route exact path='/volunteer/team' element={ <JoinTeam /> } />
-            <Route exact path='/scholarship/launch' element={ <LaunchScholarship /> } />
+            <Route exact path='/scholarships/launch' element={ <LaunchScholarship /> } />
             <Route exact path='/records' element={ <Records /> } />
             <Route exact path='/scholarships' element={ <Scholarships /> } />
             <Route exact path='/team' element={ <Team /> } />
             <Route exact path='/webinars' element={ <Webinars /> } />
             <Route exact path='/volunteer' element={ <Volunteer /> } />
+            <Route exact path='/scholarships/forms' element={ <ScholarshipForms /> } />
+
 
 
           </Routes>

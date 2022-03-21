@@ -1,0 +1,35 @@
+
+.scholarships-tag{
+    height: 200px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px gray;
+    margin: 20px 150px;
+
+}
+
+.scholarships-tag-col1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-right: solid 1px gray;
+    padding: 40px;
+}
+
+.scholarships-tag-col2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 15px 30px;
+}
+
+.scholarships-tag-row3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 100%;
+
+}

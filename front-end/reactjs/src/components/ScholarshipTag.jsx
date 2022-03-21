@@ -1,48 +1,35 @@
-import React from 'react'
-import Button from './Button'
-import { useNavigate } from 'react-router-dom';
 import '../style/scholarship-tag.css';
 
-const ScholarshipTag = ({image, name, title, text, start_date, deadline, results}) => {
-
-    const navigate = useNavigate();
-    const redirect = () => {
-        navigate('/scholarship/' + name)
-    }
+const ScholarshipTag = ({name, cycle, start_date, deadline, results}) => {
 
   return (
     <div className='scholarship-tag'>
-        <div className='scholarship-tag-col1'>
-            <img src={image} alt="logo"></img>
-            <h3>Kaffi-{name}</h3>
+        <div className='scholarship-tag-row1'>
+            <h2>{cycle} Cycle Deadline</h2>
         </div>
 
-        <div className='scholarship-tag-col2'>
-            <div className='scholarship-tag-row1'>
-                {title}
+        <div className='scholarship-tag-row2'>
+            <div className='scholarship-tag-row2-col1'>
+                <h6>Program</h6>
+                <h6>Kaffi-{name}</h6>
             </div>
 
-            <div className='scholarship-tag-row2'>
-                {text}
+            <div className='scholarship-tag-row2-col2'>
+                <h6>Application submission opens</h6>  
+                <h6>{start_date}</h6>
             </div>
 
-            <div className='scholarship-tag-row3'>
-                <div className='scholarship-tag-date'>
-                    <h6>Open Call </h6>
-                    <h6>{start_date}</h6>
-                </div>
-
-                <div className='scholarship-tag-date'>
-                    <h6>Deadline</h6>
-                    <h6>{deadline}</h6>
-                </div>
-
-                <div className='scholarship-tag-date'>
-                    <h6>Results</h6>
-                    <h6>{results}</h6>
-                </div>
-                <Button className = "scholorship-details-button" text="View Details" onClick={redirect}/>
+            <div className='scholarship-tag-row2-col3'>
+                <h6>Deadline to submit your application</h6>
+                <h6>{deadline}</h6>
             </div>
+
+            <div className='scholarship-tag-row2-col4'>
+                <h6>Announcing Results</h6>
+                <h6>{results}</h6>  
+            </div>
+           
+
         </div>
     </div>
   )

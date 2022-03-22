@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
+
 .navbar {
     right: 0;
     left: 0;
@@ -6,6 +8,7 @@
     display: flex;
     align-items: center; 
     position: static;
+
 }
 
 .menu-navbar{

@@ -22,6 +22,7 @@ import Faq from './pages/Faq'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import './style/app.css'
 
 function App() {
   return (
@@ -30,33 +31,32 @@ function App() {
       <Router>
       
         <div className="App">
-        {/* <Header /> */}
-          <Routes>
-            <Route exact path='/' element={ <Home /> } />
-            <Route exact path="/register" element={ <Register /> }/>
-            <Route exact path='/login' element={ <Login /> } />
-            <Route exact path='/dashboard' element={ <Dashboard /> } />
-            <Route exact path='/menu' element={ <Menu /> } />
-            <Route exact path='/faq' element={ <Faq /> } />
-            <Route exact path='/about-us' element={ <AboutUs /> } />
-            <Route exact path='/volunteer/buddy' element={ <BecomeBuddy /> } />
-            <Route exact path='/blog' element={ <Blog /> } />
-            <Route exact path='/scholarships/boost' element={ <BoostScholarship /> } />
-            <Route exact path='/cv' element={ <CvTips /> } />
-            <Route exact path='/donate' element={ <Donate /> } />
-            <Route exact path='/buddy/find' element={ <FindBuddy /> } />
-            <Route exact path='/volunteer/team' element={ <JoinTeam /> } />
-            <Route exact path='/scholarships/launch' element={ <LaunchScholarship /> } />
-            <Route exact path='/records' element={ <Records /> } />
-            <Route exact path='/scholarships' element={ <Scholarships /> } />
-            <Route exact path='/team' element={ <Team /> } />
-            <Route exact path='/webinars' element={ <Webinars /> } />
-            <Route exact path='/volunteer' element={ <Volunteer /> } />
-            <Route exact path='/scholarships/forms' element={ <ScholarshipForms /> } />
-
-
-
-          </Routes>
+          <Header />
+          <div className='main-container'>
+            <Routes>
+              <Route exact path='/' element={ <Home /> } />
+              <Route exact path="/register" element={ <Register /> }/>
+              <Route exact path='/login' element={ <Login /> } />
+              <Route exact path='/dashboard' element={ <Dashboard /> } />
+              <Route exact path='/menu' element={ <Menu /> } />
+              <Route exact path='/faq' element={ <Faq /> } />
+              <Route exact path='/about-us' element={ <AboutUs /> } />
+              <Route exact path='/volunteer/buddy' element={ <BecomeBuddy /> } />
+              <Route exact path='/blog' element={ <Blog /> } />
+              <Route exact path='/scholarships/boost' element={ <BoostScholarship /> } />
+              <Route exact path='/cv' element={ <CvTips /> } />
+              <Route exact path='/donate' element={ <Donate /> } />
+              <Route exact path='/buddy/find' element={ <FindBuddy /> } />
+              <Route exact path='/volunteer/team' element={ <JoinTeam /> } />
+              <Route exact path='/scholarships/launch' element={ <LaunchScholarship /> } />
+              <Route exact path='/records' element={ <Records /> } />
+              <Route exact path='/scholarships' element={ <Scholarships /> } />
+              <Route exact path='/team' element={ <Team /> } />
+              <Route exact path='/webinars' element={ <Webinars /> } />
+              <Route exact path='/volunteer' element={ <Volunteer /> } />
+              <Route exact path='/scholarships/forms' element={ <ScholarshipForms /> } />
+            </Routes>
+          </div>
           <Footer />
         </div>
        

@@ -44,3 +44,10 @@ iframe{
     border-radius: 25px;
     border: none;
 }
+
+.team-button{
+    border: solid 1px black;
+    border-radius: 25px;
+    width: fit-content;
+    padding: 5px;
+}

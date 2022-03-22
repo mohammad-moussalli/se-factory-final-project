@@ -1,0 +1,21 @@
+.team-tag{
+    border-radius: 23px;
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    border: 1px solid gray;
+    margin: 10px 0px;
+}
+
+.team-tag-text{
+    box-shadow: 1px 10px #888888;
+    flex-basis:50%;
+    text-align: center;
+
+}
+
+.team-tag-picture{
+    flex:1;
+    flex-basis:50%;
+
+}

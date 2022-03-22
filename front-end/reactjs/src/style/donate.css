@@ -21,7 +21,7 @@
 }
 
 .donation-title{
-    padding: 100px 0px 10px 0px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     text-align: start;

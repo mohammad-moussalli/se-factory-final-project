@@ -11,3 +11,7 @@
     margin-top:auto; 
     border-top: solid black 1px;
 }
+
+.menu-footer{
+    display: none;
+}

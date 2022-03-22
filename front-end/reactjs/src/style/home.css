@@ -2,7 +2,7 @@
 
 .home {
     background-image: url("../assets/images/bk.png");
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
 
 .home-tag1{
     background-color: #E6A522;
-    width: 33.33vw;
+    width: 33vw;
     opacity: 0.9;
 
 }
@@ -58,14 +58,14 @@
 
 .home-tag2{
     background-color: #1B089F;
-    width: 33.33vw;
+    width: 34vw;
     opacity: 0.9;
 
 }
 
 .home-tag3{
     background-color: #11D0D1;
-    width: 33.33vw;
+    width: 33vw;
     opacity: 0.9;
 
 }
@@ -77,8 +77,11 @@
     border-radius: 20px;
     color: white;
     text-align: center;
-    width: 100px;
+    width: 150px;
     height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -89,8 +92,11 @@
     border-radius: 20px;
     color: white;
     text-align: center;
-    width: 100px;
+    width: 150px;
     height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-button3{
@@ -100,6 +106,9 @@
     border-radius: 20px;
     color: white;
     text-align: center;
-    width: 100px;
+    width: 150px;
     height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

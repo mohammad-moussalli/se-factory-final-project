@@ -7,6 +7,7 @@
 .about-us-row1{
     display: flex;
     padding: 50px 0px;
+    justify-content: space-between;
 }
 
 .about-us-row1-col1{
@@ -45,6 +46,9 @@ iframe{
     height: fit-content;
     border-radius: 25px;
     border: none;
+    margin: 0;
+    padding: 0;
+  
 }
 
 .team-button{

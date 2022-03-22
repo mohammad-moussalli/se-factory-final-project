@@ -8,7 +8,7 @@
     display: flex;
     align-items: center; 
     position: static;
-
+    box-shadow: 0px 0px 8px 2px #bfbfbf
 }
 
 .menu-navbar{
@@ -17,6 +17,7 @@
 
 .home-navbar{
     position: absolute;
+    box-shadow: none;
 }
 
 .kaffi-logo {
@@ -69,10 +70,16 @@
     text-align: center;
     width: 100px;
     height: 30px;
-    border: 1px solid black;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-navbar-button{
     color: white;
     border: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

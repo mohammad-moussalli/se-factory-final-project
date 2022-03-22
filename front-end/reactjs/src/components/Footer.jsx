@@ -1,9 +1,22 @@
 import "../style/footer.css";
 import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const Footer = () => {
+
+    let footer = 'footer';
+        
+    
+    const location = useLocation();
+    if (location.pathname === '/menu'){
+        footer = 'menu-footer';
+    }
+    
+
+
     return (
-        <div className="footer">
+        <div className={`footer ${footer}`}>
             <div className="footer1">
                 <div>
                     <Link to='/about-us' className="footer-text">About Kaffi</Link>

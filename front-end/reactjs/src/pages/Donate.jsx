@@ -28,7 +28,7 @@ const Donate = () => {
         <div className="donations">
             <div className="donation-title donation-row">
                 <h1>Support students through your donations!</h1>
-                <h5>Methods of Payment</h5>
+                <h3>Methods of Payment</h3>
             </div>
             <div className="donation-row">
                 <DonationTag  className="donation-tag" text="Direct Bank Wire Transfer" image={BankTransfer} onClick={onClick}/> 

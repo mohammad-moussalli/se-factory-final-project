@@ -58,7 +58,9 @@ const MenuPage = () => {
         setShowMenuElement4(false)
         setShowMenuElement1(false)
     }
-return(
+
+
+    return(
     <div className="menu">
 
         <div className="menu-button">
@@ -67,7 +69,7 @@ return(
 
         <div className ="menu-header">
             <div className="menu-option">
-                <h4 onClick={onClick1}>The Foundation</h4>
+                <h4 onClick={onClick1} className='menu-option-title'>The Foundation</h4>
 
                 {showMenuElement1?  
                 <>   
@@ -80,7 +82,7 @@ return(
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick2}>Apply</h4>
+                <h4 onClick={onClick2} className='menu-option-title'>Apply</h4>
 
                 {showMenuElement2?  
                 <>
@@ -92,7 +94,7 @@ return(
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick3}>Donate</h4>
+                <h4 onClick={onClick3} className='menu-option-title'>Donate</h4>
 
                 {showMenuElement3?  
                 <>
@@ -102,7 +104,7 @@ return(
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick4}>Volunteer</h4>
+                <h4 onClick={onClick4} className='menu-option-title'>Volunteer</h4>
 
                 {showMenuElement4?  
                 <>                
@@ -113,11 +115,11 @@ return(
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick5}>Academic Advising</h4>
+                <h4 onClick={onClick5} className='menu-option-title'>Academic Advising</h4>
 
                 {showMenuElement5?  
                 <>                
-                    <Link to='/buddy/find' className='menu-element'>Find A Buddy</Link>
+                    <Link to='/buddy/find' onhov className='menu-element'>Find A Buddy</Link>
                     <Link to='/cv' className='menu-element'>CV Tips</Link>
                     <Link to='/webinars' className='menu-element'>Webinars</Link>
                 </>: null

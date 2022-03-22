@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import Spinner from './Spinner';
+import * as React from 'react';
+import '../style/webinars.css';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Webinars = () => {
 
@@ -20,6 +27,11 @@ const Webinars = () => {
         });
     })
 
+    // const Country = () => {
+    //     const [country, setCountry] = useState();
+     
+    //     return <h2 onClick={() => setCountry(country)}>Applying to Grad School in {country} - Important Steps</h2>;
+    //  }
 
     useEffect( async () => {
         await axios.get(webinarsApi)
@@ -36,29 +48,48 @@ const Webinars = () => {
         return <Spinner/>
      } else{
          return (
-             <div>
-                 {webinars.map((webinar)=> {
-                 return <button key={webinar.id} onClick={() => handleOnCountryClick(webinar.id, webinars)}>{webinar.country}</button>
-                 })}
+            <div className="webinars">
+
+                <div className="webinars-title">
+
+                    <h1>Kaffi's Latest Webinar</h1>
+                    <h3>Select the country to preview it’s corresponding webinar and useful information</h3>
+                </div>
 
                 {webinarUrl &&
-                 <div>
-                    <iframe src={webinarUrl} />
-                 </div>}
+                <div>
+                    
+                    <div className="webinar-video-country">
+                        <div className="webinar-video">
+                            <iframe title = 'webinarl-video'src={webinarUrl} />
+                        </div>
+                        <div className="webinar-country">
+                            {webinars.map((webinar)=> {
+                                return <button className="webinar-country-button" key={webinar.id} onClick={() => handleOnCountryClick(webinar.id, webinars)}>{webinar.country}</button>
+                            })}
+
+                        </div>
+                    </div>
                 
- 
-                 <div>
-                     {Array.isArray(webinarQuestions) && webinarQuestions.map((webinarQuestion) => {
-                         return(
-                             <div key={webinarQuestion.id}>
-                                 {webinarQuestion.question}
-                                 {webinarQuestion.answer}
-                             </div>  
-                         )
-                     })}
+                    {/* <div>
+                    <Accordion>
+                        {Array.isArray(webinarQuestions) && webinarQuestions.map((webinarQuestion) => {
+                            return(
+                                <div>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${webinarQuestion.id}a-content`} id={`panel${webinarQuestion.id}a-header`}>
+                                        <Typography>{webinarQuestion.question}</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography>{webinarQuestion.answer}</Typography>
+                                    </AccordionDetails>
+                                </div>
+                            )
+                        })}
+                        </Accordion> 
+                    </div> */}
                  </div>
-             </div>
-         )}
-}
+                }
+            </div>
+         )}}
 
 export default Webinars

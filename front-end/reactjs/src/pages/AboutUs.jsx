@@ -3,16 +3,24 @@ import img1 from '../assets/images/about-us1.png';
 import img2 from '../assets/images/about-us2.png';
 import img3 from '../assets/images/about-us3.png';
 import img4 from '../assets/images/about-us4.png';
+import { useNavigate } from 'react-router-dom';
+
 import '../style/about-us.css';
 
 const AboutUs = () => {
+
+  
+  const navigate = useNavigate()
+  const redirect= () => {
+    navigate('/team');
+  }
   return (
     <div className='about-us'>
       <h1>About Kaffi</h1>
       <div className='about-us-row1'>
         <div className='about-us-row1-col1'>
           <p>Kaffi , the Arabic for "Keep Going", is an independent nonprofit organization founded to ease the burden on the shoulders of the students and allow them to carry on their education. We at Kaffi, know very well the situation of the Lebanese students abroad as most of us have been through this before. We also know that the current economic crisis affecting Lebanon is jeopardizing these students' chance of continuing their education.  This has driven us to take immediate action and do our best to help! </p>
-          <Button text='Meet the Team'/>
+          <Button className="team-button" text='Meet the Team' onClick={redirect}/>
         </div>
 
         <div className='about-us-row1-col2'>

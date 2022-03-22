@@ -7,4 +7,5 @@
     justify-content: space-around;
     align-items: center;
     margin-top:auto; 
+    border-top: solid black 1px;
 }

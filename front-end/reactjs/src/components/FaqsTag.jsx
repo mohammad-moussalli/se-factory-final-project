@@ -7,7 +7,7 @@ const FaqsTag = () => {
 
     const navigate = useNavigate();
     const redirect = () => {
-        navigate('/faqs');
+        navigate('/faq');
     }
 
     return (

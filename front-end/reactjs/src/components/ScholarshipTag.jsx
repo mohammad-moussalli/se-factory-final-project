@@ -5,28 +5,28 @@ const ScholarshipTag = ({name, cycle, start_date, deadline, results}) => {
   return (
     <div className='scholarship-tag'>
         <div className='scholarship-tag-row1'>
-            <h2>{cycle} Cycle Deadline</h2>
+            <p className='cycle-name'>{cycle} Cycle Deadline</p>
         </div>
 
         <div className='scholarship-tag-row2'>
-            <div className='scholarship-tag-row2-col1'>
-                <h6>Program</h6>
-                <h6>Kaffi-{name}</h6>
+            <div className='scholarship-tag-row2-col1 col'>
+                <p className='cycle-details1'>Program</p>
+                <p className='cycle-details2'>Kaffi-{name}</p>
             </div>
 
-            <div className='scholarship-tag-row2-col2'>
-                <h6>Application submission opens</h6>  
-                <h6>{start_date}</h6>
+            <div className='scholarship-tag-row2-col2 col'>
+                <p className='cycle-details1'>Application submission opens</p>  
+                <p className='cycle-details2'>{start_date}</p>
             </div>
 
-            <div className='scholarship-tag-row2-col3'>
-                <h6>Deadline to submit your application</h6>
-                <h6>{deadline}</h6>
+            <div className='scholarship-tag-row2-col3 col'>
+                <p className='cycle-details1'>Deadline to submit your application</p>
+                <p className='cycle-details2'>{deadline}</p>
             </div>
 
-            <div className='scholarship-tag-row2-col4'>
-                <h6>Announcing Results</h6>
-                <h6>{results}</h6>  
+            <div className='scholarship-tag-row2-col4 col'>
+                <p className='cycle-details1'>Announcing Results</p>
+                <p className='cycle-details2'>{results}</p>  
             </div>
            
 

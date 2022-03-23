@@ -13,7 +13,7 @@ const FaqsTag = () => {
     return (
         <div className='faqs-tag'>
             <div className='faqs-tag-header'>
-                <h4>Check our FAQ page for some common questions or email us at &nbsp;</h4> 
+                <p className='faqs-header'>Check our FAQ page for some common questions or email us at &nbsp;</p> 
                 <a href="mailto: apply@kaffi-lb.org" target="_blank" className='faq-email-link'> apply@kaffi-lb.org</a>
             </div>
             <Button className='faqs-tag-button' text='FAQ Page' onClick={redirect}/>

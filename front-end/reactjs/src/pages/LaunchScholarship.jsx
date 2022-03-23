@@ -44,14 +44,19 @@ const LaunchScholarship = () => {
       <div className='launch-scholarship'> 
         <div className='launch-scholarship-header'>
           <div className='launch-scholarship-header-row1'>
-            <img src={img1} alt="logo"></img>
-            <h1>Kaffi-Launch Scolarship Program</h1>
+            <img className='launch-image' src={img1} alt="logo"></img>
+            <div className='launch-scholarship-header-row1-col2'>
+            <p className='launch-scholarship-title'>Kaffi-Launch Scolarship Program</p>
+              {!cycle.cycle &&
+                <p className='newsletter'>No open cycle currently, Subscribe to our Newsletter to receive the updates</p>
+              }
+            </div>
           </div>
 
           <div className='launch-scholarship-header-row2'>
             <div className='launch-scholarship-header-row2-col1'>
-              <h2>Program Highlights:</h2>
-              <h2>Up to €2,000 To Cover Tuition Fees</h2>
+              <p className='launch-scholarship-title-subheader'>Program Highlights:</p>
+              <p className='launch-scholarship-title-subheader'>Up to €2,000 To Cover Tuition Fees</p>
             </div>
 
             <div className='launch-scholarship-header-row2-col1'>
@@ -59,7 +64,7 @@ const LaunchScholarship = () => {
                 <Button text='Apply Here' className='scholarship-apply-button' onClick={redirectToForms} />
                 :<Button disabled={true} text='Apply Soon' className='disabled-scholarship-apply-button'/>
               }
-              <Button text='Check All Programs' className='check-scholarship-button' onClick={redirectToScholarships} />
+              <Button text='Check All Programs' className='check-launch-scholarship-button' onClick={redirectToScholarships} />
             </div>
           </div>
 

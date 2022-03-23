@@ -22,8 +22,8 @@ const HomePage = () => {
     return (
         <div className="home">
             <div className="home-text">
-                <h1 className="home-title1">Because Investing In Education Pays The Highest Return</h1>
-                <h3 className="home-title2">CONTINUE FOR YOURSELF, YOUR FAMILY, LEBANON, AND FOR A BETTER WORLD</h3>
+                <p className="home-title1">Because Investing In Education Pays The Highest Return</p>
+                <p className="home-title2">CONTINUE FOR YOURSELF, YOUR FAMILY, LEBANON, AND FOR A BETTER WORLD</p>
             </div>
             
             <div className="home-buttons"> 

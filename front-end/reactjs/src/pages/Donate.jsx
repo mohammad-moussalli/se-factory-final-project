@@ -26,27 +26,34 @@ const Donate = () => {
 
     return (
         <div className="donations">
-            <div className="donation-title donation-row">
-                <h1>Support students through your donations!</h1>
-                <h3>Methods of Payment</h3>
-            </div>
-            <div className="donation-row">
-                <DonationTag  className="donation-tag" text="Direct Bank Wire Transfer" image={BankTransfer} onClick={onClick}/> 
-                <DonationTag className="donation-tag" image={PayPal}/>
+            <div className="donation-title donation-row1">
+                <p className="donation-title1">Support students through your donations!</p>
+                <p className="donation-title2">Methods of Payment</p>
             </div>
 
-            <div className="donation-row">
-                <DonationTag className="donation-tag" image={GoFundMe}/>
-                <DonationTag className="donation-tag" image={Benevity}/>
-            </div>
+            <div className="donation-tags">
+                <div className="donation-row donation-row2">
+                    <DonationTag  className="donation-tag col1-tag" text="Direct Bank Wire Transfer" image={BankTransfer} onClick={onClick}/> 
+                    <DonationTag className="donation-tag col2-tag" image={PayPal}/>
+                </div>
 
+                <div className="donation-row donation-row3">
+                    <DonationTag className="donation-tag col1-tag" image={GoFundMe}/>
+                    <DonationTag className="donation-tag col2-tag" image={Benevity}/>
+                </div>
+            </div>
             <div className="donation-info doantion-row">
                 <DonationInfo />
             </div>
 
-            <div className="success-stories donation row">
-                <Button text="View All Success Stories & Records" className="success-stories-button" onClick={redirectToRecordsPage}/>
-                <SuccessStories />
+            <div className="success-stories donation-row4">
+                <div className="success-stories-row1">
+                    <p className="success-stories-title">Check the impact of your support from students success stories</p>
+                    <Button text="View All Success Stories & Records" className="success-stories-button" onClick={redirectToRecordsPage}/>
+                </div>
+                <div className="success-stories-row2">
+                    <SuccessStories />
+                </div>
             </div>
 
             {showWireTransferTag ? 

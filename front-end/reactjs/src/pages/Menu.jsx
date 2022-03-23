@@ -69,7 +69,7 @@ const MenuPage = () => {
 
         <div className ="menu-header">
             <div className="menu-option">
-                <h4 onClick={onClick1} className='menu-option-title'>The Foundation</h4>
+                <p onClick={onClick1} className='menu-option-title'>The Foundation</p>
 
                 {showMenuElement1?  
                 <>   
@@ -82,7 +82,7 @@ const MenuPage = () => {
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick2} className='menu-option-title'>Apply</h4>
+                <p onClick={onClick2} className='menu-option-title'>Apply</p>
 
                 {showMenuElement2?  
                 <>
@@ -94,7 +94,7 @@ const MenuPage = () => {
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick3} className='menu-option-title'>Donate</h4>
+                <p onClick={onClick3} className='menu-option-title'>Donate</p>
 
                 {showMenuElement3?  
                 <>
@@ -104,7 +104,7 @@ const MenuPage = () => {
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick4} className='menu-option-title'>Volunteer</h4>
+                <p onClick={onClick4} className='menu-option-title'>Volunteer</p>
 
                 {showMenuElement4?  
                 <>                
@@ -115,7 +115,7 @@ const MenuPage = () => {
             </div>
 
             <div className="menu-option">
-                <h4 onClick={onClick5} className='menu-option-title'>Academic Advising</h4>
+                <p onClick={onClick5} className='menu-option-title'>Academic Advising</p>
 
                 {showMenuElement5?  
                 <>                

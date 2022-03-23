@@ -4,6 +4,32 @@
     margin: 0px 150px;
 }
 
-.helpful-tips-title{
+.helpful-tips-text{
     display: flex;
+    align-items: center;
+}
+
+.helpful-tips-title{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.helpful-tips-title-subheader{
+    font-size: 27px;
+    font-weight: 500;
+    margin:0px 0px 25px;
+}
+
+.helpful-tips-list{
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.helpful-tips-title-image{
+    display: flex;
+    height: fit-content;
+}
+
+ul{
+    margin-left: 20px;
 }

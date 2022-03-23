@@ -4,10 +4,30 @@
     display: flex;
     color: white;
     background-color: #007EC8;
-    padding: 0px 150px;
+    padding: 0px 150px 30px;
 
 }
 
 .eligibility-list{
-    margin: 0px;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 10px 0px;
+}
+
+.eligibility-criteria-header1{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+
+.eligibility-criteria-header2{
+    font-weight: 500;
+    font-size: 27px;
+}
+
+.eligibilty-criteria-col2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }

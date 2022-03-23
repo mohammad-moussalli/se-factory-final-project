@@ -10,10 +10,27 @@
 }
 
 .faqs-tag-button{
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 2px solid black;
+    border-radius: 25px;
     color: black;
     text-align: center;
-    width: 100px;
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 18px;
+    width: fit-content;
+    margin-bottom: 30px;
+}
+
+.faqs-header{
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.faq-email-link{
+    font-size: 27px;
+    font-weight: 400;
+    color: rgba(17, 208, 209, 1);
 }

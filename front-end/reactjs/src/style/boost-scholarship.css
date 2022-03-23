@@ -6,8 +6,30 @@
     margin: 0px 150px;
 }
 
+.boost-scholarship-title{
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0px;
+}
+
+.boost-scholarship-title-subheader{
+    font-size: 27px;
+    font-weight: 500;
+    color: rgba(0, 126, 195, 1);
+    margin: 10px 0px;
+
+}
+
+.boost-image{
+    height: fit-content;
+    margin-right: 15px;
+}
+
 .boost-scholarship-header-row1{
     display: flex;
+    align-items: center;
+    margin: 40px 0px;
+
 }
 
 .boost-scholarship-header-row2{
@@ -15,36 +37,77 @@
     justify-content: space-between;
 }
 
+.boost-scholarship-header-row2-col1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .boost-scholarship-header-row3{
     display: flex;
+    margin:0px 0px 30px;
 }
 
 .scholarship-apply-button{
     background-color: #E6A522;
-    border: 1px solid #E6A522;
-    border-radius: 20px;
+    border: 2px solid #E6A522;
     color: white;
+    border-radius: 25px;
     text-align: center;
-    width: 100px;
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 18px;
 
 }
 
 .disabled-scholarship-apply-button{
-    border: 1px solid #cccccc;
+    border: 2px solid #cccccc;
     background-color: #cccccc;
     color: white;
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: center;
-    width: 100px;
-    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 18px;
 }
 
-.check-scholarship-button{
-    border: 1px solid black;
-    border-radius: 20px;
+.check-boost-scholarship-button{
+    border: 2px solid black;
+    border-radius: 25px;
     color: black;
     text-align: center;
-    height: 30px;
-    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+li{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+ul{
+    padding: 0px;
+}
+
+.boost-scholarship-header-row1-col2{
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletter{
+    margin: 0px 0px 30px;
+    color: #A6A6A6;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0px;
 }

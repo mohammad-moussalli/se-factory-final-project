@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    margin: 0px 150px;
+    /* margin: 0px 150px; */
 }
 
 .donation-row1{
@@ -26,7 +26,7 @@
 
 .donation-tag{
     height: 180px;
-    width: 500px;
+    width: 50%;
     box-shadow: 0px 0px 8px 0.5px #bfbfbf;
     border-radius: 13px;
     text-align: center;
@@ -35,6 +35,10 @@
     align-items: center;
     font-weight: 400;
     font-size: 20px;
+}
+
+.donation-tags{
+    margin: 0px 150px;
 }
 
 .donation-title{
@@ -58,9 +62,9 @@
 }
 
 .donation-info{
-    width: 100vw;
     height: 373px;
     background-color: #007EC3;
+    display: flex;
 }
 
 .success-stories-button{
@@ -72,8 +76,6 @@
     font-weight: 500;
     font-size: 18px;
     border: 2px solid #000000;
-    border-radius: 24.5px;  
-
 }
 
 .success-stories-row1{

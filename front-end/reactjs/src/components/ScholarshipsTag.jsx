@@ -14,7 +14,7 @@ const ScholarshipsTag = ({image, name, title, text, start_date, deadline, result
     <div className='scholarships-tag'>
         <div className='scholarships-tag-col1'>
             <img src={image} alt="logo"></img>
-            <h3>Kaffi-{name}</h3>
+            <p>Kaffi-{name}</p>
         </div>
 
         <div className='scholarships-tag-col2'>
@@ -28,18 +28,18 @@ const ScholarshipsTag = ({image, name, title, text, start_date, deadline, result
 
             <div className='scholarships-tag-row3'>
                 <div className='scholarships-tag-date'>
-                    <h6>Open Call </h6>
-                    <h6>{start_date}</h6>
+                    <p className='date-text'>Open Call </p>
+                    <p className='date-text'>{start_date}</p>
                 </div>
 
                 <div className='scholarships-tag-date'>
-                    <h6>Deadline</h6>
-                    <h6>{deadline}</h6>
+                    <p className='date-text'>Deadline</p>
+                    <p className='date-text'>{deadline}</p>
                 </div>
 
                 <div className='scholarships-tag-date'>
-                    <h6>Results</h6>
-                    <h6>{results}</h6>
+                    <p className='date-text'>Results</p>
+                    <p className='date-text'>{results}</p>
                 </div>
                 <Button className = "scholarships-details-button" text="View Details" onClick={redirect}/>
             </div>

@@ -6,19 +6,25 @@
 
 .ranking-system-row3{
     display: flex;
+    margin-bottom: 10px;
 }
 
 .ranking-system-text{
     padding-left: 50px;
+    font-weight: 400;
+    font-size: 20px;
+    align-self: center;
 }
 
 .ranking-process{
     background-color: rgba(0, 126, 195, 0.05);
     width: 100vw;
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .ranking-process-title{
-    margin-bottom: 30px;
+    margin: 10px 0px 30px;
 }
 
 .ranking-process-text{
@@ -37,7 +43,7 @@
 
 .ranking-process-description{
     margin: 0px 150px;
-    padding: 10px 0px;
+    padding: 10px 0px 30px
 }
 
 .steps-apply-row2{
@@ -73,13 +79,33 @@
     text-align: center
 }
 
+.steps-apply-text{
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .faq-button-scholarships{
-    border: 1px solid black;
-    border-radius: 20px;
+    border-radius: 25px;
     color: black;
     text-align: center;
-    width: 100px;
-    height: 30px;
-    margin: 0px 150px;
+    width: fit-content;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 18px;
+    border: 2px solid #000000;
+    margin: 30px 150px 50px;
+
+}
+
+.scholarship-title{
+    font-weight: 700;
+    font-size: 40px;
+    margin: 40px 0px 20px;
+}
+
+.scholarship-title-subheader{
+    font-weight: 400;
+    font-size: 27px;
+    margin: 0px 0px 30px;
 
 }

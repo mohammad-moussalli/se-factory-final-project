@@ -20,15 +20,15 @@ const Scholarships = () => {
   return (
     <div className='scholarship'>
       <div className='scholarship-page-header'>
-        <h1>Scholarship Programs</h1>
-        <p>Kaffi is providing the following scholarship programs to help Lebanese students throughout their educations journey abroad. Make sure to check the details and eligibility program of each before applying.</p>
+        <p className='scholarship-title'>Scholarship Programs</p>
+        <p className='scholarship-title-subheader'>Kaffi is providing the following scholarship programs to help Lebanese students throughout their educations journey abroad. Make sure to check the details and eligibility program of each before applying.</p>
       </div>
       <Scholarship/>
 
       <div className='ranking-system'>
 
         <div className='ranking-system-row1'>
-          <h1>Our Ranking System</h1>
+          <p className='scholarship-title'>Our Ranking System</p>
         </div>
 
         <div className='ranking-system-row2'> 
@@ -56,8 +56,8 @@ const Scholarships = () => {
       <div className='steps-apply'>
 
         <div className='steps-apply-row1'>
-          <h1>Steps To Apply</h1>
-          <h5>Check our FAQ page for some common questions</h5>
+          <p className='scholarship-title'>Steps To Apply</p>
+          <p className='scholarship-title-subheader'>Check our FAQ page for some common questions</p>
         </div>
 
         <div className='steps-apply-row2'>
@@ -81,9 +81,10 @@ const Scholarships = () => {
             <p className='steps-apply-text'>If accepted, you will receive an email by the end of each cycle</p>
           </div>
         </div>
+        <Button className='faq-button-scholarships' text='FAQ Page' onClick={redirect}/>
       </div>
 
-      <Button className='faq-button-scholarships' text='FAQ Page' onClick={redirect}/>
+      
 
     </div>
   )

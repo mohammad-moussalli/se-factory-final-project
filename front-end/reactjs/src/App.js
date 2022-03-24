@@ -12,7 +12,7 @@ import Donate from './pages/Donate';
 import FindBuddy from './pages/FindBuddy';
 import JoinTeam from './pages/JoinTeam';
 import LaunchScholarship from './pages/LaunchScholarship';
-import Records from './pages/Records';
+import RecordsPage from './pages/RecordsPage';
 import Scholarships from './pages/Scholarships';
 import Team from './pages/Team';
 import Webinars from './pages/Webinars';
@@ -49,7 +49,7 @@ function App() {
               <Route exact path='/buddy/find' element={ <FindBuddy /> } />
               <Route exact path='/volunteer/team' element={ <JoinTeam /> } />
               <Route exact path='/scholarships/launch' element={ <LaunchScholarship /> } />
-              <Route exact path='/records' element={ <Records /> } />
+              <Route exact path='/records' element={ <RecordsPage /> } />
               <Route exact path='/scholarships' element={ <Scholarships /> } />
               <Route exact path='/team' element={ <Team /> } />
               <Route exact path='/webinars' element={ <Webinars /> } />

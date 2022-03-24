@@ -16,10 +16,10 @@ const AboutUs = () => {
   }
   return (
     <div className='about-us'>
-      <h1>About Kaffi</h1>
+      <p className="about-us-title">About Kaffi</p>
       <div className='about-us-row1'>
         <div className='about-us-row1-col1'>
-          <p>Kaffi , the Arabic for "Keep Going", is an independent nonprofit organization founded to ease the burden on the shoulders of the students and allow them to carry on their education. We at Kaffi, know very well the situation of the Lebanese students abroad as most of us have been through this before. We also know that the current economic crisis affecting Lebanon is jeopardizing these students' chance of continuing their education.  This has driven us to take immediate action and do our best to help! </p>
+          <p className="about-us-text">Kaffi , the Arabic for "Keep Going", is an independent nonprofit organization founded to ease the burden on the shoulders of the students and allow them to carry on their education. We at Kaffi, know very well the situation of the Lebanese students abroad as most of us have been through this before. We also know that the current economic crisis affecting Lebanon is jeopardizing these students' chance of continuing their education.  This has driven us to take immediate action and do our best to help! </p>
           <Button className="team-button" text='Meet the Team' onClick={redirect}/>
         </div>
 
@@ -56,8 +56,8 @@ const AboutUs = () => {
       <div className='about-us-row3'>
 
         <div className='about-us-row3-col1'>
-          <h1>Why Donate To Kaffi?</h1>
-          <p>In the past year, the Lebanese currency has lost over 90% of its value amid an ongoing economic crisis. Banks in Lebanon have put severe restrictions on the depositors' money, causing many Lebanese students abroad to lose the financial support their parents were providing them. As this crisis is expected to last, Kaffi was founded to push forward long-term solutions through supporting the Lebanese youth abroad.</p>
+          <p className="about-us-title">Why Donate To Kaffi?</p>
+          <p className="about-us-text">In the past year, the Lebanese currency has lost over 90% of its value amid an ongoing economic crisis. Banks in Lebanon have put severe restrictions on the depositors' money, causing many Lebanese students abroad to lose the financial support their parents were providing them. As this crisis is expected to last, Kaffi was founded to push forward long-term solutions through supporting the Lebanese youth abroad.</p>
         </div>
 
         <div className='about-us-row3-col2'>

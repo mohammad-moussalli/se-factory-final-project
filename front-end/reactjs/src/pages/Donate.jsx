@@ -46,12 +46,12 @@ const Donate = () => {
                 <DonationInfo />
             </div>
 
-            <div className="success-stories donation-row4">
-                <div className="success-stories-row1">
-                    <p className="success-stories-title">Check the impact of your support from students success stories</p>
+            <div className="donate-success-stories donation-row4">
+                <div className="donate-success-stories-row1">
+                    <p className="donate-success-stories-title">Check the impact of your support from students success stories</p>
                     <Button text="View All Success Stories & Records" className="success-stories-button" onClick={redirectToRecordsPage}/>
                 </div>
-                <div className="success-stories-row2">
+                <div className="donate-success-stories-row2">
                     <SuccessStories />
                 </div>
             </div>

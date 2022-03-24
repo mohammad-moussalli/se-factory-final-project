@@ -5,19 +5,38 @@
     display: flex;
     flex-direction: column;
     width: 18%;
-    border: 1px solid gray;
+    box-shadow: 0px 0px 8px 0.5px #bfbfbf;
     margin: 10px 0px;
+    max-height: 300px;
+    text-align: center;
 }
 
 .team-tag-text{
-    box-shadow: 1px 10px #888888;
-    flex-basis:50%;
-    text-align: center;
-
+max-height: 150px;
 }
 
-.team-tag-picture{
-    flex:1;
-    flex-basis:50%;
+.team-tag-image{
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.team-tag-name{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: rgba(0, 126, 195, 1);
+    
+}
+
+.team-tag-title{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;    
+}
+
+.team-tag-role{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
 
 }

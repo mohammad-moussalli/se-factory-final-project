@@ -15,8 +15,9 @@
 }
 
 .helpful-tips-title-subheader{
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 500;
+    line-height: 36px;
     margin:0px 0px 25px;
 }
 
@@ -32,4 +33,11 @@
 
 ul{
     margin-left: 20px;
+}
+
+li{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+
 }

@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap");
+
+.success-stories-container{
+    border-radius: 13px;
+    margin: 20px 150px 100px;
+    padding: 50px 50px;
+    box-shadow: 0px 0px 8px 0.5px #bfbfbf;
+    display: flex;
+    align-items: center;
+}
+
+.success-stories{
+    position: relative;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    margin: 0px 50px;
+}
+
+.success-stories-message{
+    font-weight: 300;
+    font-style: italic;
+    line-height: 36px;
+    font-size: 24px;
+    color: rgba(0, 126, 195, 1);
+}
+
+.success-stories-user{
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.success-stories-image{
+    margin-right: 25px;
+}

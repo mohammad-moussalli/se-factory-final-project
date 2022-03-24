@@ -1,0 +1,80 @@
+.records{
+    margin: 0px 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.records-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.records-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 0px;
+    margin-top: 40px;
+    
+}
+
+.records-text{
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 40px;    
+}
+
+.success-story-tag{
+    display: flex;
+    flex-direction: column;
+}
+
+.success-story-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.success-story-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;    
+}
+
+.reports{
+    display: flex;
+    flex-direction: column;
+}
+
+.reports-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.report-cycle-button{
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    width: fit-content;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 2px solid #000000;
+    width: 260px;
+}
+
+.reports-row2{
+    display: flex;
+}
+
+.report-cycle-image{
+    width: 300px;
+    height: 250px;
+    margin-bottom: 40px;
+}
+
+.cycle-report{
+    margin: 0px 20px 80px 0px;
+}

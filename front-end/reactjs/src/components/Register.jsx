@@ -15,11 +15,17 @@ const Register = () => {
         country: '',
         city: '',
         profile_picture: '',
+        university: '',
+        university_country: '',
+        university_city: '',
+        job: '',
+        job_country: '', 
+        job_city: '' 
     })
 
     const [typeId, setTypeId] = useState(2);
 
-    const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture} = formData
+    const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -91,11 +97,37 @@ const Register = () => {
                     <div className='form-group'>
                         <input type='text' className='form-control' id='city' name='city' value={city} placeholder='Enter your current City' onChange={onChange}/>
                     </div>
-                    {typeId === 2 &&
+
+                    <div className='form-group'>
+                        <input type='text' className='form-control' id='university' name='university' value={university} placeholder='Enter your University' onChange={onChange}/>
+                    </div>
+
+                    <div className='form-group'>
+                        <input type='text' className='form-control' id='university-country' name='university-country' value={university_country} placeholder='Enter your University Country' onChange={onChange}/>
+                    </div>
+
+                    <div className='form-group'>
+                        <input type='text' className='form-control' id='university-city' name='university-city' value={university_city} placeholder='Enter your University City' onChange={onChange}/>
+                    </div>
+                    {typeId === 3 &&
+                        <div>
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='job' name='job' value={job} placeholder='Enter your current Job' onChange={onChange}/>
+                            </div>
+
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='job-country' name='job-country' value={job_country} placeholder='Enter your Job Country' onChange={onChange}/>
+                            </div>
+
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='job-city' name='job-city' value={job_city} placeholder='Enter your Job City' onChange={onChange}/>
+                            </div>
+                        </div>
+                    }
+
                     <div className='form-group'>
                         <input type='text' className='form-control' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={onChange}/>
                     </div>
-                    }
                     
                     <div className='form-group'>
                         <button type='submit' className='btn'>Submit</button>

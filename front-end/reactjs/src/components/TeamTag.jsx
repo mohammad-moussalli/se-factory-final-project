@@ -10,11 +10,11 @@ const TeamTag = () => {
 
         <div className='team-tag-text'>
             <div>
-                <h6>Name</h6>
+                <p className='team-tag-name'>Name</p>
             </div>
             <div>
-                <h6>Title</h6>
-                <h6>Role</h6>  
+                <p className='team-tag-title'>Title</p>
+                <p className='team-tag-role'>Role</p>  
             </div>
             
         </div>

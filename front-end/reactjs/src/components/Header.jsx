@@ -28,7 +28,13 @@ const Header = () => {
     const navigate = useNavigate()
     const redirect= () => {
     navigate('/');
-  }
+    }
+
+    const redirectToRegister= () => {
+        navigate('/register');
+    }
+
+
 
     return (
         
@@ -37,7 +43,7 @@ const Header = () => {
             <i className={`kaffi-logo ${kaffi_logo}`} onClick={redirect}/>
             <div className={`links ${links}`}>
                 <Link to='/about-us' className={`about-kaffi ${about_kaffi}`}>About Kaffi</Link>
-                <Button className ={`navbar-button ${navbar_button}`} text="Sign Up"/>
+                <Button className ={`navbar-button ${navbar_button}`} text="Sign Up" onClick={redirectToRegister}/>
                 <Link to='/menu' className={`menu-logo ${menu_logo}`}/>
             </div>
         </div>

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
+
+.login{
+    background-image: url("../assets/images/bk.png");
+    display: flex;
+    justify-content: end;
+    height: 100vh;
+
+}
+
+.login-form{
+    background-color: white;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    z-index: 10;
+    
+}
+
+.login-heading{
+    margin-top: 125px;
+}
+
+.login-title{
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 55px;
+    letter-spacing: 0.1em;
+    text-align: left;
+
+}
+
+.login-form-control{
+    margin: 30px 0px;
+    border: none;
+    border-bottom: 1px solid #C4C4C4;
+    color: rgba(166, 166, 166, 1);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 50vw;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-btn{
+    width: 50vw;
+    background-color: #E6A522;
+    border: 1px solid #E6A522;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Ubuntu;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+    padding: 10px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    margin: 20px 0px 150px;
+
+}

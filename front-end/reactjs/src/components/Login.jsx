@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import '../style/login.css'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/dashboard')
     }
 
     dispatch(reset())
@@ -54,12 +55,12 @@ function Login() {
   }
 
   return (
-    <>
-      <section className='heading'>
-        <h1>
+    <div className='login'>
+      <div className='login-form'>
+      <section className='login-heading'>
+        <p className='login-title'>
            Login
-        </h1>
-        <p>Login</p>
+        </p>
       </section>
 
       <section className='form'>
@@ -67,34 +68,35 @@ function Login() {
           <div className='form-group'>
             <input
               type='email'
-              className='form-control'
+              className='login-form-control'
               id='email'
               name='email'
               value={email}
-              placeholder='Enter your email'
+              placeholder='Email'
               onChange={onChange}
             />
           </div>
           <div className='form-group'>
             <input
               type='password'
-              className='form-control'
+              className='login-form-control'
               id='password'
               name='password'
               value={password}
-              placeholder='Enter password'
+              placeholder='Password'
               onChange={onChange}
             />
           </div>
 
           <div className='form-group'>
-            <button type='submit' className='btn'>
+            <button type='submit' className='login-btn'>
               Submit
             </button>
           </div>
         </form>
       </section>
-    </>
+      </div>
+    </div>
   )
 }
 

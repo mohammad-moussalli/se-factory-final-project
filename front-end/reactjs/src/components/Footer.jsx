@@ -9,7 +9,7 @@ const Footer = () => {
         
     
     const location = useLocation();
-    if (location.pathname === '/menu'){
+    if (location.pathname === '/menu' || location.pathname === '/register' || location.pathname === '/login'){
         footer = 'menu-footer';
     }
     

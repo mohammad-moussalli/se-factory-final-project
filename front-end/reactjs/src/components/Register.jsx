@@ -27,7 +27,7 @@ const Register = () => {
         job_city: '' 
     })
 
-    const [typeId, setTypeId] = useState(2);
+    const [typeId, setTypeId] = useState();
 
     const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     
@@ -66,10 +66,13 @@ const Register = () => {
                     <form onSubmit={onSubmit}>
 
                         <select className="user-type form-control single-line" name="type" id="type" onChange={handleType}>
+                            <option className="user-type-option" value="" disabled selected hidden>Select your User Type</option>
                             <option className="user-type-option" value="2">Student</option>
                             <option className="user-type-option" value="3">Mentor</option>
                         </select>
 
+                        {(typeId === 3 || typeId ===2) && 
+                        <>
                         <div className="form-group-class">
                             <div className='form-group'>
                                 <input type='text' className='form-control' id='first_name' name='first_name' value={first_name} placeholder='First Name' onChange={onChange}/>
@@ -128,7 +131,7 @@ const Register = () => {
                                 </div>
                             </div>
                         </div>
-
+                        
                         {typeId === 3 &&
                             <div className="form-group-class group">
                                 <div className='form-group'>
@@ -153,6 +156,9 @@ const Register = () => {
                         <div className='form-group form-group-class single-line'>
                             <button type='submit' className='register-btn'>Create Account</button>
                         </div>
+
+                        </>
+                        }
 
                         <div className='signin'>
                             <p>Already have an account? &nbsp;</p>

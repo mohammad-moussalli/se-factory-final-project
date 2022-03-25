@@ -11,3 +11,46 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.webinar-questions{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;    
+    color: rgba(0, 126, 195, 1);
+    
+}
+
+.webinars{
+    margin: 0px 150px;
+}
+
+.webinar-answers{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.accordion{
+    margin: 15px 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
+    border-radius: 13px;
+}
+
+.webinars-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;    
+}
+
+.webinars-subtitle{
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 41px;    
+}
+
+.webinar-video > iframe {
+    height: 300px;
+    width: 550px;
+}

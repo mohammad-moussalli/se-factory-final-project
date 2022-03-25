@@ -10,22 +10,36 @@
 
 .menu-header{
     display: flex;
+    justify-content: space-between;
     margin: 0px 100px;
 }
 
 .menu-option{
     color:rgba(255, 255, 255, 0.639);
-    width: 20vw;
-    margin-right: 50px;
+    cursor: pointer;
+}
+
+.menu-option:not(:last-child) {
+    margin-right: 10px;
 }
 
 .menu-option-title{
     border-bottom: solid 1px white;
-    margin-bottom: 50px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
     font-weight: 700;
     font-size: 23px;
+    height: 50px;
 
+}
+
+.foundation-links, .apply-links, .volunteer-links, .donate-links, .academic-links {
+    display: none;
+}
+
+.foundation-menu:hover > .foundation-links, .apply-menu:hover > .apply-links, 
+.volunteer-menu:hover > .volunteer-links, .donate-menu:hover > .donate-links, .academic-menu:hover > .academic-links {
+    display: block;
 }
 
 .menu-option:hover{
@@ -55,3 +69,22 @@
     font-weight: 400;
     font-size: 18px;
 }
+
+@media (max-width: 768px) { 
+    .menu-header{
+        flex-wrap: wrap;
+        margin: 0px 20px;
+    }
+
+    .menu-option {
+        width: 45%;
+    }
+
+    .foundation-links, .apply-links, .volunteer-links, .donate-links, .academic-links {
+        display: block;
+    }
+
+    .menu {
+        height: 100%;
+    }
+ }

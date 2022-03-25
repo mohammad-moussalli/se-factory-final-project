@@ -81,6 +81,7 @@
     justify-content: center;
     font-size: 18px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .home-navbar-button{
@@ -90,5 +91,55 @@
     align-items: center;
     justify-content: center;
     border: 2px solid white;
+
+}
+
+@media (max-width: 768px) { 
+    .navbar {
+        height: 110px;
+        padding: 0px 30px;
+    }
+
+    .about-kaffi {
+        display: none;
+    }
+    
+    .navbar-button {
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 500;
+        
+    }
+
+    .menu-logo {
+        width: 35px;
+        height: 30px;
+    }
+
+    .kaffi-logo {
+        width: 120px;
+        height: 30px;
+    }
+
+}
+
+@media (max-width: 340px) { 
+    
+    .navbar-button {
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 400;
+        
+    }
+
+    .menu-logo {
+        width: 30px;
+        height: 25px;
+    }
+
+    .kaffi-logo {
+        width: 100px;
+        height: 25px;
+    }
 
 }

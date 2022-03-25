@@ -16,7 +16,7 @@ const Header = () => {
     const location = useLocation();
     if (location.pathname === '/menu'){
         navbar = 'menu-navbar';
-    }else if (location.pathname ==='/'){
+    }else if (location.pathname ==='/' || location.pathname === '/register' || location.pathname === '/login'){
         navbar = 'home-navbar';
         kaffi_logo = 'home-kaffi-logo';
         links = 'home-kaffi-links';

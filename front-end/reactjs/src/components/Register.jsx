@@ -1,6 +1,10 @@
 import { useState } from "react"
 import { Link } from "react-router-dom";   
 import authService from "../features/auth/authService";
+import '../style/register.css'
+import Button from './Button'
+import image from '../assets/images/gmail.png'
+
 
 const Register = () => {
 
@@ -47,101 +51,118 @@ const Register = () => {
     }
 
     return (
-        <>
-            <section className='heading'>
-                <h1>
-                    Create Account
-                </h1>
-                <button>Register with Google</button>
-            </section>
+        <div className="register">
 
-            <section className='form'>
-                <form onSubmit={onSubmit}>
-                    <select name="type" id="type" onChange={handleType}>
-                        <option value="2">Student</option>
-                        <option value="3">Mentor</option>
-                    </select>
+            <div className="register-form">
+                <section className='register-heading'>
+                    <p className="register-title">
+                        Create Account
+                    </p>
+                    <button className="google-button"><img src={image} alt='logo'/>Sign up with Google</button>
+                    <p className="or">-OR-</p>
+                </section>
 
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='first_name' name='first_name' value={first_name} placeholder='Enter your First Name' onChange={onChange}/>
-                    </div>
+                <section className='form'>
+                    <form onSubmit={onSubmit}>
 
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='last_name' name='last_name' value={last_name} placeholder='Enter your First Name' onChange={onChange}/>
-                    </div>
+                        <select className="user-type form-control single-line" name="type" id="type" onChange={handleType}>
+                            <option className="user-type-option" value="2">Student</option>
+                            <option className="user-type-option" value="3">Mentor</option>
+                        </select>
 
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='email' name='email' value={email} placeholder='Enter your Email' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='password' name='password' value={password} placeholder='Enter your Password' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='dob' name='dob' value={dob} placeholder='Enter your Date of Birth' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='country_code' name='country_code' value={country_code} placeholder='Enter the Country Code' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='mobile_phone' name='mobile_phone' value={mobile_phone} placeholder='Enter your Mobile Number' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='country' name='country' value={country} placeholder='Enter your current Country' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='city' name='city' value={city} placeholder='Enter your current City' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='university' name='university' value={university} placeholder='Enter your University' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='university-country' name='university-country' value={university_country} placeholder='Enter your University Country' onChange={onChange}/>
-                    </div>
-
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='university-city' name='university-city' value={university_city} placeholder='Enter your University City' onChange={onChange}/>
-                    </div>
-                    {typeId === 3 &&
-                        <div>
+                        <div className="form-group-class">
                             <div className='form-group'>
-                                <input type='text' className='form-control' id='job' name='job' value={job} placeholder='Enter your current Job' onChange={onChange}/>
+                                <input type='text' className='form-control' id='first_name' name='first_name' value={first_name} placeholder='First Name' onChange={onChange}/>
                             </div>
 
                             <div className='form-group'>
-                                <input type='text' className='form-control' id='job-country' name='job-country' value={job_country} placeholder='Enter your Job Country' onChange={onChange}/>
-                            </div>
-
-                            <div className='form-group'>
-                                <input type='text' className='form-control' id='job-city' name='job-city' value={job_city} placeholder='Enter your Job City' onChange={onChange}/>
+                                <input type='text' className='form-control' id='last_name' name='last_name' value={last_name} placeholder='Last Name' onChange={onChange}/>
                             </div>
                         </div>
-                    }
 
-                    <div className='form-group'>
-                        <input type='text' className='form-control' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={onChange}/>
-                    </div>
-                    
-                    <div className='form-group'>
-                        <button type='submit' className='btn'>Submit</button>
-                    </div>
+                        <div className="form-group-class">
+                            <div className='form-group'>
+                                <input type='email' className='form-control' id='email' name='email' value={email} placeholder='Email' onChange={onChange}/>
+                            </div>
 
-                    <div className='signin'>
-                        <p>Already have an account?</p>
-                        <Link to="/login">Login</Link>
-                    </div>
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='password' name='password' value={password} placeholder='Password' onChange={onChange}/>
+                            </div>
+                        </div>
 
-                </form>
-            </section>
+                        <div className='form-group form-group-class'>
+                            <input type='date' className='form-control single-line dob' id='dob' name='dob' value={dob} placeholder='Date of Birth DD-MM-YYYY' onChange={onChange}/>
+                        </div>
 
-        </>
+                        <div className="form-group-class">
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='country_code' name='country_code' value={country_code} placeholder='Mobile Country Code' onChange={onChange}/>
+                            </div>
+
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='mobile_phone' name='mobile_phone' value={mobile_phone} placeholder='Mobile Number' onChange={onChange}/>
+                            </div>
+                        </div>
+
+                        <div className="form-group-class">
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='country' name='country' value={country} placeholder='Current Country' onChange={onChange}/>
+                            </div>
+
+                            <div className='form-group'>
+                                <input type='text' className='form-control' id='city' name='city' value={city} placeholder='Current City' onChange={onChange}/>
+                            </div>
+                        </div>
+
+                        <div className="form-group-class group">
+                            <div className='form-group'>
+                                <input type='text' className='form-control single-line' id='university' name='university' value={university} placeholder='University' onChange={onChange}/>
+                            </div>
+                            <div className="sub-group">
+                                <div className='form-group'>
+                                    <input type='text' className='form-control' id='university-country' name='university-country' value={university_country} placeholder='University Country' onChange={onChange}/>
+                                </div>
+
+                                <div className='form-group'>
+                                    <input type='text' className='form-control' id='university-city' name='university-city' value={university_city} placeholder='University City' onChange={onChange}/>
+                                </div>
+                            </div>
+                        </div>
+
+                        {typeId === 3 &&
+                            <div className="form-group-class group">
+                                <div className='form-group'>
+                                    <input type='text' className='form-control single-line' id='job' name='job' value={job} placeholder='Current Job' onChange={onChange}/>
+                                </div>
+                                <div className="sub-group">
+                                    <div className='form-group'>
+                                        <input type='text' className='form-control' id='job-country' name='job-country' value={job_country} placeholder='Job Country' onChange={onChange}/>
+                                    </div>
+
+                                    <div className='form-group'>
+                                        <input type='text' className='form-control' id='job-city' name='job-city' value={job_city} placeholder='Job City' onChange={onChange}/>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div className='form-group form-group-class single-line'>
+                            <input type='text' className='form-control single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={onChange}/>
+                        </div>
+                        
+                        <div className='form-group form-group-class single-line'>
+                            <button type='submit' className='register-btn'>Create Account</button>
+                        </div>
+
+                        <div className='signin'>
+                            <p>Already have an account? &nbsp;</p>
+                            <Link className='login-link' to="/login">Log in</Link>
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+        </div>
     )
 }
 

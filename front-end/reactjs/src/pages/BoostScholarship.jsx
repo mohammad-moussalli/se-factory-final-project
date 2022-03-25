@@ -72,7 +72,7 @@ const BoostScholarship = () => {
             <ul>
               <li>Support is given on a semester basis to support the student with expenses until they can secure a part-time job</li>
               <li>Selected applicants will receive a monetary scholarship of up to €2000 to support their expenses for Spring 2022</li>
-              <li>Program does not guarantee continuous support beyond Spring 2022 (applications are reviewed each semester and scholarships are dependent on availability of funds)</li>
+              <li>Program does not guarantee continuous support beyond {cycle.cycle ? cycle.cycle : "Spring 2022"} (applications are reviewed each semester and scholarships are dependent on availability of funds)</li>
             </ul>
           </div>
         </div>

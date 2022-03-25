@@ -26,11 +26,15 @@ const Webinars = () => {
             console.log(err)
         });
     })
+    const country = '';
+    const countryOnClick = (webinar) => {
+        country = webinar.country
+    }
 
     // const Country = () => {
     //     const [country, setCountry] = useState();
      
-    //     return <h2 onClick={() => setCountry(country)}>Applying to Grad School in {country} - Important Steps</h2>;
+    //     return <h1 onClick={() => setTitle("New title")}>{title}</h1>;
     //  }
 
     useEffect( async () => {
@@ -50,10 +54,9 @@ const Webinars = () => {
          return (
             <div className="webinars">
 
-                <div className="webinars-title">
-
-                    <h1>Kaffi's Latest Webinar</h1>
-                    <h3>Select the country to preview it’s corresponding webinar and useful information</h3>
+                <div className="webinars-header">
+                    <p className="webinars-title">Kaffi's Latest Webinar</p>
+                    <p className="webinars-subtitle">Select the country to preview it’s corresponding webinar and useful information</p>
                 </div>
 
                 {webinarUrl &&
@@ -61,7 +64,7 @@ const Webinars = () => {
                     
                     <div className="webinar-video-country">
                         <div className="webinar-video">
-                            <iframe title = 'webinarl-video'src={webinarUrl} />
+                            <iframe title='webinarl-video'src={webinarUrl} />
                         </div>
                         <div className="webinar-country">
                             {webinars.map((webinar)=> {
@@ -71,22 +74,22 @@ const Webinars = () => {
                         </div>
                     </div>
                 
-                    {/* <div>
-                    <Accordion>
+                     <div>
                         {Array.isArray(webinarQuestions) && webinarQuestions.map((webinarQuestion) => {
                             return(
-                                <div>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${webinarQuestion.id}a-content`} id={`panel${webinarQuestion.id}a-header`}>
-                                        <Typography>{webinarQuestion.question}</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        <Typography>{webinarQuestion.answer}</Typography>
-                                    </AccordionDetails>
+                                <div className="accordion">
+                                    <Accordion>
+                                        <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel${webinarQuestion.id}a-content`} id={`panel${webinarQuestion.id}a-header`}>
+                                            <Typography className="webinar-questions">{webinarQuestion.question}</Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails className="accordion-details">
+                                            <Typography className="webinar-answers">{webinarQuestion.answer}</Typography>
+                                        </AccordionDetails>
+                                    </Accordion> 
                                 </div>
                             )
                         })}
-                        </Accordion> 
-                    </div> */}
+                    </div> 
                  </div>
                 }
             </div>

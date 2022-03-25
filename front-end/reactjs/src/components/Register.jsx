@@ -4,6 +4,7 @@ import authService from "../features/auth/authService";
 import '../style/register.css'
 import Button from './Button'
 import image from '../assets/images/gmail.png'
+import axios from 'axios';
 
 
 const Register = () => {
@@ -27,6 +28,8 @@ const Register = () => {
         job_city: '' 
     })
 
+    const uploadImageApi = "http://localhost:8080/users/image";
+
     const [typeId, setTypeId] = useState();
 
     const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
@@ -48,6 +51,22 @@ const Register = () => {
     const handleType = (val) => {
         const id = parseInt(val.target.value);
         setTypeId(id);
+    }
+
+    const uploadImage = (e) => {
+        let imageFile = e.target.files[0];
+        if (imageFile && imageFile.type.startsWith('image')) {
+          var formData = new FormData();
+          formData.append('image', imageFile, imageFile.name);
+
+          axios.post(uploadImage, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            }}
+          ).then((image) => console.log(image, "url"))
+        } else {
+
+        }
     }
 
     return (
@@ -150,7 +169,7 @@ const Register = () => {
                         }
 
                         <div className='form-group form-group-class single-line'>
-                            <input type='text' className='form-control single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={onChange}/>
+                            <input type='file' className='form-control single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={uploadImage}/>
                         </div>
                         
                         <div className='form-group form-group-class single-line'>

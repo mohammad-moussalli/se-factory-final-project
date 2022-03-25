@@ -12,53 +12,7 @@ const MenuPage = () => {
     const redirectToHomePage = () => {
         navigate('/');
 
-    }
-
-    const [showMenuElement1, setShowMenuElement1] = useState(false)
-    const onClick1 = () => {
-        setShowMenuElement1(!showMenuElement1)
-        setShowMenuElement2(false)
-        setShowMenuElement3(false)
-        setShowMenuElement4(false)
-        setShowMenuElement5(false)
-
-    }
-    const [showMenuElement2, setShowMenuElement2] = useState(false)
-    const onClick2 = () => {
-        setShowMenuElement2(!showMenuElement2)
-        setShowMenuElement1(false)
-        setShowMenuElement3(false)
-        setShowMenuElement4(false)
-        setShowMenuElement5(false)
-    }
-
-    const [showMenuElement3, setShowMenuElement3] = useState(false)
-    const onClick3 = () => {
-        setShowMenuElement3(!showMenuElement3)
-        setShowMenuElement2(false)
-        setShowMenuElement1(false)
-        setShowMenuElement4(false)
-        setShowMenuElement5(false)
-    }
-
-    const [showMenuElement4, setShowMenuElement4] = useState(false)
-    const onClick4 = () => {
-        setShowMenuElement4(!showMenuElement4)
-        setShowMenuElement2(false)
-        setShowMenuElement3(false)
-        setShowMenuElement1(false)
-        setShowMenuElement5(false)
-    }
-
-    const [showMenuElement5, setShowMenuElement5] = useState(false)
-    const onClick5 = () => {
-        setShowMenuElement5(!showMenuElement5)
-        setShowMenuElement2(false)
-        setShowMenuElement3(false)
-        setShowMenuElement4(false)
-        setShowMenuElement1(false)
-    }
-
+    }    
 
     return(
     <div className="menu">

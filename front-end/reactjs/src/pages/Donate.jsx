@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import WireTransfer from "../components/WireTransfer";
 
-
 const Donate = () => {
 
     const navigate = useNavigate();
@@ -49,7 +48,7 @@ const Donate = () => {
             <div className="donate-success-stories donation-row4">
                 <div className="donate-success-stories-row1">
                     <p className="donate-success-stories-title">Check the impact of your support from students success stories</p>
-                    <Button text="View All Success Stories & Records" className="success-stories-button" onClick={redirectToRecordsPage}/>
+                    <Button text="View All Success Stories & Records" className="donate-success-stories-button" onClick={redirectToRecordsPage}/>
                 </div>
                 <div className="donate-success-stories-row2">
                     <SuccessStories />

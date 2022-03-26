@@ -1,3 +1,5 @@
+/* CSS File for 'SuccessStories' File found in 'components' Folder */
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap");
 
@@ -33,4 +35,51 @@
 
 .success-stories-image{
     margin-right: 25px;
+}
+
+@media(max-width: 1250px){
+    .success-stories-message{
+        font-size: 17px;
+    }
+
+    .success-stories-container{
+        padding: 25px 0px;
+        
+    }
+
+    .success-stories{
+        margin: 0px 20px
+    }
+}
+
+@media(max-width: 1100px){
+    .success-stories-container{
+    flex-direction: column;
+    }
+}
+
+
+@media(max-width: 1000px){
+    .success-stories-container{
+    flex-direction: column;
+    margin: 20px 100px 100px;
+    }
+}
+
+
+@media (max-width: 768px) { 
+    .success-stories-message {
+        font-size: 15px;
+        line-height: 19px;
+
+    }
+
+    .success-stories-user {
+        font-size: 13px;
+    }
+
+    .success-stories-container{
+        flex-direction: column;
+        margin: 30px 20px;
+    }
 }

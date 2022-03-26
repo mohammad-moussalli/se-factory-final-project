@@ -1,3 +1,5 @@
+/* CSS File for 'DonationInfo' File found in 'components' Folder */
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 
 .donation-info{
@@ -29,6 +31,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+@media(max-width: 1000px){
+    .donation-info-content {
+        margin: 0px 100px;
+    }
 
+    .donation-info-text {
+        font-size: 23px;
+    }
+
+    .donation-info-title{
+        font-size: 30px;
+    }
+    .donation-info{
+        height: auto;
+    }
+
+    .donation-info-button{
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .donation-info-text {
+        font-size: 17px;
+    }
+
+    .donation-info-title{
+        font-size: 22px;
+    }
+    
+    .donation-info-button{
+        font-size: 13px;
+    }
+
+    .donation-info-content {
+        margin: 0px 20px;
+    }
 }

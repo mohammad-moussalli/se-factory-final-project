@@ -1,3 +1,6 @@
+/* CSS File for 'Donate' File found in 'pages' Folder */
+
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 
 .donations{
@@ -9,7 +12,6 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    /* margin: 0px 150px; */
 }
 
 .donation-row1{
@@ -93,4 +95,99 @@
 .donate-success-stories-title{
     font-weight: 400;
     font-size: 27px;
+}
+
+@media(max-width: 1100px){
+    .col1-tag{
+        margin-right: 10px;
+
+    }
+
+    .col2-tag{
+        margin-left: 10px;
+
+    }
+
+}
+
+@media(max-width: 1000px){
+    .donation-info-content {
+        margin: 0px 100px;
+    }
+
+    .donation-row1 {
+        text-align: center;
+        margin: 0px 100px;
+    }
+
+    .donation-title{
+        width: auto;
+    }
+
+    .donation-row2 {
+        margin: 0px;
+    }
+
+    .donation-tags{
+        margin: 0px 100px;
+    }
+
+    .donate-success-stories-row1{
+        margin: 50px 100px;
+        text-align: center;
+
+    }
+
+    .donation-title1{
+        font-size: 30px;
+
+    }
+
+    .donation-title2{
+        font-size: 23px;
+
+    }
+
+    .col2-tag {
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .col1-tag {
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .donation-row{
+        flex-direction: column;
+    }
+
+    .donation-info-content {
+        margin: 0px 100px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .donate-success-stories-title {
+        font-size: 25px;
+    }
+    .donate-success-stories-row1{
+        margin: 40px 20px;
+    }
+
+    .donation-title1{
+        font-size: 25px;
+
+    }
+
+    .donation-title2{
+        font-size: 20px;
+    }
+}
+
+.donation-tags{
+    margin: 0px 20px;
+
 }

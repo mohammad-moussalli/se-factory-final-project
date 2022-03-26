@@ -26,16 +26,6 @@ const Webinars = () => {
             console.log(err)
         });
     })
-    const country = '';
-    const countryOnClick = (webinar) => {
-        country = webinar.country
-    }
-
-    // const Country = () => {
-    //     const [country, setCountry] = useState();
-     
-    //     return <h1 onClick={() => setTitle("New title")}>{title}</h1>;
-    //  }
 
     useEffect( async () => {
         await axios.get(webinarsApi)

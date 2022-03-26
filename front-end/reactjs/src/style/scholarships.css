@@ -14,7 +14,6 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-
     align-self: center;
 }
 
@@ -55,6 +54,9 @@
 .steps-apply-row2{
     display: flex;
     margin: 0px 150px;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
 }
 
@@ -67,22 +69,30 @@
 
 .steps-to-apply1{
     padding: 20px 20px 20px 0px;
-    text-align: center
+    text-align: center;
+    width: 50%;
+
 }
 
 .steps-to-apply2{
     padding: 20px 20px 20px 0px;
-    text-align: center
+    text-align: center;
+    width: 50%;
+
 }
 
 .steps-to-apply3{
     padding: 20px 20px 20px 0px;
-    text-align: center
+    text-align: center;
+    width: 50%;
+
 }
 
 .steps-to-apply4{
     padding: 20px 0px;
-    text-align: center
+    text-align: center;
+    width: 50%;
+
 }
 
 .steps-apply-text{
@@ -121,8 +131,209 @@
 
 .steps-to-apply-row1{
     display: flex;
+    width: 50%;
+
 }
 
 .steps-to-apply-row2{
     display: flex;
+    width: 50%;
+
+}
+
+@media (max-width: 1350px) {
+    .steps-to-apply-row1 {
+        width: auto;
+        justify-content: space-evenly;
+    }
+
+    .steps-to-apply-row2 {
+        width: auto;
+        justify-content: space-evenly;
+    }
+
+    .steps-apply-row2 {
+        display: block;
+    }
+
+    .steps-to-apply1 {
+        padding: 0px;
+        width: 25%;
+    }
+
+    .steps-to-apply2 {
+        padding: 0px;
+        width: 25%;
+    }
+
+    .steps-to-apply3 {
+        padding: 0px;
+        width: 25%;
+    }
+
+    .steps-to-apply4 {
+        padding: 0px;
+        width: 25%;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .steps-to-apply-row1 {
+        justify-content: space-between;
+    }
+
+    .steps-to-apply-row2 {
+        justify-content: space-between;
+    }
+
+    .steps-apply-row2 {
+        display: block;
+    }
+
+    .steps-to-apply1 {
+        padding: 0px;
+        width: 50%;
+    }
+
+    .steps-to-apply2 {
+        padding: 0px;
+        width: 50%;
+    }
+
+    .steps-to-apply3 {
+        padding: 0px;
+        width: 50%;
+    }
+
+    .steps-to-apply4 {
+        padding: 0px;
+        width: 50%;
+    }
+
+    .scholarship-page-header {
+        margin: 0px 100px;
+    }
+
+    .ranking-system {
+        margin: 0px 100px;
+    }
+
+    .ranking-process-description {
+        margin: 0px 100px;
+    }
+
+    .steps-apply-row1 {
+        margin: 0px 100px;
+    }
+
+}
+
+@media (max-width: 768px) { 
+    .scholarship-page-header {
+        margin: 0px 20px;
+    }
+
+    .scholarship-title {
+        font-weight: 700;
+        font-size: 30px;
+        margin: 40px 0px 20px;
+    }
+
+    .scholarship-title-subheader {
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0px 0px 30px;
+        line-height: 40px;
+    }
+
+    .ranking-system-text {
+        padding: 0px;        
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        align-self: center;
+    }
+
+    .ranking-process {
+        font-weight: 500;
+        font-size: 21px;
+    }
+
+    .ranking-process-title {
+        margin: 10px 0px 30px;
+    }
+
+    .ranking-process-text {
+        margin: 5px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 30px;
+    }
+
+    .steps-apply-row1 {
+        flex-direction: column;
+        width: auto;
+        margin: 0px 20px;
+    }
+
+    .ranking-system {
+        margin: 0px 20px;
+    }
+
+    .ranking-process-description {
+        margin: 0px 20px;
+        padding: 10px 0px 30px;
+    }
+
+    .steps-apply-row2 {
+        flex-direction: column;
+        width: auto;
+        margin: 0px 20px;
+    }
+
+    .steps-to-apply-row1 {
+        width: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .steps-to-apply-row2 {
+        width: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .steps-to-apply1{
+        padding: 0px;
+        width: 100%;
+
+    }
+
+    .steps-to-apply2{
+        padding: 0px;
+        width: 100%;
+
+    }
+
+    .steps-to-apply3{
+        padding: 0px;
+        width: 100%;
+
+    }
+
+    .steps-to-apply4{
+        padding: 0px;
+        width: 100%;
+
+    }
+
+    .ranking-system-image{
+        display: none;
+    }
+    
+    .steps-apply-text{
+        margin: 10px 75px;
+
+    }
 }

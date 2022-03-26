@@ -7,7 +7,7 @@ import img3 from '../assets/images/apply1.png';
 import img4 from '../assets/images/apply2.png';
 import img5 from '../assets/images/apply3.png';
 import img6 from '../assets/images/apply4.png';
-import Button from '../components/Button';
+import FaqsTag from '../components/FaqsTag';
 import { useNavigate } from 'react-router-dom';
 
 const Scholarships = () => {
@@ -22,7 +22,9 @@ const Scholarships = () => {
         <p className='scholarship-title'>Scholarship Programs</p>
         <p className='scholarship-title-subheader'>Kaffi is providing the following scholarship programs to help Lebanese students throughout their educations journey abroad. Make sure to check the details and eligibility program of each before applying.</p>
       </div>
-      <Scholarship/>
+      <div className='scholarships-tag-component'>
+        <Scholarship/>
+      </div>
 
       <div className='ranking-system'>
 
@@ -31,12 +33,12 @@ const Scholarships = () => {
         </div>
 
         <div className='ranking-system-row2'> 
-          <img src={img1} alt="logo"></img>
+          <img className='ranking-system-image' src={img1} alt="logo"></img>
           <p className='ranking-system-text'>Automated anonymous ranking system is made based on the information submitted in the application</p>
         </div>
 
         <div className='ranking-system-row3'> 
-          <img src={img2} alt="logo"></img>
+          <img className='ranking-system-image' src={img2} alt="logo"></img>
           <p className='ranking-system-text'>Shortlisted applications undergo a second round of revision which includes collecting additional information and possible interview, after which the Kaffi team will make a final selection</p>
         </div>
 
@@ -56,35 +58,34 @@ const Scholarships = () => {
 
         <div className='steps-apply-row1'>
           <p className='scholarship-title'>Steps To Apply</p>
-          <p className='scholarship-title-subheader'>Check our FAQ page for some common questions</p>
         </div>
 
         <div className='steps-apply-row2'>
-          <div className='steps-to-apply-row1'>
-            <div className='steps-to-apply1'> 
-              <img src={img3} alt="logo"></img>
-              <p className='steps-apply-text'>Select a program</p>
+            <div className='steps-to-apply-row1'>
+                <div className='steps-to-apply1'> 
+                  <img className='steps-to-apply-image' src={img3} alt="logo"></img>
+                  <p className='steps-apply-text'>Select a program</p>
+                </div>
+
+                <div className='steps-to-apply2'> 
+                  <img className='steps-to-apply-image' src={img4} alt="logo"></img>
+                  <p className='steps-apply-text'>Pass the eligibility criteria & complete the online application</p>
+                </div>
             </div>
 
-            <div className='steps-to-apply2'> 
-              <img src={img4} alt="logo"></img>
-              <p className='steps-apply-text'>Pass the eligibility criteria & complete the online application</p>
-            </div>
-          </div>
+            <div className='steps-to-apply-row2'> 
+                <div className='steps-to-apply3'> 
+                  <img className='steps-to-apply-image' src={img5} alt="logo"></img>
+                  <p className='steps-apply-text'>If shortlisted, you might be contacted for an interview</p>
+                </div>
 
-          <div className='steps-to-apply-row2'> 
-            <div className='steps-to-apply3'> 
-              <img src={img5} alt="logo"></img>
-              <p className='steps-apply-text'>If shortlisted, you might be contacted for an interview</p>
+                <div className='steps-to-apply4'> 
+                  <img className='steps-to-apply-image' src={img6} alt="logo"></img>
+                  <p className='steps-apply-text'>If accepted, you will receive an email by the end of each cycle</p>
+                </div>
             </div>
-
-            <div className='steps-to-apply4'> 
-              <img src={img6} alt="logo"></img>
-              <p className='steps-apply-text'>If accepted, you will receive an email by the end of each cycle</p>
-            </div>
-          </div>
         </div>
-        <Button className='faq-button-scholarships' text='FAQ Page' onClick={redirect}/>
+        <FaqsTag />
       </div>
     </div>
   )

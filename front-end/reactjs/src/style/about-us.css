@@ -6,7 +6,8 @@
 
 .about-us-row1{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+
 }
 
 .about-us-row1-col1{
@@ -19,15 +20,29 @@
     padding-left: 20px;
 }
 
+.about-us-row1-col2 > iframe {
+    height: 265px;
+    width: 450px;
+}
+
+.about-us-row3-col2 > iframe {
+    height: 265px;
+    width: 450px;
+}
+
 .about-us-row2{
     display: flex;
     text-align: center;
     padding: 50px 0px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .about-us-row3{
     display: flex;
     padding: 50px 0px;
+    align-items: center;
+
 }
 
 .about-us-row3-col1{
@@ -45,7 +60,7 @@ iframe{
     height: fit-content;
     border-radius: 34px;
     border: none;
-    margin: 0;
+    margin: 10px;
     padding: 0;
   
 }
@@ -76,3 +91,223 @@ font-weight: 700;
 line-height: 40px;
 margin: 40px 0px 20px;
 }
+
+.about-us-icons-row1{
+    display: flex;
+    width: 50%;
+}
+
+.about-us-icons-row2{
+    display: flex;
+    width: 50%;
+}
+
+@media(max-width:1000px){
+    .about-us-icons-row2 {
+        width: 100vw;
+        justify-content: space-between;
+
+    }
+
+    .about-us-icons-row1 {
+        width: 100vw;
+        justify-content: space-between;
+
+    }
+
+    .about-us1{
+        width: 40%;
+    }
+
+    .about-us2{
+        width: 40%;
+    }
+
+    .about-us3{
+        width: 40%;
+    }   
+
+    .about-us4{
+        width: 40%;
+    }
+
+    .about-us {
+        margin: 0px 100px;
+    }
+
+    .about-us-text {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .team-button{
+        font-size: 14px;
+    }
+
+    .about-us-title {
+        font-size: 35px;
+    }
+
+    .about-us-row1-col2 > iframe {
+        height: 235px;
+        width: 400px;
+    }
+
+    .about-us-row3-col2 > iframe {
+        height: 235px;
+        width: 400px;
+    }
+
+    .about-us-row3{
+        padding: 0px 0px 50px;
+
+    }
+
+    .about-us-row2{
+        padding: 0px 0px 50px;
+
+    }
+}
+
+@media(max-width:900px){
+   .about-us {
+        margin: 0px 60px;
+    }
+}
+
+
+@media (max-width: 768px) { 
+    .team-button {
+        font-size: 12px;
+    }
+
+    .about-us-text {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .about-us-row1-col2 > iframe {
+        height: 207px;
+        width: 350px;
+    }
+
+    .about-us-row3-col2 > iframe {
+        height: 207px;
+        width: 350px;
+    }
+
+    .about-us-row1 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .about-us-row2 {
+        padding: 0px;
+    }
+
+    .about-us-row1-col21 {
+        padding: 0px;
+    }
+
+    .about-us-row1-col2 {
+        padding: 0px;
+    }
+
+    .about-us-row3-col2 {
+        margin-left: 0px; 
+    }
+}
+
+@media (max-width: 650px) { 
+    .about-us-row3-col1 {
+        width: auto;
+        margin: 0px;    
+    }
+
+    .about-us-row3 {
+        flex-direction: column;
+        align-items: baseline;
+
+    }
+
+    .about-us-row1 {
+        flex-direction: column;
+        align-items: baseline;
+
+    }
+
+    .about-us-icons-row1 {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .about-us-icons-row2 {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .about-us{
+        margin: 0px 20px;
+    }
+
+    .about-us1{
+        width: auto;
+    }
+
+    .about-us2{
+        width: auto;
+    }
+
+    .about-us3{
+        width: auto;
+    }
+
+    .about-us4{
+        width: auto;
+    }
+
+    .about-us-title {
+        font-size: 30px;
+        text-align: center;
+        margin: 0px 0px 20px;
+
+    }
+
+    .about-us-row1-col1 {
+        width: auto;
+        margin: 0px 0px 10px;
+        padding: 0px;           
+    }
+
+    .about-us-row3-col1 {
+        width: auto;
+        margin: 0px;
+        padding: 0px;           
+    }
+
+    .about-us-row1-col2 > iframe {
+        height: 285px;
+        width: 90vw;
+    }
+
+    .about-us-row3-col2 > iframe {
+        height: 285px;
+        width: 90vw;
+    }
+}
+
+@media(max-width: 500px){
+    .about-us-row1-col2 > iframe {
+        height: 205px;
+        width: 90vw;
+    }
+
+    .about-us-row3-col2 > iframe {
+        height: 205px;
+        width: 90vw;
+    }
+}
+ 

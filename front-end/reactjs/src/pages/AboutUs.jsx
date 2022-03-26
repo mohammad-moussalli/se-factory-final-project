@@ -31,26 +31,30 @@ const AboutUs = () => {
 
       <div className='about-us-row2'>
 
-          <div className='about-us1'> 
-            <img src={img1} alt="logo"></img>
-            <p className='steps-apply-text'>Create partnerships, collect donations and scholarship contributions</p>
-          </div>
+        <div className="about-us-icons-row1">
 
-          <div className='about-us2'> 
-            <img src={img2} alt="logo"></img>
-            <p className='steps-apply-text'>Support students through their journey by overcoming the financial obstacle </p>
-          </div>
+            <div className='about-us1'> 
+              <img src={img1} alt="logo"></img>
+              <p className='steps-apply-text'>Create partnerships, collect donations and scholarship contributions</p>
+            </div>
 
-          <div className='about-us3'> 
-            <img src={img3} alt="logo"></img>
-            <p className='steps-apply-text'>Inspire and help students reach high levels of achievement </p>
-          </div>
+            <div className='about-us2'> 
+              <img src={img2} alt="logo"></img>
+              <p className='steps-apply-text'>Support students through their journey by overcoming the financial obstacle </p>
+            </div>
+        </div>
 
-          <div className='about-us4'> 
-            <img src={img4} alt="logo"></img>
-            <p className='steps-apply-text'>Create a community that gives back and eventually strengthens Lebanon</p>
-          </div>
+        <div className="about-us-icons-row2">
+            <div className='about-us3'> 
+              <img src={img3} alt="logo"></img>
+              <p className='steps-apply-text'>Inspire and help students reach high levels of achievement </p>
+            </div>
 
+            <div className='about-us4'> 
+              <img src={img4} alt="logo"></img>
+              <p className='steps-apply-text'>Create a community that gives back and eventually strengthens Lebanon</p>
+            </div>
+        </div>
       </div>
 
       <div className='about-us-row3'>

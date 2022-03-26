@@ -70,3 +70,54 @@
 .date-text{
     margin: 5px 0px;
 }
+
+@media (max-width: 1000px) { 
+    .scholarships-tag{
+        margin: 20px 100px;
+    }
+
+    .scholarships-tag-col1 {
+        padding: 10px;
+        font-size: 15px;
+        margin: 0px;
+    }
+
+    .scholarships-tag-row2 {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .scholarships-tag-col2 {
+        padding: 10px;
+    }
+
+    .scholarships-details-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .scholarship-title-subheader {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .scholarships-tag-col1 {
+        display: none;
+    }
+
+    .scholarships-tag {
+        margin: 20px;
+    }
+
+    .scholarships-tag-row3 {
+        font-size: 11px;
+    }
+
+    .scholarships-details-button {
+        padding: 5px 10px;
+        font-size: 11px;
+        
+    }
+}

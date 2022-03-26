@@ -1,3 +1,5 @@
+/* CSS File for 'HelpfulTips' File found in 'components' Folder */
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 
 .helpful-tips{
@@ -39,5 +41,63 @@ li{
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
-
 }
+
+@media(max-width: 1100px){
+    .helpful-tips-title {
+        font-size: 35px;
+        font-weight: 700;
+    }
+
+    .helpful-tips-title-subheader {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 17px;
+    }
+
+    .helpful-tips{
+        margin: 0px 100px;
+    }
+}
+
+@media(max-width: 900px){
+ .helpful-tips{
+        margin: 0px 75px;
+    }
+
+    .helpful-tips-title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .helpful-tips{
+        margin: 0px 20px;
+    }
+
+    .launch-scholarship-title {
+        font-size: 30px;
+    }
+    .launch-scholarship-title-subheader {
+        font-size: 20px;
+    }
+    .check-launch-scholarship-button {
+        font-size: 17px;
+    }
+    .scholarship-apply-button {
+        font-size: 17px;
+    }
+
+    li {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .helpful-tips-title {
+        font-size: 25px;
+    }
+}
+
+

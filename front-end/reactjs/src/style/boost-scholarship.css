@@ -1,3 +1,5 @@
+/* CSS File for 'BoostScholarship' File found in 'pages' Folder */
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 
 .boost-scholarship-header{
@@ -17,7 +19,6 @@
     font-weight: 500;
     color: rgba(0, 126, 195, 1);
     margin: 10px 0px;
-
 }
 
 .boost-image{
@@ -29,7 +30,6 @@
     display: flex;
     align-items: center;
     margin: 40px 0px;
-
 }
 
 .boost-scholarship-header-row2{
@@ -60,7 +60,6 @@
     padding: 5px 20px;
     font-weight: 500;
     font-size: 18px;
-
 }
 
 .disabled-scholarship-apply-button{
@@ -111,4 +110,79 @@ ul{
     font-weight: 500;
     font-size: 18px;
     margin: 0px;
+}
+
+@media(max-width: 1100px){
+    .boost-scholarship-title {
+        font-size: 35px;
+    }
+
+    .newsletter{
+        font-size: 17px;
+    }
+
+    .boost-scholarship-header{
+        margin: 0px 100px;
+    }
+
+    .boost-scholarship-title-subheader {
+        font-size: 22px;
+    }
+}
+
+@media(max-width: 1000px){
+    li {
+        font-size: 17px;
+        line-height: 25px;
+    }
+}
+
+@media(max-width: 900px){
+    .boost-scholarship-header{
+
+        margin: 0px 75px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .boost-scholarship-header-row2 {
+        flex-direction: column-reverse;
+    }
+
+    .boost-scholarship-header{
+
+        margin: 0px 20px;
+    }
+
+    .boost-scholarship-title {
+        font-size: 20px;
+    }
+
+    .newsletter{
+        font-size: 15px;
+    }
+
+    .boost-scholarship-title-subheader {
+        font-size: 19px;
+    }
+
+    li {
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    .scholarship-apply-button {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .check-boost-scholarship-button {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .disabled-scholarship-apply-button{
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
 }

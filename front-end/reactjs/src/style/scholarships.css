@@ -118,3 +118,11 @@
     line-height: 40px;
 
 }
+
+.steps-to-apply-row1{
+    display: flex;
+}
+
+.steps-to-apply-row2{
+    display: flex;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Scholarship from '../components/Scholarship'
-import '../style/scholarship.css'
+import '../style/scholarships.css'
 import img1 from '../assets/images/RankingSystem1.png';
 import img2 from '../assets/images/RankingSystem2.png';
 import img3 from '../assets/images/apply1.png';
@@ -9,7 +9,6 @@ import img5 from '../assets/images/apply3.png';
 import img6 from '../assets/images/apply4.png';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
-
 
 const Scholarships = () => {
 
@@ -61,31 +60,32 @@ const Scholarships = () => {
         </div>
 
         <div className='steps-apply-row2'>
-          <div className='steps-to-apply1'> 
-            <img src={img3} alt="logo"></img>
-            <p className='steps-apply-text'>Select a program</p>
+          <div className='steps-to-apply-row1'>
+            <div className='steps-to-apply1'> 
+              <img src={img3} alt="logo"></img>
+              <p className='steps-apply-text'>Select a program</p>
+            </div>
+
+            <div className='steps-to-apply2'> 
+              <img src={img4} alt="logo"></img>
+              <p className='steps-apply-text'>Pass the eligibility criteria & complete the online application</p>
+            </div>
           </div>
 
-          <div className='steps-to-apply2'> 
-            <img src={img4} alt="logo"></img>
-            <p className='steps-apply-text'>Pass the eligibility criteria & complete the online application</p>
-          </div>
+          <div className='steps-to-apply-row2'> 
+            <div className='steps-to-apply3'> 
+              <img src={img5} alt="logo"></img>
+              <p className='steps-apply-text'>If shortlisted, you might be contacted for an interview</p>
+            </div>
 
-          <div className='steps-to-apply3'> 
-            <img src={img5} alt="logo"></img>
-            <p className='steps-apply-text'>If shortlisted, you might be contacted for an interview</p>
-          </div>
-
-          <div className='steps-to-apply4'> 
-            <img src={img6} alt="logo"></img>
-            <p className='steps-apply-text'>If accepted, you will receive an email by the end of each cycle</p>
+            <div className='steps-to-apply4'> 
+              <img src={img6} alt="logo"></img>
+              <p className='steps-apply-text'>If accepted, you will receive an email by the end of each cycle</p>
+            </div>
           </div>
         </div>
         <Button className='faq-button-scholarships' text='FAQ Page' onClick={redirect}/>
       </div>
-
-      
-
     </div>
   )
 }

@@ -62,7 +62,7 @@ const Team = () => {
         </div>
 
         <div className='vision-picture'>
-          <img src={image} alt='logo'/>            
+          <img  className='team-vision-image' src={image} alt='logo'/>            
 
         </div>
       </div>

@@ -25,5 +25,5 @@ async function getUser(token) {
     if(!user){
         return "User not found";
     }
-    return user;
+    return user.dataValues;
 }

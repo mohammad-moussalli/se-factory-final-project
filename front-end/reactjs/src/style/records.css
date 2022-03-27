@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
+
+
+.records-statistics{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 27px;
+    min-height: 250px;
+    justify-content: space-between;
+    padding: 35px;
+}
+
+.records-statistics-row1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.records-statistics-row2{
+    display: flex;
+    justify-content: space-around;
+    min-height: 175px;
+
+}
+
+.records-statistics-row3{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.records-scholarship-name{
+    display: flex;
+    width: 50%;
+}
+
+.records-applicant-recepient-table{
+    display: flex;
+    width: 66%;
+    justify-content: space-around;
+
+}
+
+.records-applicant-recepient-table-col1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.records-applicant-recepient-table-col2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.records-applicant-recepient-table-col3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.records-applicant-recepient-scholarship-name{
+    margin: 0px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 15px;
+}
+
+.records-applicant-recepient-color-container1{
+    width: 50px;
+    height: 40px;
+    background: #007EC3;
+    border-radius: 30px;
+    margin-right: 10px;
+
+
+}
+
+.records-applicant-recepient-color-container2{
+    width: 50px;
+    height: 40px;
+    background: #1B089F;
+    border-radius: 30px;
+    margin-right: 10px;
+
+
+}
+
+.records-applicant-recepient-program-name{
+    display: flex;
+    align-items: center;
+
+}
+
+.records-scholarship-name-text{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 0px 5px;
+}
+
+.records-scholarship-name-text:not(:last-child){
+    border-right-style: solid;
+}
+
+.records-scholarship-cycle{
+    border: 1px solid #A6A6A6;
+    box-sizing: border-box;
+    border-radius: 24.5px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    color: #A6A6A6;
+    cursor: pointer;
+
+}
+
+.records-scholarship-year{
+    border: 1px solid #A6A6A6;
+    box-sizing: border-box;
+    border-radius: 24.5px;
+    padding: 5px 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    color: #A6A6A6;
+    cursor: pointer;
+
+
+}
+
+.number-of-applicants{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 13px;
+    height: 27px;
+}
+
+.number-of-recepients{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 13px;
+    height: 27px;
+
+}
+
+.records-applicant-recepient-text{
+    margin: 0px;
+    background: #ededed;
+    border-radius: 30px;
+    padding: 5px 50px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 13px;
+
+}
+
+@media(max-width:900px){
+    .records-scholarship-name-text {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .records-applicant-recepient-table {
+        width: 50%;
+    }
+
+    .records-scholarship-name-text {
+        font-size: 20px;
+    }
+
+    .records-applicant-recepient-text {
+        padding: 5px 20px;
+    }
+}
+
+@media (max-width: 610px) { 
+    .records-applicant-recepient-table {
+        width: 50%;
+    }
+
+    .records-scholarship-name-text {
+        font-size: 15px;
+    }
+    
+    .records-applicant-recepient-text {
+        padding: 5px 20px;
+    }
+
+    .records-scholarship-cycle {
+        font-size: 10px;
+        margin: 0px 0px 10px;
+
+    }
+
+    .records-scholarship-year {
+        font-size: 10px;
+    }
+
+    .records-statistics-row2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .records-scholarship-cycle-year{
+        display: flex;
+        flex-direction: column;
+    }
+}
+ 
+
+

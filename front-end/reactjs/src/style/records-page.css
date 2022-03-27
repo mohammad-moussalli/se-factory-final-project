@@ -60,7 +60,7 @@
     width: fit-content;
     padding: 10px 20px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
     border: 2px solid #000000;
     width: 260px;
 }
@@ -77,4 +77,58 @@
 
 .cycle-report{
     margin: 0px 20px 80px 0px;
+}
+
+
+@media(max-width:1100px){
+    .records{
+        margin: 0px 100px;
+    }
+}
+
+@media(max-width:900px){
+    .records{
+        margin: 0px 50px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .records{
+        margin: 0px 20px;
+    }
+
+    .records-title {
+        font-size: 35px;       
+    }
+
+    .records-text {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .success-story-title {
+        font-size: 35px;
+    }
+
+    .reports-title {
+        font-size: 35px;
+    }
+
+    .cycle-report {
+        margin: 20px 0px;
+    }
+
+    .reports-row2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .records-text {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .report-cycle-image {
+        margin-bottom: 20px;
+    }
 }

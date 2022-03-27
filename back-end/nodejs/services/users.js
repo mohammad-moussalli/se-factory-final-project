@@ -1,6 +1,7 @@
-const model = require('../models')
+const model = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const admin = require("../config/firebase");
 const config = require('../config/config.json');
 const business_inteligence = require('../business_intelligence/permissions')
 module.exports = {
@@ -8,7 +9,8 @@ module.exports = {
     login,
     update,
     getUser,
-    getAllUsers
+    getAllUsers,
+    // uploadImage
 };
 
 async function login({ email, password }) {
@@ -76,8 +78,8 @@ async function create(params) {
 }
 
 /// Update function not working (updating on database but not sending anyhting in postman)
-async function update(params) {
-    let user =  await business_inteligence.getUser(params.body.token)
+async function update(body, token) {
+    let user =  await business_inteligence.getUser(token)
     // validate
     // const userChanged = params.body.email && user.email !== params.body.email;
     // if (userChanged && await model.User.findOne({ where: { email: params.body.email } })) {
@@ -85,28 +87,28 @@ async function update(params) {
     // }
 
     // hash password if it was entered
-    if (params.body.password) {
-        params.body.password = await bcrypt.hash(params.body.password, 10);
+    if (body.password) {
+        body.password = await bcrypt.hash(params.body.password, 10);
     }
 
     // copy params to user and save
 
     await model.University.update({
 
-        univeristy: params.university,
-        major: params.major,
-        degree: params.field,
-        university_country: params.university_country,
-        university_city: params.university_city,
+        univeristy: body.university,
+        major: body.major,
+        degree: body.field,
+        university_country: body.university_country,
+        university_city: body.university_city,
         }, {
             where: {id: user.university_id}
     })
 
     await model.Mentor.update({
 
-        job: params.job,
-        job_country: params.job_country,
-        job_city: params.job_city,
+        job: body.job,
+        job_country: body.job_country,
+        job_city: body.job_city,
         }, {
             where: {user_id: user.id}
     })
@@ -114,22 +116,20 @@ async function update(params) {
 
     await model.User.update({
         
-        first_name: params.first_name,
-        last_name: params.last_name,
-        password: params.passwords,
-        dob: params.dob,
-        country_code: params.country_code,
-        mobile_phone: params.mobile_phone,
-        country: params.country,
-        city: params.city,
-        profile_picture: params.profile_picture
+        first_name: body.first_name,
+        last_name: body.last_name,
+        password: body.passwords,
+        dob: body.dob,
+        country_code: body.country_code,
+        mobile_phone: body.mobile_phone,
+        country: body.country,
+        city: body.city,
+        profile_picture: body.profile_picture
       }, {
           where: {id: user.id}
       })
 
-      
-
-    return "User updated";
+    return user;
 }
 
 function omitHash(user) {
@@ -138,8 +138,8 @@ function omitHash(user) {
 }
 
 // if statement is not working only works if not valid
-async function getUser(params){
-    const user = await business_inteligence.getUser(params.token)
+async function getUser(token){
+    const user = await business_inteligence.getUser(token)
     if (!user){
         return 'User not found';
     } 
@@ -153,3 +153,86 @@ async function getAllUsers(){
     } 
     return users;
 }
+
+// async function uploadImage(req){
+//     const BusBoy = require("busboy");
+//     const path = require("path");
+//     const os = require("os");
+//     const fs = require("fs");
+//     console.log('req.files outside: ', req.files);
+//     const filepath = path.join(os.tmpdir(), req.files[0].originalname);
+//     const imageToUpload = { filepath, mimetype: req.files[0].mimetype };
+
+//     admin
+//     .storage()
+//     .bucket()
+//     .upload(imageToUpload.filepath, {
+//       resumable: false,
+//       metadata: {
+//         metadata: {
+//           contentType: imageToUpload.mimetype,
+//         },
+//       },
+//     })
+//     .then(() => {
+//       imageUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.STORAGE_BUCKET}/o/${imageFileName}?alt=media`;
+//       return imageUrl;
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       return res.status(500).json({ error: err.code });
+//     });
+  
+    // const busboy = new BusBoy({ headers: req.headers });
+    // req.pipe(busboy); 
+    // let imageFileName;
+    // let imageToUpload = {};
+    // let imageUrl;
+
+    // console.log("outside", req.headers)
+  
+    // busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
+
+    // console.log("inside", file, filename)
+
+
+    //   if (mimetype !== "image/jpeg" && mimetype !== "image/png") {
+    //     return res.status(400).json({ error: "Wrong file type submitted" });
+    //   }
+    //   //to get file type (png, jpeg)
+    //   const imageExtension = filename.split(".")[filename.split(".").length - 1];
+    //   imageFileName = `${Math.random(
+    //     Math.random() * 10000000000
+    //   )}.${imageExtension}`;
+    //   const filepath = path.join(os.tmpdir(), imageFileName);
+    //   imageToUpload = { filepath, mimetype };
+    //   const fiiile = fs.createWriteStream(filepath);
+    // });
+
+    // busboy.on('error', (err) => { console.log(err, "error") })
+  
+    // busboy.on("finish", () => {
+    //     console.log("finish", imageToUpload)
+    //   admin
+    //     .storage()
+    //     .bucket()
+    //     .upload(imageToUpload.filepath, {
+    //       resumable: false,
+    //       metadata: {
+    //         metadata: {
+    //           contentType: imageToUpload.mimetype,
+    //         },
+    //       },
+    //     })
+    //     .then(() => {
+    //       imageUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.STORAGE_BUCKET}/o/${imageFileName}?alt=media`;
+    //       return imageUrl;
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //       return res.status(500).json({ error: err.code });
+    //     });
+    // });
+  
+    // busboy.end(req.rawBody);
+//  }

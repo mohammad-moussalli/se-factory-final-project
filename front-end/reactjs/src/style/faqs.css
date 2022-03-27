@@ -1,0 +1,90 @@
+.faq-component{
+    margin: 0px 150px;
+}
+
+.faq-component-title{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.faq-component-subtitle{
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 41px;
+}
+
+.faq-component-button{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+    border-radius: 25px;
+    color: black;
+    background-color: white;
+    text-align: center;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.faq-component-category-buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.faq-component-questions{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;    
+    color: rgba(0, 126, 195, 1);
+    
+}
+
+.faq-component-answers{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.accordion{
+    margin: 15px 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.08);
+    border-radius: 13px;
+    border-radius: 13px;
+}
+
+@media(max-width: 1000px){
+    .faq-component{
+        margin: 0px 100px;
+    }
+
+    .faq-component-title{
+        font-size: 35px;
+    }
+    
+    .faq-component-subtitle{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-component{
+        margin: 0px 20px;
+    }
+
+    .faq-component-title{
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .faq-component-subtitle{
+        font-size: 22px;
+        text-align: center;
+    }
+
+}

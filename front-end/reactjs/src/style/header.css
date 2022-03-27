@@ -28,6 +28,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     display: block;
+    cursor: pointer;
 }
 
 .home-kaffi-logo{
@@ -39,6 +40,8 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    cursor: pointer;
+
 }
 
 .about-kaffi {
@@ -47,11 +50,15 @@
     margin-right: 25px;
     font-size: 18px;
     font-weight: 500;
+    cursor: pointer;
+
 
 }
 
 .home-about-kaffi{
     color: white;
+    cursor: pointer;
+
 }
 
 .menu-logo {
@@ -62,10 +69,14 @@
     background-size: contain;
     background-repeat: no-repeat;
     display: block;
+    cursor: pointer;
+
 }
 
 .home-menu-logo{
     background-image: url("../assets/images/menu.png");
+    cursor: pointer;
+
     
 }
 
@@ -91,6 +102,8 @@
     align-items: center;
     justify-content: center;
     border: 2px solid white;
+    cursor: pointer;
+
 
 }
 

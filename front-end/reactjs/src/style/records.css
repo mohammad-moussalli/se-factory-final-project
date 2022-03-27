@@ -184,6 +184,7 @@
 @media (max-width: 610px) { 
     .records-applicant-recepient-table {
         width: 50%;
+        min-height: 125px;
     }
 
     .records-scholarship-name-text {

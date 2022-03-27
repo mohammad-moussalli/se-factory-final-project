@@ -64,13 +64,6 @@
     }
 }
 
-@media (max-width: 1250px){
-
-    .webinars-subtitle{
-        font-size: 24px;
-    }
-}
-
 @media (max-width: 1190px){
     
     .webinars-subtitle{
@@ -82,7 +75,6 @@
     }  
 
 }
-
 
 @media (max-width: 950px){
     

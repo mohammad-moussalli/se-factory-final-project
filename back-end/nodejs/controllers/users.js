@@ -6,7 +6,8 @@ module.exports = {
     login,
     getUser,
     getAllUsers,
-    update
+    update,
+    // uploadImage
 };
 
 
@@ -21,11 +22,12 @@ function login(req, res, next) {
         .then((response) => res.json(response))
         .catch(next);
 }
-// only working in body (not in authorization)
-function getUser(req, res, next) {
-    userServices.getUser(req.body)
+function getUser(req, res, err) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    userServices.getUser(token)
         .then(user => res.json(user))
-        .catch(next);
+        .catch(err);
 }
 
 function getAllUsers(req, res, next) {
@@ -35,7 +37,14 @@ function getAllUsers(req, res, next) {
 }
 
 function update(req, res, next) {
-    userServices.update(req.body)
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    userServices.update(req.body, token)
         .then(user => res.json(user))
         .catch(next);
 }
+
+// function uploadImage(req, res) {
+//     console.log('req.files image:', req.files[0]);
+//     userServices.uploadImage(req).then(image => console.log(image, "url"))
+// }

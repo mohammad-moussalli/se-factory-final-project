@@ -51,7 +51,6 @@ const Webinars = () => {
 
                 {webinarUrl &&
                 <div>
-                    4
                     <div className="webinar-video-country">
                         <div className="webinar-video">
                             <iframe title='webinarl-video'src={webinarUrl} />

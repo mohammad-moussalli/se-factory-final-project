@@ -9,7 +9,8 @@ import SuccessStories from "../components/SuccessStories";
 import Button from "../components/Button";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import WireTransfer from "../components/WireTransfer";
+import image from '../assets/images/bank-transfer.png';
+import '../style/wire-transfer.css'
 
 const Donate = () => {
 
@@ -18,13 +19,20 @@ const Donate = () => {
         navigate('/records');
     }
 
+    let donations = 'donations'
     const [showWireTransferTag, setShowWireTransferTag] = useState(false);
+
     const onClick = () => {
+        donations = 'opaque-donations'
         setShowWireTransferTag(true);
     }
 
+    const closeTag = () => {
+        setShowWireTransferTag(false);
+    }
+
     return (
-        <div className="donations">
+        <div className={donations}>
             <div className="donation-title donation-row1">
                 <p className="donation-title1">Support students through your donations!</p>
                 <p className="donation-title2">Methods of Payment</p>
@@ -56,8 +64,25 @@ const Donate = () => {
             </div>
 
             {showWireTransferTag ? 
-                <WireTransfer />:
-                null
+                <div className="wire-transfer">
+                    <div className="wire-transfer-content">
+                        <div className='wire-transfer-logo'>
+                            <div className="wire-transfer-column1">
+                                <img className='wiretransfer-image' src={image} alt='Wire Transfer'/> 
+                                <p>Direct Bank Wire Transfer</p>
+                            </div>           
+                        </div>
+                        <p className='wire-transfer-text'>Account Name: Kaffi e.V.</p>
+                        <p className='wire-transfer-text'>IBAN: DE51430609671262435500</p>
+                        <p className='wire-transfer-text'>SWIFT?BIC Code: GENODEM1GLS</p>
+                        <p className='wire-transfer-text'>Bank Name: GLS Bank</p>
+                        <p className='wire-transfer-text'>Currency: EUR</p>
+                        <div className="close-btn-container">
+                            <Button text="Close" className="close-btn" onClick = {closeTag} />
+                        </div>
+
+                    </div>
+                </div>:null
             }
         </div>
     )

@@ -51,7 +51,7 @@ const Scholarship = () => {
                         )
                     })}
                 </div>
-            </div> //accordion
+            </div> 
             
         )
     }

@@ -22,10 +22,11 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message)
+      localStorage.clear()
+      throw(message)
     }
 
-    if (isSuccess || user) {
+    if (isSuccess) {
       navigate('/dashboard')
     }
 

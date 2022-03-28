@@ -1,7 +1,7 @@
 import "../style/header.css";
-import { Link } from "react-router-dom";
 import Button from "./Button";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 
 const Header = () => {
@@ -26,26 +26,51 @@ const Header = () => {
     }
 
     const navigate = useNavigate()
-    const redirect= () => {
+    const redirect = () => {
     navigate('/');
     }
 
-    const redirectToRegister= () => {
+    const redirectToRegister = () => {
         navigate('/register');
     }
 
+    const [loggedIn, setLoggedIn] = useState(false);
 
+    const clearLocalStorage = () => {
+        setLoggedIn(false)
+        localStorage.clear()
+        navigate('/');
+        window.location.reload();
+    }
+
+    const isLoggedIn = () => {
+        const token = localStorage.getItem("user")
+        if (token){
+            setLoggedIn(true);
+        }
+    
+    }
+    
+    useEffect(() => { isLoggedIn() }, []);
 
     return (
         
         <>
         <div className={`navbar ${navbar}`}>
             <i className={`kaffi-logo ${kaffi_logo}`} onClick={redirect}/>
+            {loggedIn ?
             <div className={`links ${links}`}>
+                <Link to='/dashboard' className={`about-kaffi ${about_kaffi}`}>Dashboard</Link>
+                <Button className ={`navbar-button ${navbar_button}`} text="Log Out" onClick={clearLocalStorage}/>
+                <Link to='/menu' className={`menu-logo ${menu_logo}`}/>
+            </div>
+            :<div className={`links ${links}`}>
                 <Link to='/about-us' className={`about-kaffi ${about_kaffi}`}>About Kaffi</Link>
                 <Button className ={`navbar-button ${navbar_button}`} text="Sign Up" onClick={redirectToRegister}/>
                 <Link to='/menu' className={`menu-logo ${menu_logo}`}/>
             </div>
+            }
+            
         </div>
         </>
     );

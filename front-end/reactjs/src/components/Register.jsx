@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";   
+import { useSelector, useDispatch } from 'react-redux'
 import authService from "../features/auth/authService";
 import '../style/register.css'
 import Button from './Button'
 import image from '../assets/images/gmail.png'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+import { register, reset } from '../features/auth/authSlice'
+
 
 
 const Register = () => {
@@ -31,14 +35,15 @@ const Register = () => {
     const uploadImageApi = "http://localhost:8080/users/image";
 
     const [typeId, setTypeId] = useState();
+    const [error, setError] = useState(false);
+
 
     const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     
     const onSubmit = async (e) => {
         e.preventDefault()
        const data = {...formData, user_type_id: typeId};
-       const res = await authService.register(data);
-       console.log(res)
+       dispatch(register(data))
     }
 
     const onChange = (e) => {
@@ -47,6 +52,26 @@ const Register = () => {
           [e.target.name]: e.target.value,
         }))
     }
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+  
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    )
+  
+    useEffect(() => {
+        if (isError) {
+            localStorage.clear()
+            throw(message)
+        }
+    
+        if (isSuccess) {
+            navigate('/dashboard')
+        }
+    
+        dispatch(reset())
+    }, [user, isError, isSuccess, message, navigate, dispatch])
 
     const handleType = (val) => {
         const id = parseInt(val.target.value);
@@ -142,11 +167,11 @@ const Register = () => {
                             </div>
                             <div className="sub-group">
                                 <div className='form-group'>
-                                    <input type='text' className='form-control' id='university-country' name='university-country' value={university_country} placeholder='University Country' onChange={onChange}/>
+                                    <input type='text' className='form-control' id='university-country' name='university_country' value={university_country} placeholder='University Country' onChange={onChange}/>
                                 </div>
 
                                 <div className='form-group'>
-                                    <input type='text' className='form-control' id='university-city' name='university-city' value={university_city} placeholder='University City' onChange={onChange}/>
+                                    <input type='text' className='form-control' id='university-city' name='university_city' value={university_city} placeholder='University City' onChange={onChange}/>
                                 </div>
                             </div>
                         </div>
@@ -158,11 +183,11 @@ const Register = () => {
                                 </div>
                                 <div className="sub-group">
                                     <div className='form-group'>
-                                        <input type='text' className='form-control' id='job-country' name='job-country' value={job_country} placeholder='Job Country' onChange={onChange}/>
+                                        <input type='text' className='form-control' id='job-country' name='job_country' value={job_country} placeholder='Job Country' onChange={onChange}/>
                                     </div>
 
                                     <div className='form-group'>
-                                        <input type='text' className='form-control' id='job-city' name='job-city' value={job_city} placeholder='Job City' onChange={onChange}/>
+                                        <input type='text' className='form-control' id='job-city' name='job_city' value={job_city} placeholder='Job City' onChange={onChange}/>
                                     </div>
                                 </div>
                             </div>

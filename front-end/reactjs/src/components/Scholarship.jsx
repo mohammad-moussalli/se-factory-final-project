@@ -26,7 +26,6 @@ const Scholarship = () => {
             <div>
                 <div>
                     {scholarshipsWithCycle.map((scholarshipWithCycle) => {
-                        console.log(scholarshipWithCycle.scholarship.id)
                         return(
                             
                             <div key={scholarshipWithCycle.scholarship.id}>
@@ -51,8 +50,7 @@ const Scholarship = () => {
                         )
                     })}
                 </div>
-            </div> 
-            
+            </div>   
         )
     }
 }

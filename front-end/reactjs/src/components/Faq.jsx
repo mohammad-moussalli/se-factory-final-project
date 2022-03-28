@@ -58,23 +58,21 @@ const Faq = () => {
                     {Array.isArray(CategoryFaqs) && CategoryFaqs.map((CategoryFaq) => {
                         return(
                             <div className='accordion'>
-                            <Accordion>
-                                <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel${CategoryFaq.id}a-content`} id={`panel${CategoryFaq.id}a-header`}>
-                                    <Typography className="faq-component-questions">{CategoryFaq.question}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails className="accordion-details">
-                                    <Typography className="faq-component-answers">{CategoryFaq.answer}</Typography>
-                                </AccordionDetails>
-                            </Accordion> 
+                                <Accordion>
+                                    <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel${CategoryFaq.id}a-content`} id={`panel${CategoryFaq.id}a-header`}>
+                                        <Typography className="faq-component-questions">{CategoryFaq.question}</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails className="accordion-details">
+                                        <Typography className="faq-component-answers">{CategoryFaq.answer}</Typography>
+                                    </AccordionDetails>
+                                </Accordion> 
                             </div> 
                         )
                     })}
                 </div>
             </div>
-            
         )
     }
-
 }
 
 export default Faq

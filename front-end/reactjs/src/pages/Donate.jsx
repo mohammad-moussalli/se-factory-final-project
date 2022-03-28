@@ -8,9 +8,11 @@ import DonationInfo from "../components/DonationInfo";
 import SuccessStories from "../components/SuccessStories";
 import Button from "../components/Button";
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
 import image from '../assets/images/bank-transfer.png';
 import '../style/wire-transfer.css'
+import { useEffect, useState} from 'react'
+import axios from 'axios';
+import Spinner from '../components/Spinner';
 
 const Donate = () => {
 
@@ -31,7 +33,30 @@ const Donate = () => {
         setShowWireTransferTag(false);
     }
 
-    return (
+    const [successStory, setSuccessStory] = useState(null)
+    const successStoryApi = "http://localhost:8080/stories"
+  
+    const [error, setError]  = useState();
+
+    useEffect(() => {
+        axios.get(successStoryApi)
+        .then((response) => {
+            setSuccessStory(response.data)
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }, [])
+  
+    const items = successStory.slice(0, 2)
+
+    
+
+    if (!successStory){
+        return <Spinner/>
+    }else{
+        return (
         <div className={donations}>
             <div className="donation-title donation-row1">
                 <p className="donation-title1">Support students through your donations!</p>
@@ -59,7 +84,13 @@ const Donate = () => {
                     <Button text="View All Success Stories & Records" className="donate-success-stories-button" onClick={redirectToRecordsPage}/>
                 </div>
                 <div className="donate-success-stories-row2">
-                    <SuccessStories />
+                    {Array.isArray(successStory) && items.map((items) => {
+                        return(
+                            <>
+                                <SuccessStories story={items.story} name={items.name}/>
+                            </>
+                        )
+                    })}
                 </div>
             </div>
 
@@ -85,7 +116,8 @@ const Donate = () => {
                 </div>:null
             }
         </div>
-    )
+    
+    )}
 }
 
 export default Donate

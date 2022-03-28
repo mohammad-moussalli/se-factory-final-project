@@ -1,32 +1,38 @@
 import { useState } from 'react';
 import image from '../assets/images/bank-transfer.png';
 import Button from './Button';
+import '../style/wire-transfer.css'
 
 const WireTransfer = () => {
 
-    const [closeTag, setCloseTag] = useState(false)
+    const [closeTag, setCloseTag] = useState(true)
     const onClick = () => {
-        setCloseTag(!closeTag)
+        setCloseTag(false)
     }
 
     return (
+        <>
+        {closeTag &&
         <div className="wire-transfer">
-            <div className="wire-transfer-column1">
+            <div className="wire-transfer-content">
                 <div className='wire-transfer-logo'>
-                    <img src={image} alt='Wire Transfer'/> 
-                    <h5>Direct Bank Wire Transfer</h5>           
+                    <div className="wire-transfer-column1">
+                        <img className='wiretransfer-image' src={image} alt='Wire Transfer'/> 
+                        <p>Direct Bank Wire Transfer</p>
+                    </div>
+                    <div className="wire-transfer-column2">
+                        <Button text="x" className="close-btn" onClick = {onClick} />
+                    </div>           
                 </div>
-                <h6>Account Name: Kaffi e.V.</h6>
-                <h6>IBAN: DE51430609671262435500</h6>
-                <h6>SWIFT?BIC Code: GENODEM1GLS</h6>
-                <h6>Bank Name: GLS Bank</h6>
-                <h6>Currency: EUR</h6>
-            </div>
-
-            <div className="wire-transfer-column2">
-                <Button text="x" className="close-btn" onClick = {onClick} />
+                <p className='wire-transfer-text'>Account Name: Kaffi e.V.</p>
+                <p className='wire-transfer-text'>IBAN: DE51430609671262435500</p>
+                <p className='wire-transfer-text'>SWIFT?BIC Code: GENODEM1GLS</p>
+                <p className='wire-transfer-text'>Bank Name: GLS Bank</p>
+                <p className='wire-transfer-text'>Currency: EUR</p>
             </div>
         </div>
+        }
+        </>
     )
 }
 

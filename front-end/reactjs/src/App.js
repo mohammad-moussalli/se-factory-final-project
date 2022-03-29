@@ -17,7 +17,7 @@ import Scholarships from './pages/Scholarships';
 import Team from './pages/Team';
 import Webinars from './pages/Webinars';
 import Volunteer from './pages/Volunteer';
-import ScholarshipForms from './pages/ScholarshipForms';
+import ApplicationForms from './pages/ApplicationForms';
 import Faq from './pages/Faq'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -54,7 +54,7 @@ function App() {
               <Route exact path='/team' element={ <Team /> } />
               <Route exact path='/webinars' element={ <Webinars /> } />
               <Route exact path='/volunteer' element={ <Volunteer /> } />
-              <Route exact path='/scholarships/forms' element={ <ScholarshipForms /> } />
+              <Route exact path='/applications' element={ <ApplicationForms /> } />
             </Routes>
           </div>
           <Footer />

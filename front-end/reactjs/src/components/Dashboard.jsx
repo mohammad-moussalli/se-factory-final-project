@@ -9,6 +9,7 @@ import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import pen from '../assets/images/edit-pen.png'
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -52,7 +53,7 @@ const Dashboard = () => {
     const [createdAt, setCreatedAt] = useState();
     const [profile_picture, setProfilePicture] = useState();
     const [error, setError]  = useState();
-    
+
 
     // const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     
@@ -60,10 +61,9 @@ const Dashboard = () => {
     const updateUserApi = `http://localhost:8080/users/update/`
 
     const getUser = async () => {
-        const token = localStorage.getItem("user")
+        const token = localStorage.getItem("user");
         axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
         .then(response => {
-            console.log(user)
             setFirstName(response.data.first_name)
             setLastName(response.data.last_name)
             setCountry(response.data.country)
@@ -73,13 +73,14 @@ const Dashboard = () => {
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
         }).catch (err => {
-            setError("Something went wrong!")
+            console.log(err)
+            setError(err)
         });
     }
 
     const updateUser = async () => {
         const token = localStorage.getItem("user")
-        axios.post(updateUserApi, { password: password, country: country, city: city, university: university, university_country: university_country, university_city: university_city, job: job, job_country: job_country, job_city: job_city, profile_picture: profile_picture} ,
+        await axios.post(updateUserApi, { password: password, country: country, city: city, university: university, university_country: university_country, university_city: university_city, job: job, job_country: job_country, job_city: job_city, profile_picture: profile_picture} ,
         { headers: {"Authorization" : `Bearer ${token}`} } )
     }
 
@@ -98,6 +99,11 @@ const Dashboard = () => {
 
     const closeEditPicture = () => {
         setEditPicture(false)
+    }
+
+    const navigate = useNavigate()
+    const redirectToApplcations = () => {
+    navigate('/applications');
     }
 
     if (localStorage.getItem('user') == null) {
@@ -128,16 +134,14 @@ const Dashboard = () => {
                     }
 
                     <div className='dashboard-sidebar-details'>
-                        <div className='dashboard-sidebar-details-data dashboard-user-name'>{first_name} &nbsp;</div>
-                        <div className='dashboard-sidebar-details-data dashboard-user-name'>{last_name}</div>
-                        <div className='dashboard-sidebar-details-data'>{dob}</div>
-                        <div className='dashboard-sidebar-details-data'>{country}</div>
-                        <div className='dashboard-sidebar-details-data'>{city}</div>
-
-                        <div className='dashboard-sidebar-details-data'>{university}</div>
-                        <div className='dashboard-sidebar-details-data'>{type}</div>
-
-
+                    <div div className='dashboard-sidebar-fullname'>
+                            <div className='dashboard-sidebar-details-data dashboard-user-name'>{first_name} &nbsp;</div>
+                            <div className='dashboard-sidebar-details-data dashboard-user-name'>{last_name}</div>
+                        </div>
+                        <div className='dashboard-sidebar-details-data dashboard-sidebar-country'>{country}</div>
+                        <div className='dashboard-sidebar-details-data dashboard-sidebar-city'>{city}</div>
+                        <div className='dashboard-sidebar-details-data dashboard-sidebar-university'>{university}</div>
+                        <div className='dashboard-sidebar-details-data dashboard-sidebar-user-type'>{type}</div>
                     </div>
                 </div>
                 <div className='dashboard-forms'>
@@ -154,12 +158,12 @@ const Dashboard = () => {
                                 </AccordionSummary>
                                 <AccordionDetails className="accordion-details">
                                     <form className='UpdateUser' onSubmit={updateUser}>
-                                        <input type='text' className='dashboard-form-control' id='password' name='password' value={password} placeholder='Update Password' onChange={e => setPassword(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='country' name='country' value={country} placeholder='Update Country' onChange={e => setCountry(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='city' name='city' value={city} placeholder='Update City' onChange={e => setCity(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university' name='university' value={university} placeholder='Update University' onChange={e => setUniversity(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university-country' name='university-country' value={university_country} placeholder='Update University Country' onChange={e => setUniversityCountry(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university-city' name='university-city' value={university_city} placeholder='Update University City' onChange={e => setUniversityCity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='password' name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='country' name='country' value={country} placeholder='Country' onChange={e => setCountry(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='city' name='city' value={city} placeholder='City' onChange={e => setCity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university' name='university' value={university} placeholder='University' onChange={e => setUniversity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university-country' name='university-country' value={university_country} placeholder='University Country' onChange={e => setUniversityCountry(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university-city' name='university-city' value={university_city} placeholder='University City' onChange={e => setUniversityCity(e.target.value)}/>
                                         {typeId === 3 &&
                                             <div>
                                                 <input type='text' className='form-control single-line' id='job' name='job' value={job} placeholder='Update Job' onChange={e => setJob(e.target.value)}/>
@@ -170,29 +174,12 @@ const Dashboard = () => {
                                         <div className='dashboard-update-button'>
                                             <button className="updateButton" type="submit"> Update</button> 
                                         </div>
-                                        <Fragment><h6>{error}</h6></Fragment>
+                                        {/* <Fragment><h6>{error}</h6></Fragment> */}
                                     </form>
                                 </AccordionDetails>
                             </Accordion> 
-                            {type==='student' && 
-                                <Accordion className='accordion-part'>
-                                    <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel2a-content`} id={`panel2a-header`}>
-                                        <Typography className="dashboard-form-title">Student Application</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails className="accordion-details">
-                                        <Typography className="dashboard-form-details">HELLO 2</Typography>
-                                    </AccordionDetails>
-                                </Accordion>
-                            } 
-                            <Accordion className='accordion-part'>
-                                <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel3a-content`} id={`panel3a-header`}>
-                                    <Typography className="dashboard-form-title">Buddy Application</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails className="accordion-details">
-                                    <Typography className="dashboard-form-details">HELLO 3</Typography>
-                                </AccordionDetails>
-                            </Accordion> 
                         </div>
+                        <Button className='applications-button' text='View Applications' onClick={redirectToApplcations}/>
                     </div>
                 </div>
             </div>

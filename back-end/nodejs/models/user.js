@@ -23,10 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     dob: DataTypes.DATEONLY,
     country_code: DataTypes.STRING,
     mobile_phone: DataTypes.STRING,
-    sex: DataTypes.STRING,
     country: DataTypes.STRING,
     city: DataTypes.STRING,
-    nationality: DataTypes.STRING,
     profile_picture: DataTypes.TEXT
   }, {
     sequelize,

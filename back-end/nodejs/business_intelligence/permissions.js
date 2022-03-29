@@ -12,7 +12,7 @@ async function hasPermission(token, type) {
     const user = await model.User.findOne({ where: { email: email } });
     if(!user){
         return false;
-    }   ``
+    }  
     const user_type = await model.User_Type.findByPk(user.user_type_id)
     return user_type.type === type;
 }
@@ -23,7 +23,7 @@ async function getUser(token) {
     const email = decoded_jwt.email;
     const user = await model.User.findOne({ where: { email: email } });
     if(!user){
-        return "User not found";
+        return false;
     }
     return user.dataValues;
 }

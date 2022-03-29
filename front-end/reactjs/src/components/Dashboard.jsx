@@ -41,17 +41,37 @@ const Dashboard = () => {
     const [first_name, setFirstName] = useState();
     const [last_name, setLastName] = useState();
     const [password, setPassword] = useState();
+    const [updated_password, setUpdatedPassword] = useState();
+
     const [dob, setDOB] = useState();
     const [country, setCountry] = useState();
+    const [updated_country, setUpdatedCountry] = useState();
+
     const [city, setCity] = useState();
+    const [updated_city, setUpdatedCity] = useState();
+
     const [university, setUniversity] = useState();
+    const [updated_university, setUpdatedUniversity] = useState();
+
     const [university_country, setUniversityCountry] = useState();
+    const [updated_university_country, setUpdatedUniversityCountry] = useState();
+
     const [university_city, setUniversityCity] = useState();
+    const [updated_university_city, setUpdatedUniversityCity] = useState();
+
     const [job, setJob] = useState();
+    const [updated_job, setUpdatedJob] = useState();
+
     const [job_country, setJobCountry] = useState();
+    const [updated_job_country, setUpdatedJobCountry] = useState();
+
     const [job_city, setJobCity] = useState();
+    const [updated_job_city, setUpdatedJobCity] = useState();
+
     const [createdAt, setCreatedAt] = useState();
     const [profile_picture, setProfilePicture] = useState();
+    const [updated_profile_picture, setUpdatedProfilePicture] = useState();
+
     const [error, setError]  = useState();
 
 
@@ -80,7 +100,7 @@ const Dashboard = () => {
 
     const updateUser = async () => {
         const token = localStorage.getItem("user")
-        await axios.post(updateUserApi, { password: password, country: country, city: city, university: university, university_country: university_country, university_city: university_city, job: job, job_country: job_country, job_city: job_city, profile_picture: profile_picture} ,
+        await axios.post(updateUserApi, { password: updated_password, country: updated_country, city: updated_city, university: updated_university, university_country: updated_university_country, university_city: updated_university_city, job: updated_job, job_country: updated_job_country, job_city: updated_job_city, profile_picture: updated_profile_picture} ,
         { headers: {"Authorization" : `Bearer ${token}`} } )
     }
 
@@ -158,17 +178,17 @@ const Dashboard = () => {
                                 </AccordionSummary>
                                 <AccordionDetails className="accordion-details">
                                     <form className='UpdateUser' onSubmit={updateUser}>
-                                        <input type='text' className='dashboard-form-control' id='password' name='password' value={password} placeholder='Password' onChange={e => setPassword(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='country' name='country' value={country} placeholder='Country' onChange={e => setCountry(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='city' name='city' value={city} placeholder='City' onChange={e => setCity(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university' name='university' value={university} placeholder='University' onChange={e => setUniversity(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university-country' name='university-country' value={university_country} placeholder='University Country' onChange={e => setUniversityCountry(e.target.value)}/>
-                                        <input type='text' className='dashboard-form-control' id='university-city' name='university-city' value={university_city} placeholder='University City' onChange={e => setUniversityCity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='password' name='updated_password' value={updated_password} placeholder='Password' onChange={e => setUpdatedPassword(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='country' name='updated_country' value={updated_country} placeholder='Country' onChange={e => setUpdatedCountry(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='city' name='updated_city' value={updated_city} placeholder='City' onChange={e => setUpdatedCity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university' name='updated_university' value={updated_university} placeholder='University' onChange={e => setUpdatedUniversity(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university-country' name='updated_university_country' value={updated_university_country} placeholder='University Country' onChange={e => setUpdatedUniversityCountry(e.target.value)}/>
+                                        <input type='text' className='dashboard-form-control' id='university-city' name='updated_university_city' value={updated_university_city} placeholder='University City' onChange={e => setUpdatedUniversityCity(e.target.value)}/>
                                         {typeId === 3 &&
                                             <div>
-                                                <input type='text' className='form-control single-line' id='job' name='job' value={job} placeholder='Update Job' onChange={e => setJob(e.target.value)}/>
-                                                <input type='text' className='form-control' id='job-country' name='job-country' value={job_country} placeholder='Update Job Country' onChange={e => setJobCountry(e.target.value)}/>
-                                                <input type='text' className='form-control' id='job-city' name='job-city' value={job_city} placeholder='Update Job City' onChange={e => setJobCity(e.target.value)}/>
+                                                <input type='text' className='form-control single-line' id='job' name='updated_job' value={updated_job} placeholder='Job' onChange={e => setUpdatedJob(e.target.value)}/>
+                                                <input type='text' className='form-control' id='job-country' name='updated_job_country' value={updated_job_country} placeholder='Job Country' onChange={e => setUpdatedJobCountry(e.target.value)}/>
+                                                <input type='text' className='form-control' id='job-city' name='updated_job_city' value={updated_job_city} placeholder='Job City' onChange={e => setUpdatedJobCity(e.target.value)}/>
                                             </div>
                                         }
                                         <div className='dashboard-update-button'>

@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 
 const ScholarshipForms = () => {
 
-    const [user, setUser] = useState();
-    const [typeId, setTypeId] = useState();
+   
+    const [id, setId] = useState();
     const [type, setType] = useState();
     const [first_name, setFirstName] = useState();
     const [last_name, setLastName] = useState();
@@ -20,14 +20,11 @@ const ScholarshipForms = () => {
     const [city, setCity] = useState();
     const [university, setUniversity] = useState();
     const [createdAt, setCreatedAt] = useState();
-    const [error, setError] = useState();
-    const [profile_picture, setProfilePicture] = useState();
     
     const [student_degree, setStudentDegree] = useState();
     const [student_major, setStudentMajor] = useState();
     const [field_of_study, setFieldOfStudy] = useState();
     
-    const [scholarship, setScholarship] = useState();
     const [cycle, setCycle] = useState();
     const [degree, setDegree] = useState();
     const [major, setMajor] = useState();
@@ -48,6 +45,8 @@ const ScholarshipForms = () => {
         const token = localStorage.getItem("user")
         await axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
         .then(response => {
+            setId(response.data.id)
+            console.log(response, "RECENT")
             setFirstName(response.data.first_name)
             setLastName(response.data.last_name)
             setCountry(response.data.country)
@@ -57,30 +56,76 @@ const ScholarshipForms = () => {
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
         }).catch (err => {
-            setError(err)
+            console.log(err)
         });
     }
 
-    // const submitScholarship = async () => {
-    //     const token = localStorage.getItem("user")
-    //     axios.post(getUserApi, {degree: degree, major: major, semester_tuition_fee: semester_tuition_fee, monthly_allowance: monthly_allowance} ,
-    //     { headers: {"Authorization" : `Bearer ${token}`} } )
-    // }
-
-    // const submitStudentBuddyApplication = async () => {
-    //   const token = localStorage.getItem("user")
-    //   axios.post(getUserApi, {degree: student_degree, major: student_major, field: field_of_study} ,
-    //   { headers: {"Authorization" : `Bearer ${token}`} } )
-    // }
-
-    // const submitMentorBuddyApplication = async () => {
-    //   const token = localStorage.getItem("user")
-    //   axios.post(getUserApi, {degree: mentor_degree, major: mentor_major, study_field: study_field, work_field: work_field, company: company, position: position} ,
-    //   { headers: {"Authorization" : `Bearer ${token}`} } )
-    // }
-
     useEffect(() => { getUser() }, []);
 
+
+    const [scholarshipsWithCycle, setScholarshipsWithCycle] = useState(null)
+    const scholarshipsApi = "http://localhost:8080/scholarships/get-scholarships-cycle"
+    
+        const getScholarship = async () => {
+        await axios.get(scholarshipsApi)
+        .then(response => {
+            setScholarshipsWithCycle(response.data.response)})
+        .catch(err => {
+            console.log(err)
+        });
+    }
+    useEffect(() => { getScholarship() }, []);
+
+    const scholarshipCycleApi = "http://localhost:8080/scholarships/get-cycle/"
+
+    const [boostCycle, setBoostCycle] = useState(null)
+    const getBoostCycle = async () => {
+        await axios.get(scholarshipCycleApi + "Boost")
+        .then(response => {
+          setBoostCycle(response.data.response)})
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
+    const [launchCycle, setLaunchCycle] = useState(null)
+    const getlaunchCycle = async () => {
+        await axios.get(scholarshipCycleApi + "Launch")
+        .then(response => {
+          setLaunchCycle(response.data.response)})
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
+    useEffect(() => { getBoostCycle() }, []);
+    useEffect(() => { getlaunchCycle() }, []);
+
+    const handleCycle = (val) => {
+        const target_id = parseInt(val.target.value);
+        setCycle(target_id);
+    }
+    console.log(id, "HERRREEE")
+    const createScholarshipApplicationApi = 'http://localhost:8080/applications/scholarship'
+    const createScholarship = async () => {
+        const token = localStorage.getItem("user")
+        axios.post(createScholarshipApplicationApi, {user_id: id, cycle_id: cycle, degree: degree, major: major, semester_tuition_fee: semester_tuition_fee, monthly_allowance: monthly_allowance} ,
+        { headers: {"Authorization" : `Bearer ${token}`} } )
+    }
+
+    const createStudentBuddyApi = "http://localhost:8080/applications/student-buddy"
+    const createStudentBuddyApplication = async () => {
+        const token = localStorage.getItem("user")
+        axios.post(createStudentBuddyApi, {user_id: id, degree: student_degree, major: student_major, field: field_of_study} ,
+        { headers: {"Authorization" : `Bearer ${token}`} } )
+    }
+
+    const createMentorBuddyApi = "http://localhost:8080/applications/mentor-buddy"
+    const createMentorBuddyApplication = async () => {
+        const token = localStorage.getItem("user")
+        axios.post(createMentorBuddyApi, {user_id: id, degree: mentor_degree, major: mentor_major, study_field: study_field, work_field: work_field, company: company, position: position} ,
+        { headers: {"Authorization" : `Bearer ${token}`} } )
+    }
 
     if (localStorage.getItem('user') === null) {
         return (
@@ -120,15 +165,24 @@ const ScholarshipForms = () => {
                                       <Typography className="dashboard-form-title">Scholarship Application</Typography>
                                   </AccordionSummary>
                                   <AccordionDetails className="accordion-details">
-                                      <form className='UpdateUser' onSubmit={console.log('submitScholarship')}>
-                                          <input type='text' className='dashboard-form-control' id='scholarship' name='scholarship' value={scholarship} placeholder='Scholarship' onChange={e => setScholarship(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='cycle' name='cycle' value={cycle} placeholder='Cycle' onChange={e => setCycle(e.target.value)}/>
+                                      <form className='UpdateUser' onSubmit={createScholarship}>
+                                          <select className="user-type form-control single-line" name="scholarship" id="scholarship" onChange={handleCycle}>
+                                              <option className="user-type-option" value="" disabled selected hidden>Select Scholarship</option>
+                                              {scholarshipsWithCycle.map((scholarshipWithCycle) => {                                                
+                                                  return(
+                                                      <>
+                                                          {(boostCycle.id === scholarshipWithCycle.cycle.id)  &&  <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
+                                                          {(launchCycle.id === scholarshipWithCycle.cycle.id) && <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
+                                                      </>
+                                                   )
+                                              })}
+                                          </select>
                                           <input type='text' className='dashboard-form-control' id='degree' name='degree' value={degree} placeholder='Degree' onChange={e => setDegree(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='major' name='major' value={major} placeholder='Major' onChange={e => setMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='semester-tuition-fee' name='semester_tuition_fee' value={semester_tuition_fee} placeholder='Tuition Fee per Semester' onChange={e => setSemesterTuitionFee(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='monthly-allowance' name='monthly_allowance' value={monthly_allowance} placeholder='Monthly Allowance' onChange={e => setMonthlyAllowance(e.target.value)}/>
                                           <div className='dashboard-update-button'>
-                                              <button className="updateButton" type="submit"> Submit</button> 
+                                              <button className="updateButton" type="submit">Submit</button> 
                                           </div>
                                       </form>
                                   </AccordionDetails>
@@ -139,12 +193,12 @@ const ScholarshipForms = () => {
                                       <Typography className="dashboard-form-title">Student Buddy Application</Typography>
                                   </AccordionSummary>
                                   <AccordionDetails className="accordion-details">
-                                      <form className='UpdateUser' onSubmit={console.log('submitStudentBuddyApplication')}>
+                                      <form className='UpdateUser' onSubmit={createStudentBuddyApplication}>
                                           <input type='text' className='dashboard-form-control' id='student_degree' name='student_degree' value={student_degree} placeholder='Degree' onChange={e => setStudentDegree(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='student_major' name='student_major' value={student_major} placeholder='Major' onChange={e => setStudentMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='field_of_study' name='field_of_study' value={field_of_study} placeholder='Field of Study' onChange={e => setFieldOfStudy(e.target.value)}/>
                                           <div className='dashboard-update-button'>
-                                              <button className="updateButton" type="submit"> Submit</button> 
+                                              <button className="updateButton" type="submit">Submit</button> 
                                           </div>
                                       </form>
                                   </AccordionDetails>
@@ -155,7 +209,7 @@ const ScholarshipForms = () => {
                                       <Typography className="dashboard-form-title">Mentor Buddy Application</Typography>
                                   </AccordionSummary>
                                   <AccordionDetails className="accordion-details">
-                                      <form className='UpdateUser' onSubmit={console.log('submitMentorBuddyApplication')}>
+                                      <form className='UpdateUser' onSubmit={createMentorBuddyApplication}>
                                           <input type='text' className='dashboard-form-control' id='mentor_degree' name='mentor_degree' value={mentor_degree} placeholder='Degree' onChange={e => setMentorDegree(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='mentor_major' name='mentor_major' value={mentor_major} placeholder='Major' onChange={e => setMentorMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='study_field' name='study_field' value={study_field} placeholder='Field of Study' onChange={e => setStudyField(e.target.value)}/>
@@ -163,7 +217,7 @@ const ScholarshipForms = () => {
                                           <input type='text' className='dashboard-form-control' id='company' name='company' value={company} placeholder='Company' onChange={e => setCompany(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='position' name='position' value={position} placeholder='Position' onChange={e => setPosition(e.target.value)}/>
                                           <div className='dashboard-update-button'>
-                                              <button className="updateButton" type="submit"> Submit</button> 
+                                              <button className="updateButton" type="submit">Submit</button> 
                                           </div>
                                       </form>
                                   </AccordionDetails>

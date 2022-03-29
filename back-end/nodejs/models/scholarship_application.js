@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   Scholarship_Application.init({
     user_id: DataTypes.INTEGER,
     cycle_id: DataTypes.INTEGER,
-    scholarship_id: DataTypes.INTEGER,
     accepted: DataTypes.BOOLEAN,
     amount: DataTypes.INTEGER,
     currency: DataTypes.STRING,

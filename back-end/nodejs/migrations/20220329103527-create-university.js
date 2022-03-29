@@ -11,12 +11,6 @@ module.exports = {
       university: {
         type: Sequelize.STRING
       },
-      major: {
-        type: Sequelize.STRING
-      },
-      degree: {
-        type: Sequelize.STRING
-      },
       university_country: {
         type: Sequelize.STRING
       },

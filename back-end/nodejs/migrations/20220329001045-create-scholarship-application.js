@@ -1,54 +1,42 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Scholarship_Applications', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_type_id: {
+      user_id: {
         type: Sequelize.INTEGER
       },
-      university_id: {
+      cycle_id: {
         type: Sequelize.INTEGER
       },
-      first_name: {
+      scholarship_id: {
+        type: Sequelize.INTEGER
+      },
+      accepted: {
+        type: Sequelize.BOOLEAN
+      },
+      amount: {
+        type: Sequelize.INTEGER
+      },
+      currency: {
         type: Sequelize.STRING
       },
-      last_name: {
+      degree: {
         type: Sequelize.STRING
       },
-      email: {
+      major: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      semester_tuition_fee: {
+        type: Sequelize.INTEGER
       },
-      dob: {
-        type: Sequelize.DATEONLY
-      },
-      country_code: {
-        type: Sequelize.STRING
-      },
-      mobile_phone: {
-        type: Sequelize.STRING
-      },
-      sex: {
-        type: Sequelize.STRING
-      },
-      country: {
-        type: Sequelize.STRING
-      },
-      city: {
-        type: Sequelize.STRING
-      },
-      nationality: {
-        type: Sequelize.STRING
-      },
-      profile_picture: {
-        type: Sequelize.TEXT
+      monthly_allowance: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -61,6 +49,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Scholarship_Applications');
   }
 };

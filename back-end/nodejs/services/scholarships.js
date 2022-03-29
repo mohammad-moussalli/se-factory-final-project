@@ -1,4 +1,4 @@
-const model = require('../models')
+const model = require('../models');
 const { Sequelize, Op } = require('sequelize');
 
 module.exports = {
@@ -54,7 +54,6 @@ async function getScholarshipCycle(params) {
     }
     const now = new Date()
     const d = new Date("2021-01-01")
-    console.log(now, " ", new Date("2021-01-01"))
     const scholarship = await model.Scholarship_Cycle.findOne(
         {where: { scholarship_id: get_scholarship.id, 
                   start_date: {[Op.lt]: new Date()},
@@ -91,7 +90,6 @@ async function getById(id) {
     return await getScholarship(id);
 }
 
-/////validation is not working
 async function update(id, name) {
     const scholarship = await getScholarship(id);
 
@@ -101,14 +99,11 @@ async function update(id, name) {
         return 'Name "' + name + '" is already taken';
     }
 
-    // update params to scholarship and save but not working directly on postman
     await model.Scholarship.update(
         { name: name},	
         { where: { id: id } },	 
       )
     
-   // await scholarship.save();
-
     return "Update Successfully";
       
     ;

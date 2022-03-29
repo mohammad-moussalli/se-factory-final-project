@@ -17,20 +17,20 @@ function register(req, res, next) {
         .catch(err => res.status(400).json(err.message));
 }
 
-function login(req, res, next) {
+function login(req, res, err) {
     userServices.login(req.body)
         .then((response) => res.json(response))
-        .catch(next);
+        .catch(err);
 }
 function getUser(req, res, err) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
-    userServices.getUser(token)
+    userServices.getUser(authHeader)
         .then(user => res.json(user))
         .catch(err);
 }
 
-function getAllUsers(req, res, next) {
+function getAllUsers(req, res, err) {
     userServices.getAllUsers()
         .then(users => res.json(users))
         .catch(err => res.status(404).json({err, message: "Users not found"}));

@@ -51,8 +51,8 @@ const MenuPage = () => {
             <div className="menu-option volunteer-menu">
                 <p className='menu-option-title'>Volunteer</p>
                 <div className='volunteer-links'>                
-                    <Link to='/volunteer/buddy' className='menu-element'>Become A Buddy</Link>
-                    <Link to='/volunteer/team' className='menu-element'>Join The Team</Link>
+                    <Link to='/applications' className='menu-element'>Become A Buddy</Link>
+                    <Link to='/applications' className='menu-element'>Join The Team</Link>
                 </div>
             </div>
 

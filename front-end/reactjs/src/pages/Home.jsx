@@ -16,7 +16,7 @@ const HomePage = () => {
     }
 
     const redirectToVolunteerPage = () => {
-        navigate('/volunteer');
+        navigate('/applications');
     }
 
     return (

@@ -18,7 +18,7 @@ const BoostScholarship = () => {
   
   const navigate = useNavigate()
   const redirectToForms = () => {
-    navigate('/scholarship/forms');
+    navigate('/applications');
   }
 
   const redirectToScholarships = () => {

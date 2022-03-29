@@ -27,6 +27,8 @@ const ScholarshipForms = () => {
     const [student_major, setStudentMajor] = useState();
     const [field_of_study, setFieldOfStudy] = useState();
     
+    const [scholarship, setScholarship] = useState();
+    const [cycle, setCycle] = useState();
     const [degree, setDegree] = useState();
     const [major, setMajor] = useState();
     const [semester_tuition_fee, setSemesterTuitionFee] = useState();
@@ -79,6 +81,7 @@ const ScholarshipForms = () => {
 
     useEffect(() => { getUser() }, []);
 
+
     if (localStorage.getItem('user') === null) {
         return (
           <h1 className="dashboard">Please Register or Login to access this page</h1>
@@ -118,6 +121,8 @@ const ScholarshipForms = () => {
                                   </AccordionSummary>
                                   <AccordionDetails className="accordion-details">
                                       <form className='UpdateUser' onSubmit={console.log('submitScholarship')}>
+                                          <input type='text' className='dashboard-form-control' id='scholarship' name='scholarship' value={scholarship} placeholder='Scholarship' onChange={e => setScholarship(e.target.value)}/>
+                                          <input type='text' className='dashboard-form-control' id='cycle' name='cycle' value={cycle} placeholder='Cycle' onChange={e => setCycle(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='degree' name='degree' value={degree} placeholder='Degree' onChange={e => setDegree(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='major' name='major' value={major} placeholder='Major' onChange={e => setMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='semester-tuition-fee' name='semester_tuition_fee' value={semester_tuition_fee} placeholder='Tuition Fee per Semester' onChange={e => setSemesterTuitionFee(e.target.value)}/>

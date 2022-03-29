@@ -25,7 +25,7 @@ const LaunchScholarship = () => {
     navigate('/scholarships');
   }
   useEffect( () => {
-      axios.get(scholarshipCycleApi + "launch")
+      axios.get(scholarshipCycleApi + "Launch")
       .then(response => {
         setCycle(response.data.response)})
       .catch(err => {
@@ -81,7 +81,7 @@ const LaunchScholarship = () => {
         {cycle.cycle &&
           <div>
             <ScholarshipTag 
-              name = 'launch'
+              name = 'Launch'
               cycle={cycle.cycle}
               start_date={cycle.start_date}
               deadline={cycle.deadline}

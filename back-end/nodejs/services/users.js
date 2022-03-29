@@ -61,6 +61,7 @@ async function create(params) {
         nationality: params.nationality,
         profile_picture: params.profile_picture
     });
+
     if(params.user_type_id === 3){
         const user_id = await model.User.max('id');
         await model.Mentor.create({
@@ -79,6 +80,12 @@ async function create(params) {
 /// Update function not working (updating on database but not sending anyhting in postman)
 async function update(body, token) {
     let user =  await business_inteligence.getUser(token)
+
+    const university = await model.University.findOne({where:{id: user.university_id}})
+    const mentor = await model.Mentor.findOne({where:{user_id: user.id}})
+    console.log(university)
+    console.log(mentor)
+
     // validate
     // const userChanged = params.body.email && user.email !== params.body.email;
     // if (userChanged && await model.User.findOne({ where: { email: params.body.email } })) {
@@ -92,35 +99,58 @@ async function update(body, token) {
 
     // copy params to user and save
 
+    if(!body.university){
+        body.university = university.university;
+    }
+    if(!body.university_country){
+        body.university_country = university.university_country;
+    }
+    if(!body.university_city){
+        body.university_city = university.university_city;
+    }
     await model.University.update({
 
-        univeristy: body.university,
-        major: body.major,
-        degree: body.field,
+        university: body.university,
         university_country: body.university_country,
         university_city: body.university_city,
         }, {
             where: {id: user.university_id}
     })
 
-    await model.Mentor.update({
+    if(mentor){
+        if(!body.job){
+            body.job = mentor.job;
+        }
+        if(!body.job_country){
+            body.job_country = mentor.job_country;
+        }
+        if(!body.job_city){
+            body.job_city = mentor.job_city;
+        }
 
-        job: body.job,
-        job_country: body.job_country,
-        job_city: body.job_city,
-        }, {
-            where: {user_id: user.id}
-    })
+        await model.Mentor.update({
+
+            job: body.job,
+            job_country: body.job_country,
+            job_city: body.job_city,
+            }, {
+                where: {user_id: user.id}
+        })
+    }
+ 
     
-
+    if(!body.country){
+        body.country = user.country;
+    }
+    if(!body.city){
+        body.city = user.city;
+    }
+    if(!body.profile_picture){
+        body.profile_picture = user.profile_picture;
+    }
     await model.User.update({
         
-        first_name: body.first_name,
-        last_name: body.last_name,
-        password: body.passwords,
-        dob: body.dob,
-        country_code: body.country_code,
-        mobile_phone: body.mobile_phone,
+        password: body.password,
         country: body.country,
         city: body.city,
         profile_picture: body.profile_picture
@@ -139,12 +169,13 @@ function omitHash(user) {
 // if statement is not working only works if not valid
 async function getUser(token){
     const user = await business_inteligence.getUser(token);
-    const university = await model.University.findOne({ where: {id: user.university_id }});
-    const user_type = await model.User_Type.findOne({ where: {id: user.user_type_id }});
+    const university = await model.University.findOne({attributes: {exclude: ['id']}, where: {id: user.university_id }});
+    const user_type = await model.User_Type.findOne({attributes: {exclude: ['id']}, where: {id: user.user_type_id }});
     if (!user){
         return false;
     }
     const merged = Object.assign({}, user, university.dataValues, user_type.dataValues)
+    console.log(user_type)
     return merged;
 }
 

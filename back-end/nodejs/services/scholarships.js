@@ -58,7 +58,7 @@ async function getScholarshipCycle(params) {
         {where: { scholarship_id: get_scholarship.id, 
                   start_date: {[Op.lt]: new Date()},
                   deadline: {[Op.gt]: new Date()}},
-         attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'start_date', 'deadline', 'results', 'cycle']});
+         attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'id', 'scholarship_id', 'start_date', 'deadline', 'results', 'cycle']});
     if (!scholarship){
         return 'Scholarship cycle not found';
     }
@@ -78,7 +78,7 @@ async function getScholarshipsWithCycle() {
     const temp = scholarships.map( async (scholarship) => {
         let cycle =  await model.Scholarship_Cycle.findOne({
             where: {scholarship_id: scholarship.id}, 
-            attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'start_date', 'deadline', 'results', 'cycle']
+            attributes: [Sequelize.fn('max', Sequelize.col('start_date')), 'id', 'scholarship_id', 'start_date', 'deadline', 'results', 'cycle']
         })
         return {scholarship, cycle}
     })

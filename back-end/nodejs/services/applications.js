@@ -8,29 +8,28 @@ module.exports = {
 };
 
 
-async function createScholarshipApplication(params) {
-  
-    if (await model.Scholarship_Application.findOne({ where: { user_id: params.user_id, cycle_id: params.cycle_id } })) {
+async function createScholarshipApplication(body) {
+    console.log(body, "HEREE")
+    if (await model.Scholarship_Application.findOne({ where: { user_id: body.user_id, cycle_id: body.cycle_id } })) {
         return "You already submitted an application"
     }
     // save application
     await model.Scholarship_Application.create({
-        user_id: params.user_id,
-        cycle_id: params.cycle_id,
-        scholarship_id: params.scholarship_id,
-        accepted: '',
-        amount: '',
+        user_id: body.user_id,
+        cycle_id: body.cycle_id,
+        accepted: false,
+        amount: 0,
         currency: '',
-        degree: params.degree,
-        major: params.major,
-        semester_tuition_fee: params.semester_tuition_fee,
-        monthly_allowance: params.monthly_allowance          
+        degree: body.degree,
+        major: body.major,
+        semester_tuition_fee: body.semester_tuition_fee,
+        monthly_allowance: body.monthly_allowance          
     });
     return "Application created successfully"
 }
 
 async function createStudentBuddyApplication(params) {
-  
+    
     if (await model.Student_Buddy_Application.findOne({ where: { user_id: params.user_id} })) {
         return "You already submitted an application"
     }

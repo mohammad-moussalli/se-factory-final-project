@@ -3,3 +3,7 @@
 .App{
     font-family: 'Ubuntu', sans-serif;
 }
+
+.main-container{
+    min-height: 52vw;
+}

@@ -17,16 +17,15 @@ async function login({ email, password }) {
     const user = await model.User.findOne({ where: { email } });
 
     if (!user || !(await bcrypt.compare(password, user.password)))
-        return {message: 'Username or password is incorrect'};
+        return false;
 
     // authentication successful
     const token = jwt.sign({ email: user.email }, config.secret, { expiresIn: '7d' });
-    return {token: token };
+    return token;
 }
 
 
 async function create(params) {
-    console.log(params, "Hello")
 
     // validate
     if (await model.User.findOne({ where: { email: params.email } })) {
@@ -73,7 +72,7 @@ async function create(params) {
     }
     const token = jwt.sign({ email: params.email }, config.secret, { expiresIn: '7d' });
 
-    return {token: token}
+    return token;
 
 }
 
@@ -139,15 +138,18 @@ function omitHash(user) {
 
 // if statement is not working only works if not valid
 async function getUser(token){
-    const user = await business_inteligence.getUser(token)
+    const user = await business_inteligence.getUser(token);
+    const university = await model.University.findOne({ where: {id: user.university_id }});
+    const user_type = await model.User_Type.findOne({ where: {id: user.user_type_id }});
     if (!user){
-        return 'User not found';
-    } 
-    return user;
+        return false;
+    }
+    const merged = Object.assign({}, user, university.dataValues, user_type.dataValues)
+    return merged;
 }
 
 async function getAllUsers(){
-   const users = await model.User_Type.findAll();
+   const users = await model.User.findAll();
     if (!users){
         return 'Users not found';
     } 

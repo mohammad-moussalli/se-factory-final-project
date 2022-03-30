@@ -1,7 +1,7 @@
 const model = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const admin = require("../config/firebase");
+//const admin = require("../config/firebase");
 const config = require('../config/config.json');
 const business_inteligence = require('../business_intelligence/permissions')
 module.exports = {

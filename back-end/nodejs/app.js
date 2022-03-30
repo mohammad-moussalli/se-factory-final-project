@@ -11,6 +11,7 @@ var donorRouter = require('./routes/donors');
 var storyRouter = require('./routes/stories');
 var webinarRouter = require('./routes/webinars');
 var webinarQuestionsRouter = require('./routes/webinars_questions');
+var applicationsRouter = require('./routes/applications');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/donors', donorRouter);
 app.use('/stories', storyRouter);
 app.use('/webinars', webinarRouter);
 app.use('/webinar-questions', webinarQuestionsRouter);
+app.use('/applications', applicationsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

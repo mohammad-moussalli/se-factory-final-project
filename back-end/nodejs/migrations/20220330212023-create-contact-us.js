@@ -17,7 +17,7 @@ module.exports = {
       subject: {
         type: Sequelize.STRING
       },
-      messsage: {
+      message: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -11,7 +11,6 @@ module.exports = {
 
 
 async function createScholarshipApplication(body) {
-    console.log(body, "HEREE")
     if (await model.Scholarship_Application.findOne({ where: { user_id: body.user_id, cycle_id: body.cycle_id } })) {
         return "You already submitted an application"
     }

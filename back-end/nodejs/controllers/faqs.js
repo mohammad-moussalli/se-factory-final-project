@@ -36,7 +36,6 @@ function _delete(req, res, next) {
         .catch(next);
 }
 
-/// Not working properly
 function deleteCategoryFaqs(req, res, next) {
     faqsServices.deleteCategoryFaqs(req.params)
         .then((message) => res.json({ message: message }))

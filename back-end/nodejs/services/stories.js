@@ -35,15 +35,12 @@ async function getStory(id) {
     return story;
 }
 
-/////validation is not working
 async function update(id, story) {
     const get_story = await getStory(id);
-    // validate
     if (!get_story.id){
         return "Story not found"
     }
 
-    // update params to story and save but not working directly on postman
     await get_story.update(
         { story: story},	
         { where: { id: id } },	 

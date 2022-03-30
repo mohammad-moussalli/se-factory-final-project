@@ -8,21 +8,23 @@ import { useEffect, useState} from 'react'
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 
+
 const RecordsPage = () => {
 
     const [successStories, setSuccessStories] = useState(null)
 
     const successStoriesApi = "http://localhost:8080/stories"
 
-    useEffect(async () => {
+    const getSuccessStory = async () => {
         await axios.get(successStoriesApi)
         .then((response) => {
             setSuccessStories(response.data)
         })
         .catch(err => {
             console.log(err)
-        });
-        }, [])
+        })
+    }
+    useEffect(() => { getSuccessStory() }, [])
 
     if (!successStories){
         return <Spinner/>

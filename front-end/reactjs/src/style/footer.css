@@ -1,17 +1,145 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
 
-.footer{
+.footer {
     background-color: white;
     display: flex;
     position: static;
-    height: 100px;
+    height: 200px;
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    margin-top:auto; 
+    margin-top: auto;
     border-top: solid black 1px;
 }
 
 .menu-footer{
     display: none;
+}
+
+.footer-rights{
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.footer-aboutus{
+    background-color: #007EC6;
+    opacity: 0.9;
+    border: 1px solid #007EC6;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.footer-team{
+    background-color: #007EC6;
+    opacity: 0.9;
+    border: 1px solid #007EC6;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.footer-contactus{
+    background-color: #007EC6;
+    opacity: 0.9;
+    border: 1px solid #007EC6;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.footer1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 150px;
+    justify-content: space-evenly;
+}
+
+.footer2{
+    align-items: center;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.footer2-row1{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+
+@media (max-width: 768px) { 
+    .footer {
+        padding: 0px 30px;
+    }
+
+    .footer-aboutus{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    
+    .footer-team{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .footer-contactus{
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+}
+
+@media (max-width: 340px) { 
+
+    .footer-aboutus{
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    
+    
+    .footer-team{
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    
+    .footer-contactus{
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 400;;
+    }
+
 }

@@ -9,7 +9,7 @@ const SuccessStories = ({name, story}) => {
         <div className="success-stories-container">
           <div className="success-stories">
 
-                  return(
+                
                     <div className="success-stories">
                       <div className='success-stories-image'>
                         <img src={img} alt="profile-pic"></img>
@@ -19,7 +19,7 @@ const SuccessStories = ({name, story}) => {
                         <p className='success-stories-user'>{name}</p>
                       </div>
                     </div>
-                  )
+                  
       
             </div>
         </div>

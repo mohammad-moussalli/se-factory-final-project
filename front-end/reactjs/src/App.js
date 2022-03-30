@@ -23,6 +23,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './style/app.css'
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
               <Route exact path='/webinars' element={ <Webinars /> } />
               <Route exact path='/volunteer' element={ <Volunteer /> } />
               <Route exact path='/applications' element={ <ApplicationForms /> } />
+              <Route exact path='/contact-us' element={ <ContactUs /> } />
             </Routes>
           </div>
           <Footer />

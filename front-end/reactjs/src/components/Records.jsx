@@ -80,7 +80,7 @@ const Records = () => {
                         {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
                         return(
                             <>
-                              <option className="records-scholarship-cycle-option" value={scholarshipRecord.scholarship_cycle.id}>{scholarshipRecord.scholarship_cycle.cycle}</option>
+                              <option className="records-scholarship-cycle-option" value={scholarshipRecord.id}>{scholarshipRecord.cycle}</option>
                             </> 
                         )
                         })}
@@ -114,7 +114,7 @@ const Records = () => {
                             {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
                         return(
                               <>
-                                  {cycleId === scholarshipRecord.scholarship_cycle.id &&
+                                  {cycleId === scholarshipRecord.id &&
                                       <div className='number-of-applicants'>{scholarshipRecord.cycle_applicants}</div>                            
                                   }
                               </> 
@@ -126,14 +126,11 @@ const Records = () => {
                         <div className='records-applicant-recepient-table-col3'>
                             <p className='records-applicant-recepient-text'>Recepient</p>
                             {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
-                                console.log(cycleId === scholarshipRecord.scholarship_cycle.cycle , '1')
-                                console.log(scholarshipRecord.scholarship_cycle.id, '2')
-                                console.log(cycleId, '3')
                         return(
             
                               <>
-                                  {cycleId === scholarshipRecord.scholarship_cycle.id &&
-                                      <div className='number-of-recepients'>{scholarshipRecord.cycle_recepientss}</div>                            
+                                  {cycleId === scholarshipRecord.id &&
+                                      <div className='number-of-recepients'>{scholarshipRecord.cycle_recepients}</div>                            
                                   }
                               </> 
                         )

@@ -193,9 +193,9 @@ const Register = () => {
                             </div>
                         }
 
-                        <div className='form-group form-group-class single-line'>
-                            <input type='file' className='form-control single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={uploadImage}/>
-                        </div>
+                        {/* <div className='form-group form-group-class single-line'>
+                            <input type='file' className='form-control input-profile-picture single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={uploadImage}/>
+                        </div> */}
                         
                         <div className='form-group form-group-class single-line'>
                             <button type='submit' className='register-btn'>Create Account</button>

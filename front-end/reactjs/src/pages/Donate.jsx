@@ -25,14 +25,25 @@ const Donate = () => {
 
     let donations = 'donations'
     const [showWireTransferTag, setShowWireTransferTag] = useState(false);
+    const [showBenevity, setShowBenevity] = useState(false);
 
-    const onClick = () => {
+
+    const openWireTransfer = () => {
         donations = 'opaque-donations'
         setShowWireTransferTag(true);
     }
 
-    const closeTag = () => {
+    const closeWireTransfer = () => {
         setShowWireTransferTag(false);
+    }
+
+    const openBenevity = () => {
+        setShowBenevity(true);
+
+    }
+
+    const closeBenevity = () => {
+        setShowBenevity(false);
     }
 
     const [successStory, setSuccessStory] = useState(null)
@@ -61,13 +72,13 @@ const Donate = () => {
 
             <div className="donation-tags">
                 <div className="donation-row donation-row2">
-                    <DonationTag  className="donation-tag col1-tag" text="Direct Bank Wire Transfer" image={BankTransfer} onClick={onClick}/> 
+                    <DonationTag  className="donation-tag col1-tag" text="Direct Bank Wire Transfer" image={BankTransfer} onClick={openWireTransfer}/> 
                     <DonationTag className="donation-tag col2-tag" image={PayPal}/>
                 </div>
 
                 <div className="donation-row donation-row3">
-                    <DonationTag className="donation-tag col1-tag" image={GoFundMe}/>
-                    <DonationTag className="donation-tag col2-tag" image={Benevity}/>
+                    <DonationTag className="donation-tag col1-tag" image={GoFundMe} link='https://www.gofundme.com/f/kaffi'/>
+                    <DonationTag className="donation-tag col2-tag" image={Benevity} onClick={openBenevity}/>
                 </div>
             </div>
             <div className="donation-info doantion-row">
@@ -101,14 +112,24 @@ const Donate = () => {
                         <p className='wire-transfer-text'>Bank Name: GLS Bank</p>
                         <p className='wire-transfer-text'>Currency: EUR</p>
                         <div className="close-btn-container">
-                            <Button text="Close" className="close-btn" onClick = {closeTag} />
+                            <Button text="Close" className="close-btn" onClick = {closeWireTransfer} />
                         </div>
 
                     </div>
-                </div>:null
-            }
+                </div>:
+                null}
+
+            {showBenevity ? 
+                <div className="benevity">
+                    <div className="benevity-content">
+                        <p className='benevity-text'>We are now on Benevity, a donation platform that several companies are partnered with, like Google & Microsoft. These companies typically match employee donations, thus doubling your contribution to us. If your company is partnered with Benevity, consider us for your donation.</p>
+                        <div className="close-btn-container">
+                            <Button text="Close" className="benevity-close-btn" onClick = {closeBenevity} />
+                        </div>
+                    </div>
+                </div>
+                :null}
         </div>
-    
     )}
 }
 

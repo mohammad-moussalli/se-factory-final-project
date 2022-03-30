@@ -1,3 +1,4 @@
+import React from 'react'
 import DonationTag from "../components/DonationTag";
 import BankTransfer from "../assets/images/bank-transfer.png";
 import Benevity from "../assets/images/benevity.png";
@@ -15,6 +16,7 @@ import axios from 'axios';
 import Spinner from '../components/Spinner';
 
 const Donate = () => {
+
 
     const navigate = useNavigate();
     const redirectToRecordsPage = () => {
@@ -38,20 +40,17 @@ const Donate = () => {
   
     const [error, setError]  = useState();
 
-    useEffect(() => {
-        axios.get(successStoryApi)
+
+    const getSuccessStories = async () => {
+        await axios.get(successStoryApi)
         .then((response) => {
             setSuccessStory(response.data)
-            console.log(response)
         })
         .catch(err => {
             console.log(err)
-        });
-    }, [])
-  
-    const items = successStory.slice(0, 2)
-
-    
+        })
+    }
+    useEffect(() => { getSuccessStories() }, [])
 
     if (!successStory){
         return <Spinner/>
@@ -84,12 +83,8 @@ const Donate = () => {
                     <Button text="View All Success Stories & Records" className="donate-success-stories-button" onClick={redirectToRecordsPage}/>
                 </div>
                 <div className="donate-success-stories-row2">
-                    {Array.isArray(successStory) && items.map((items) => {
-                        return(
-                            <>
-                                <SuccessStories story={items.story} name={items.name}/>
-                            </>
-                        )
+                    {Array.isArray(successStory) && successStory.slice(0, 2).map((items) => {
+                        return <SuccessStories story={items.story} name={items.name}/>
                     })}
                 </div>
             </div>

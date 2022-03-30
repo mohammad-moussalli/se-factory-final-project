@@ -99,10 +99,6 @@
 
 
 @media (max-width: 768px) { 
-    .footer {
-        padding: 0px 30px;
-    }
-
     .footer-aboutus{
         font-size: 14px;
         font-weight: 500;

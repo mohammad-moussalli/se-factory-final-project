@@ -36,10 +36,7 @@ const Donate = () => {
     }
 
     const [successStory, setSuccessStory] = useState(null)
-    const successStoryApi = "http://localhost:8080/stories"
-  
-    const [error, setError]  = useState();
-
+    const successStoryApi = "http://localhost:8080/stories/"
 
     const getSuccessStories = async () => {
         await axios.get(successStoryApi)

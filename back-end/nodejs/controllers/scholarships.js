@@ -11,6 +11,7 @@ module.exports = {
     createCycle,
     getScholarshipCycle,
     getScholarshipsWithCycle,
+    getAllScholarshipsWithCycle
 };
 
 function getAll(req, res, next) {
@@ -41,6 +42,11 @@ function getScholarshipCycle(req, res, next) {
 
 function getScholarshipsWithCycle(req, res, next) {
     scholarshipServices.getScholarshipsWithCycle()
+        .then((response) => res.json({response : response}))
+        .catch(next);}
+
+function getAllScholarshipsWithCycle(req, res, next) {
+    scholarshipServices.getAllScholarshipsWithCycle()
         .then((response) => res.json({response : response}))
         .catch(next);}
 

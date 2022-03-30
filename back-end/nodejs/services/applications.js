@@ -63,8 +63,8 @@ async function createMentorBuddyApplication(params) {
 }
 
 async function getScholarshipRecords() {
-    const scholarships_cycles = await model.Scholarship_Cycle.findAll();
-    const cycle_records = scholarships_cycles.map( async (scholarship_cycle) => {
+    const scholarship_cycle = await model.Scholarship_Cycle.findAll();
+    const cycle_records = scholarship_cycle.map( async (scholarship_cycle) => {
     let cycle_applicants = await model.Scholarship_Application.count({
         where: { cycle_id: scholarship_cycle.id },
         attributes: ['cycle_id']
@@ -75,8 +75,9 @@ async function getScholarshipRecords() {
     });
     let scholarship = await scholarships.getScholarship(scholarship_cycle.scholarship_id)
 
-        return {scholarship, cycle_applicants, cycle_recepients}
+        return {cycle_applicants, cycle_recepients}
     })
-    const all_records = await Promise.all(cycle_records)
+    const all_records = await Promise.all(scholarship_cycle, cycle_records)
+    console.log(all_records)
     return all_records
 }

@@ -8,5 +8,5 @@ router.post('/login', user.login);
 router.get('/', user.getUser)
 router.get('/all', user.getAllUsers)
 router.post('/update', user.update)
-// router.post('/image', user.uploadImage)
+router.post('/image', user.uploadImage)
 module.exports = router;

@@ -1,4 +1,4 @@
-import image from '../assets/images/about-us1.png';
+import image from '../assets/images/TeamImage.png';
 import '../style/team-tag.css';
 
 const TeamTag = () => {

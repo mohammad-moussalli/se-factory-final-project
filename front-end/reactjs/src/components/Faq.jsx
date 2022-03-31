@@ -8,9 +8,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
 const Faq = () => {
-
 
     const [FaqCategories, setFaqCategories] = useState(null)
     const [CategoryFaqs, setCategoryFaqs] = useState(null)
@@ -35,8 +33,6 @@ const Faq = () => {
             console.log(err)
         });
     }, [])
-
-
 
     if (!FaqCategories){
        return <Spinner/>

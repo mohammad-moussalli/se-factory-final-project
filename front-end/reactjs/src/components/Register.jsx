@@ -9,8 +9,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { register, reset } from '../features/auth/authSlice'
 
-
-
 const Register = () => {
 
     const [formData, setFormData] = useState({
@@ -36,7 +34,6 @@ const Register = () => {
 
     const [typeId, setTypeId] = useState();
     const [error, setError] = useState(false);
-
 
     const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     

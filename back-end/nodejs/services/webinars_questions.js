@@ -42,7 +42,6 @@ async function createQuestions(params) {
 async function update(params) {
     const webinar_question = await getQuestion(params.id);
     // validate
-    console.log(webinar_question)
     if(webinar_question.message === "Webinar question not found"){
         return 'Webinar not found'
     }

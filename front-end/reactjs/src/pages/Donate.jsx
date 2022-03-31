@@ -17,7 +17,6 @@ import Spinner from '../components/Spinner';
 
 const Donate = () => {
 
-
     const navigate = useNavigate();
     const redirectToRecordsPage = () => {
         navigate('/records');
@@ -26,7 +25,6 @@ const Donate = () => {
     let donations = 'donations'
     const [showWireTransferTag, setShowWireTransferTag] = useState(false);
     const [showBenevity, setShowBenevity] = useState(false);
-
 
     const openWireTransfer = () => {
         donations = 'opaque-donations'

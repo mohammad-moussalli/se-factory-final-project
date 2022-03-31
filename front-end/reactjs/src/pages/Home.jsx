@@ -3,7 +3,6 @@ import Button from "../components/Button";
 import Tag from "../components/Tag";
 import { useNavigate } from 'react-router-dom';
 
-
 const HomePage = () => {
 
     const navigate = useNavigate();

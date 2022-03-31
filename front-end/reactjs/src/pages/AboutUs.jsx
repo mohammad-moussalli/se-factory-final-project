@@ -9,7 +9,6 @@ import '../style/about-us.css';
 
 const AboutUs = () => {
 
-  
   const navigate = useNavigate()
   const redirect= () => {
     navigate('/team');

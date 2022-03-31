@@ -127,8 +127,7 @@ const Records = () => {
                             <p className='records-applicant-recepient-text'>Recepient</p>
                             {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
                         return(
-            
-                              <>
+                               <>
                                   {cycleId === scholarshipRecord.id &&
                                       <div className='number-of-recepients'>{scholarshipRecord.cycle_recepients}</div>                            
                                   }
@@ -142,7 +141,6 @@ const Records = () => {
                       <div className='donut-chart'>  </div>
                     </div>
                 </div>
-
             </div>
           )}
 }

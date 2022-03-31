@@ -2,13 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import '../style/donation-info.css';
 
-
 const DonationInfo = () => {
-
 
   const navigate = useNavigate();
   const redirect = () => {
-      navigate('/faq');
+      navigate('/scholarships');
   }
   return (
     <div className='donation-info'>

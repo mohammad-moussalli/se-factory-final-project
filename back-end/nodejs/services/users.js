@@ -83,8 +83,7 @@ async function update(body, token) {
 
     const university = await model.University.findOne({where:{id: user.university_id}})
     const mentor = await model.Mentor.findOne({where:{user_id: user.id}})
-    console.log(university)
-    console.log(mentor)
+   
 
     // validate
     // const userChanged = params.body.email && user.email !== params.body.email;
@@ -175,7 +174,6 @@ async function getUser(token){
         return false;
     }
     const merged = Object.assign({}, user, university.dataValues, user_type.dataValues)
-    console.log(user_type)
     return merged;
 }
 

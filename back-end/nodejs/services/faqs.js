@@ -62,7 +62,6 @@ async function update(params) {
 
 async function _delete(id) {
     const faq = await getFaq(id);
-    console.log(faq);
     if (!faq.id){
         return 'Faq is not found';
     }

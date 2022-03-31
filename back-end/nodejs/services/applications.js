@@ -78,6 +78,5 @@ async function getScholarshipRecords() {
         return {cycle_applicants, cycle_recepients}
     })
     const all_records = await Promise.all(scholarship_cycle, cycle_records)
-    console.log(all_records)
     return all_records
 }

@@ -11,8 +11,6 @@ import pen from '../assets/images/edit-pen.png'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Contact = () => {
 
 const [editPicture, setEditPicture] = useState();
@@ -24,8 +22,6 @@ const openEditPicture = () => {
 const closeEditPicture = () => {
     setEditPicture(false)
 }
-
-
         return ( 
         <div className='dashboard-component'>
             <div className='dashboard-forms'>

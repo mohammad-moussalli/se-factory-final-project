@@ -6,44 +6,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import image from '../assets/images/DashboardProfilePicture.png';
 import '../style/dashboard.css'
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import pen from '../assets/images/edit-pen.png'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Dashboard = () => {
 
-    // const [formData, setFormData] = useState({
-    //     first_name: '',
-    //     last_name: '',
-    //     email: '',
-    //     password: '',
-    //     dob: '',
-    //     country_code: '',
-    //     mobile_phone: '',
-    //     country: '',
-    //     city: '',
-    //     profile_picture: '',
-    //     university: '',
-    //     university_country: '',
-    //     university_city: '',
-    //     job: '',
-    //     job_country: '', 
-    //     job_city: '' 
-    // })
-
-    const [user, setUser] = useState();
     const [typeId, setTypeId] = useState();
-    const [email, setEmail] = useState();
     const [type, setType] = useState();
     const [first_name, setFirstName] = useState();
     const [last_name, setLastName] = useState();
-    const [password, setPassword] = useState();
     const [updated_password, setUpdatedPassword] = useState();
 
-    const [dob, setDOB] = useState();
     const [country, setCountry] = useState();
     const [updated_country, setUpdatedCountry] = useState();
 
@@ -53,29 +28,19 @@ const Dashboard = () => {
     const [university, setUniversity] = useState();
     const [updated_university, setUpdatedUniversity] = useState();
 
-    const [university_country, setUniversityCountry] = useState();
     const [updated_university_country, setUpdatedUniversityCountry] = useState();
 
-    const [university_city, setUniversityCity] = useState();
     const [updated_university_city, setUpdatedUniversityCity] = useState();
 
-    const [job, setJob] = useState();
     const [updated_job, setUpdatedJob] = useState();
 
-    const [job_country, setJobCountry] = useState();
     const [updated_job_country, setUpdatedJobCountry] = useState();
 
-    const [job_city, setJobCity] = useState();
     const [updated_job_city, setUpdatedJobCity] = useState();
 
     const [createdAt, setCreatedAt] = useState();
     const [profile_picture, setProfilePicture] = useState();
     const [updated_profile_picture, setUpdatedProfilePicture] = useState();
-
-    const [error, setError]  = useState();
-
-
-    // const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
     
     const getUserApi = "http://localhost:8080/users/"
     const updateUserApi = `http://localhost:8080/users/update/`
@@ -88,17 +53,21 @@ const Dashboard = () => {
             setLastName(response.data.last_name)
             setCountry(response.data.country)
             setCity(response.data.city)
-            setDOB(response.data.dob)
             setUniversity(response.data.university)
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
         }).catch (err => {
             console.log(err)
-            setError(err)
         });
     }
 
     const updateUser = async () => {
+        const token = localStorage.getItem("user")
+        await axios.post(updateUserApi, { password: updated_password, country: updated_country, city: updated_city, university: updated_university, university_country: updated_university_country, university_city: updated_university_city, job: updated_job, job_country: updated_job_country, job_city: updated_job_city, profile_picture: updated_profile_picture} ,
+        { headers: {"Authorization" : `Bearer ${token}`} } )
+    }
+
+    const uploadImage = async () => {
         const token = localStorage.getItem("user")
         await axios.post(updateUserApi, { password: updated_password, country: updated_country, city: updated_city, university: updated_university, university_country: updated_university_country, university_city: updated_university_city, job: updated_job, job_country: updated_job_country, job_city: updated_job_city, profile_picture: updated_profile_picture} ,
         { headers: {"Authorization" : `Bearer ${token}`} } )
@@ -139,18 +108,18 @@ const Dashboard = () => {
                     </div>
 
                     {editPicture &&
-                        <div className='edit-profile-picture-tag'>
+                        <form className='edit-profile-picture-tag'>
                             <div className='edit-profile-picture-header'>
                                 <p className='edit-profile-picture-title'>Edit Profile Picture</p>
                             </div>
-                            <div className='edit-profile-picture-container'>
-                                <p>Upload</p>
-                            </div>
+                            <form className='edit-profile-picture-container' onSubmit={uploadImage}>
+                                <input type='file' label='Upload Image'/>
+                            </form>
                             <div className='edit-profile-picture-buttons'>
                                 <Button className='edit-profile-picture-cancel-button' onClick={closeEditPicture} text='Cancel'/>
-                                <Button className='edit-profile-picture-update-button' text='Save'/>
+                                <button className='edit-profile-picture-update-button' type='submit'>Save</button>
                             </div>
-                        </div>
+                        </form>
                     }
 
                     <div className='dashboard-sidebar-details'>
@@ -194,7 +163,6 @@ const Dashboard = () => {
                                         <div className='dashboard-update-button'>
                                             <button className="updateButton" type="submit"> Update</button> 
                                         </div>
-                                        {/* <Fragment><h6>{error}</h6></Fragment> */}
                                     </form>
                                 </AccordionDetails>
                             </Accordion> 

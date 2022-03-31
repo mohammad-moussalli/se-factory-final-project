@@ -11,9 +11,7 @@ const ContactUs = () => {
     const [subject, setSubject] = useState(null);
     const [message, setMessage]  = useState(null);
 
-    console.log('new')
     const contactUs = async () => {
-        console.log("HERE")
         axios.post(contactUsApi, { full_name: fullname, email: email, message: message, subject: subject})
     }
 

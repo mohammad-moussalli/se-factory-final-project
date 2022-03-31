@@ -11,7 +11,6 @@ const Footer = () => {
 
     let footer = 'footer';
         
-    
     const location = useLocation();
     if (location.pathname === '/menu' || location.pathname === '/register' || location.pathname === '/login'){
         footer = 'menu-footer';
@@ -21,8 +20,6 @@ const Footer = () => {
     const facebook_link = 'https://www.facebook.com/kaffi.lb/';
     const twitter_link = 'https://twitter.com/Kaffi_lb';
     const linkedin_link = 'https://www.linkedin.com/company/kaffi-lb';
-
-
 
     return (
         <div className={`footer ${footer}`}>

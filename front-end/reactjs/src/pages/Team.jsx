@@ -7,10 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Team = () => {
 
-  
   const navigate = useNavigate()
   const redirect = () => {
-    navigate('/records');
+      navigate('/records');
   }
 
   return (
@@ -51,7 +50,6 @@ const Team = () => {
           <TeamTag />
           <TeamTag />
           <TeamTag />
-
         </div>
       </div>
 

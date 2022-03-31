@@ -1,17 +1,12 @@
 import Button from '../components/Button';
 import { useNavigate, Link } from 'react-router-dom';
-import { useState } from 'react';
 import '../style/menu.css';
 
 const MenuPage = () => {
 
-    //const [showNavbar, setShowNavbar] = useState(false)
-    //const onClick = () => setShowNavbar(!showNavbar)
-
     const navigate = useNavigate();
     const redirectToHomePage = () => {
         navigate('/');
-
     }    
 
     return(
@@ -59,8 +54,8 @@ const MenuPage = () => {
             <div className="menu-option academic-menu">
                 <p className='menu-option-title'>Academic Advising</p>
                 <div className='academic-links'>                
-                    <Link to='/buddy/find' onhov className='menu-element'>Find A Buddy</Link>
-                    <Link to='/cv' className='menu-element'>CV Tips</Link>
+                    {/* <Link to='/buddy/find' onhov className='menu-element'>Find A Buddy</Link>
+                    <Link to='/cv' className='menu-element'>CV Tips</Link> */}
                     <Link to='/webinars' className='menu-element'>Webinars</Link>
                 </div>
             </div>

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { login, reset } from '../features/auth/authSlice'
-import Spinner from '../components/Spinner'
-import '../style/login.css'
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
+import '../style/login.css';
 
 function Login() {
   const [formData, setFormData] = useState({

@@ -10,12 +10,10 @@ import { useEffect, useState } from "react";
 
 const ScholarshipForms = () => {
 
-   
     const [id, setId] = useState();
     const [type, setType] = useState();
     const [first_name, setFirstName] = useState();
     const [last_name, setLastName] = useState();
-    const [dob, setDOB] = useState();
     const [country, setCountry] = useState();
     const [city, setCity] = useState();
     const [university, setUniversity] = useState();
@@ -51,7 +49,6 @@ const ScholarshipForms = () => {
             setLastName(response.data.last_name)
             setCountry(response.data.country)
             setCity(response.data.city)
-            setDOB(response.data.dob)
             setUniversity(response.data.university)
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
@@ -61,7 +58,6 @@ const ScholarshipForms = () => {
     }
 
     useEffect(() => { getUser() }, []);
-
 
     const [scholarshipsWithCycle, setScholarshipsWithCycle] = useState(null)
     const scholarshipsApi = "http://localhost:8080/scholarships/get-scholarships-cycle"

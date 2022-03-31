@@ -10,7 +10,6 @@ import EligibiltyCriteria from '../components/EligibiltyCriteria';
 import HelpfulTips from '../components/HelpfulTips';
 import FaqsTag from '../components/FaqsTag';
 
-
 const LaunchScholarship = () => {
   
   const [cycle, setCycle] = useState(null)

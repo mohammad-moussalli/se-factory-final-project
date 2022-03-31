@@ -1,7 +1,6 @@
 import '../style/success-story.css';
 import img from '../assets/images/SuccessStoryProfile.png';
 
-
 const SuccessStory = ({story, name}) => {
 
   return (
@@ -18,7 +17,6 @@ const SuccessStory = ({story, name}) => {
             </div>
         </div>
       )
-  
 }
 
 export default SuccessStory

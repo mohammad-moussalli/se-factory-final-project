@@ -7,7 +7,6 @@
 .about-us-row1{
     display: flex;
     align-items: center;
-
 }
 
 .about-us-row1-col1{
@@ -62,7 +61,6 @@ iframe{
     border: none;
     margin: 10px;
     padding: 0;
-  
 }
 
 .team-button{
@@ -106,13 +104,11 @@ margin: 40px 0px 20px;
     .about-us-icons-row2 {
         width: 100vw;
         justify-content: space-between;
-
     }
 
     .about-us-icons-row1 {
         width: 100vw;
         justify-content: space-between;
-
     }
 
     .about-us1{
@@ -234,25 +230,21 @@ margin: 40px 0px 20px;
     .about-us-row3 {
         flex-direction: column;
         align-items: baseline;
-
     }
 
     .about-us-row1 {
         flex-direction: column;
         align-items: baseline;
-
     }
 
     .about-us-icons-row1 {
         flex-direction: column;
         align-items: center;
-
     }
 
     .about-us-icons-row2 {
         flex-direction: column;
         align-items: center;
-
     }
 
     .about-us{
@@ -279,7 +271,6 @@ margin: 40px 0px 20px;
         font-size: 30px;
         text-align: center;
         margin: 0px 0px 20px;
-
     }
 
     .about-us-row1-col1 {

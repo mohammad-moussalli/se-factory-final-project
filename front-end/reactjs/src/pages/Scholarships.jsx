@@ -13,9 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const Scholarships = () => {
 
   const navigate = useNavigate()
-  const redirect = () => {
-    navigate('/faq');
-}
+
   return (
     <div className='scholarship'>
       <div className='scholarship-page-header'>

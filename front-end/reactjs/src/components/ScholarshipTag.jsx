@@ -28,8 +28,6 @@ const ScholarshipTag = ({name, cycle, start_date, deadline, results}) => {
                 <p className='cycle-details1'>Announcing Results</p>
                 <p className='cycle-details2'>{results}</p>  
             </div>
-           
-
         </div>
     </div>
   )

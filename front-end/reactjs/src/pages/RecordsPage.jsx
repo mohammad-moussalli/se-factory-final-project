@@ -8,11 +8,9 @@ import { useEffect, useState} from 'react'
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 
-
 const RecordsPage = () => {
 
     const [successStories, setSuccessStories] = useState(null)
-
     const successStoriesApi = "http://localhost:8080/stories"
 
     const getSuccessStory = async () => {

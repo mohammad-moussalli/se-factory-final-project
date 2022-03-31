@@ -9,38 +9,57 @@ module.exports = {
     delete: _delete,
 }
 
-function create(req, res, next) {
-    webinarServices.create(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function create(req, res, err) {
+    try{
+        const message = await webinarServices.create(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getWebinar(req, res, next) {
-    webinarServices.getWebinar(req.params.id)
-        .then((response) => res.json(response))
-        .catch(next);
+async function getWebinar(req, res, err) {
+    try{
+        const response = await webinarServices.getWebinar(req.params.id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getWebinars(req, res, next) {
-    webinarServices.getWebinars(req.params.id)
-        .then((response) => res.json(response))
-        .catch(next);
+async function getWebinars(req, res, err) {
+    try{
+        const response = await webinarServices.getWebinars(req.params.id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getWebinarByCountry(req, res, next) {
-    webinarServices.getWebinarByCountry(req.body)
-        .then((response) => res.json(response))
-        .catch(next);
+async function getWebinarByCountry(req, res, err) {
+    try{
+        const response = await webinarServices.getWebinarByCountry(req.body)
+        return res.status(200).json(response)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function update(req, res, next) {
-    webinarServices.update(req.body)
-    .then((message) => res.json({message : message}))
-    .catch(next);
+async function update(req, res, err) {
+    try{
+        const message = await webinarServices.update(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function _delete(req, res, next) {
-    webinarServices.delete(req.params.id)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function _delete(req, res, err) {
+    try{
+        const message = await webinarServices.delete(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }

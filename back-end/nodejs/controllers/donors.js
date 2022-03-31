@@ -5,14 +5,21 @@ module.exports = {
     getDonations
 }
 
-function create(req, res, next) {
-    donorServices.create(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function create(req, res, err) {
+    try{
+        const message = await donorServices.create(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getDonations(req, res, next) {
-    donorServices.getDonations(req.body)
-        .then((donations) => res.json({donations: donations}))
-        .catch(next);
+async function getDonations(req, res, err) {
+    try{
+        const donations = await donorServices.getDonations(req.body)
+        return res.status(200).res.json({donations: donations})
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }

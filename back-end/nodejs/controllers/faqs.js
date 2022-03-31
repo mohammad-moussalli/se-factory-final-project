@@ -9,35 +9,58 @@ module.exports = {
     deleteCategoryFaqs
 }
 
-function create(req, res, next) {
-    faqsServices.create(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);}
-
-function getFaq(req, res, next) {
-    faqsServices.getFaq(req.params.id)
-        .then((response) => res.json(response))
-        .catch(next);}
-
-function getFaqs(req, res, next) {
-    faqsServices.getFaqs(req.params.category_id)
-        .then((response) => res.json(response))
-        .catch(next);}
-
-function update(req, res, next) {
-    faqsServices.update(req.body)
-    .then((message) => res.json({message : message}))
-    .catch(next);
+async function create(req, res, err) {
+    try{
+        const message = await faqsServices.create(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function _delete(req, res, next) {
-    faqsServices.delete(req.params.id)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function getFaq(req, res, err) {
+    try{
+        const response = await faqsServices.getFaq(req.params.id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function deleteCategoryFaqs(req, res, next) {
-    faqsServices.deleteCategoryFaqs(req.params)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function getFaqs(req, res, err) {
+    try{
+        const response = await faqsServices.getFaqs(req.params.category_id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
+
+async function deleteCategoryFaqs(req, res, err) {
+    try{
+        const message = await faqsServices.deleteCategoryFaqs(req.params)
+        return res.status(200).json({ message: message })
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function update(req, res, err) {
+    try{
+        const message = await faqsServices.update(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function _delete(req, res, err) {
+    try{
+        const message = await faqsServices.delete(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+

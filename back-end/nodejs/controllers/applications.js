@@ -7,26 +7,39 @@ module.exports = {
     getScholarshipRecords
 }
 
-function createScholarshipApplication(req, res, next) {
-    applicationServices.createScholarshipApplication(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function createScholarshipApplication(req, res, err) {
+    try{
+        const message = await applicationServices.createScholarshipApplication(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
     }
+}
 
-function createStudentBuddyApplication(req, res, next) {
-    applicationServices.createStudentBuddyApplication(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function createStudentBuddyApplication(req, res, err) {
+    try{
+        const message = await applicationServices.createStudentBuddyApplication(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
     }
+}
 
-function createMentorBuddyApplication(req, res, next) {
-    applicationServices.createMentorBuddyApplication(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function createMentorBuddyApplication(req, res, err) {
+    try{
+        const message = await applicationServices.createMentorBuddyApplication(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
     }
+}
 
-function getScholarshipRecords(req, res, next) {
-    applicationServices.getScholarshipRecords()
-        .then((response) => res.json({response : response}))
-        .catch(next);
+async function getScholarshipRecords(req, res, err) {
+    try{
+        const response = await applicationServices.getScholarshipRecords()
+        return res.status(200).json({response: response})
+    }catch(err){
+        (res.status(400).json(err));
     }
+}
+

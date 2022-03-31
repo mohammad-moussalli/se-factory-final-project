@@ -1,50 +1,65 @@
 const userServices = require ("../services/users")
 
-
 module.exports = {
     register,
     login,
     getUser,
     getAllUsers,
     update,
-    // uploadImage
+    uploadImage
 };
 
-
-function register(req, res, next) {
-    userServices.create(req.body)
-        .then((response) => res.json(response))
-        .catch(err => res.status(400).json(err.message));
+async function register(req, res, next) {
+    try{
+        const response = await userServices.create(req.body)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function login(req, res, err) {
-    userServices.login(req.body)
-        .then((response) => res.json(response))
-        .catch(err);
-}
-function getUser(req, res, err) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    userServices.getUser(authHeader)
-        .then(user => res.json(user))
-        .catch(err);
+async function login(req, res, err) {
+    try{
+        const response = await userServices.login(req.body)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getAllUsers(req, res, err) {
-    userServices.getAllUsers()
-        .then(users => res.json(users))
-        .catch(err => res.status(404).json({err, message: "Users not found"}));
+async function getUser(req, res, err) {
+    try{
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+        const user = await userServices.getUser(token)
+        return res.status(200).json(user)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function update(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    userServices.update(req.body, token)
-        .then(user => res.json(user))
-        .catch(next);
+async function getAllUsers(req, res, err) {
+    try{
+        const users = await userServices.getAllUsers()
+        return res.status(200).json(users)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-// function uploadImage(req, res) {
-//     console.log('req.files image:', req.files[0]);
-//     userServices.uploadImage(req).then(image => console.log(image, "url"))
-// }
+async function update(req, res, next) {
+    try{
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+        const user = await userServices.update(req.body, token)
+        return res.status(200).json(user)
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+function uploadImage(req, res) {
+    console.log('req.files image:', req.files[0]);
+    userServices.uploadImage(req).then(image => console.log(image, "url"))
+}

@@ -9,30 +9,48 @@ module.exports = {
     _delete,
 };
 
-function getAll(req, res, next) {
-    storyServices.getAll()
-        .then(story => res.json(story))
-        .catch(next);
+async function getAll(req, res, err) {
+    try{
+        const story = await storyServices.getAll()
+        return res.status(200).json(story)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function create(req, res, next) {
-    storyServices.create(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);}
-
-function getStory(req, res, next) {
-    storyServices.getStory(req.params.id)
-        .then((message) => res.json({message : message}))
-        .catch(next);}
-
-function update(req, res, next) {
-    storyServices.update(req.body.id, req.body.story)
-        .then(story => res.json(story))
-        .catch(next);
+async function create(req, res, err) {
+    try{
+        const message = await storyServices.create(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function _delete(req, res, next) {
-    storyServices.delete(req.params.id)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function getStory(req, res, err) {
+    try{
+        const message = await storyServices.getStory(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function update(req, res, err) {
+    try{
+        const story = await storyServices.update(req.body.id, req.body.story)
+        return res.status(200).json(story)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function _delete(req, res, err) {
+    try{
+        const message = storyServices.delete(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }

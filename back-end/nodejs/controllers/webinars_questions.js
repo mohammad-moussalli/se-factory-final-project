@@ -9,38 +9,57 @@ module.exports = {
     delete: _delete,
 }
 
-function createQuestions(req, res, next) {
-    webinarQuestionServices.createQuestions(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function createQuestions(req, res, err) {
+    try{
+        const message = await webinarQuestionServices.createQuestions(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getQuestion(req, res, next) {
-    webinarQuestionServices.getQuestion(req.params.id)
-        .then((response) => res.json(response))
-        .catch(next);
+async function getQuestion(req, res, err) {
+    try{
+        const response = await webinarQuestionServices.getQuestion(req.params.id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function getQuestions(req, res, next) {
-    webinarQuestionServices.getQuestions(req.params.webinar_id)
-        .then((response) => res.json(response))
-        .catch(next);
+async function getQuestions(req, res, err) {
+    try{
+        const response = await webinarQuestionServices.getQuestions(req.params.webinar_id)
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function update(req, res, next) {
-    webinarQuestionServices.update(req.body)
-    .then((message) => res.json({message : message}))
-    .catch(next);
+async function update(req, res, err) {
+    try{
+        const response = await webinarQuestionServices.update(req.body)
+        return res.status(200).json({message : message})
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function _delete(req, res, next) {
-    webinarQuestionServices.delete(req.params.id)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function deleteQuestions(req, res, err) {
+    try{
+        const message = await webinarQuestionServices.deleteQuestions(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function deleteQuestions(req, res, next) {
-    webinarQuestionServices.deleteQuestions(req.body)
-        .then((message) => res.json({ message: message }))
-        .catch(next);
+async function _delete(req, res, err) {
+    try{
+        const message = await webinarQuestionServices.delete(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }

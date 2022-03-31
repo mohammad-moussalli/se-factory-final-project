@@ -8,33 +8,49 @@ module.exports = {
     delete: _delete,
 }
 
-function create(req, res, next) {
-    console.log(req.body)
-    faqsCategoryServices.create(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);}
-
-function getAll(req, res, next) {
-    faqsCategoryServices.getAll()
-        .then((response) => res.json(response))
-        .catch(next);}
-
-
-
-function getCategory(req, res, next) {
-    faqsCategoryServices.getCategoryId(req.params.id)
-        .then(category => res.json(category))
-        .catch(next);
+async function create(req, res, err) {
+    try{
+        const message = await faqsCategoryServices.create(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function update(req, res, next) {
-    faqsCategoryServices.update(req.body)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function getAll(req, res, err) {
+    try{
+        const response = await faqsCategoryServices.getAll()
+        return res.status(200).json(response)
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
 
-function _delete(req, res, next) {
-    faqsCategoryServices.delete(req.params.id)
-        .then((message) => res.json({message : message}))
-        .catch(next);
+async function getCategory(req, res, err) {
+    try{
+        const category = await faqsCategoryServices.getCategoryId(req.params.id)
+        return res.status(200).res.json(category)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
 }
+
+async function update(req, res, err) {
+    try{
+        const message = await faqsCategoryServices.update(req.body)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function _delete(req, res, err) {
+    try{
+        const message = await faqsCategoryServices.delete(req.params.id)
+        return res.status(200).json({message : message})
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+

@@ -30,12 +30,10 @@ const Register = () => {
         job_city: '' 
     })
 
-    const uploadImageApi = "http://localhost:8080/users/image";
-
     const [typeId, setTypeId] = useState();
     const [error, setError] = useState(false);
 
-    const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, profile_picture, university, university_country, university_city, job, job_country, job_city} = formData
+    const { first_name, last_name, email, password, dob, country_code, mobile_phone, country, city, university, university_country, university_city, job, job_country, job_city} = formData
     
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -73,22 +71,6 @@ const Register = () => {
     const handleType = (val) => {
         const id = parseInt(val.target.value);
         setTypeId(id);
-    }
-
-    const uploadImage = (e) => {
-        let imageFile = e.target.files[0];
-        if (imageFile && imageFile.type.startsWith('image')) {
-          var formData = new FormData();
-          formData.append('image', imageFile, imageFile.name);
-
-          axios.post(uploadImage, formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            }}
-          ).then((image) => console.log(image, "url"))
-        } else {
-
-        }
     }
 
     return (
@@ -189,10 +171,6 @@ const Register = () => {
                                 </div>
                             </div>
                         }
-
-                        {/* <div className='form-group form-group-class single-line'>
-                            <input type='file' className='form-control input-profile-picture single-line' id='profile_picture' name='profile_picture' value={profile_picture} placeholder='Upload a Profile Picture' onChange={uploadImage}/>
-                        </div> */}
                         
                         <div className='form-group form-group-class single-line'>
                             <button type='submit' className='register-btn'>Create Account</button>

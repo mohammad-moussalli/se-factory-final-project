@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 const cors = require('cors');
+const fileupload = require('express-fileupload');
 
 var usersRouter = require('./routes/users');
 var scholarshipRouter = require('./routes/scholarships');
@@ -12,12 +13,15 @@ var storyRouter = require('./routes/stories');
 var webinarRouter = require('./routes/webinars');
 var webinarQuestionsRouter = require('./routes/webinars_questions');
 var applicationsRouter = require('./routes/applications');
+var relationshipRouter = require('./routes/relationships');
 
 var app = express();
+app.use(fileupload())
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
 
 app.use('/users', usersRouter);
 app.use('/scholarships', scholarshipRouter);
@@ -29,6 +33,7 @@ app.use('/stories', storyRouter);
 app.use('/webinars', webinarRouter);
 app.use('/webinar-questions', webinarQuestionsRouter);
 app.use('/applications', applicationsRouter);
+app.use('/mentorship', relationshipRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

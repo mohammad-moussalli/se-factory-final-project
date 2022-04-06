@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"); 
+
+.contact-tag{
+    border-radius: 23px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0px 0px 8px 0.5px #bfbfbf;
+    margin: 10px;
+    max-height: 300px;
+    text-align: center;
+    align-items: center;
+
+}
+
+.contact-tag-text{
+max-height: 150px;
+}
+
+.contact-tag-image{
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.contact-tag-name{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: rgba(0, 126, 195, 1);
+    
+}
+
+.contact-tag-title{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;    
+}
+
+.contact-tag-role{
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+
+}
+
+.contact-tag-button {
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media(max-width:550px){
+    .contact-tag{
+        width: 250px;
+        height: 400px;
+    }
+    
+    .contact-tag-text{
+        height: 200px;
+    }
+    
+    .contact-tag-image{
+        height: 200px;
+    }
+}

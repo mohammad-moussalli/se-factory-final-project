@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import pen from '../assets/images/edit-pen.png'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
 
 const Dashboard = () => {
 
@@ -45,6 +47,9 @@ const Dashboard = () => {
     const getUserApi = "http://localhost:8080/users/"
     const updateUserApi = `http://localhost:8080/users/update/`
 
+    const test2Api = `http://localhost:8080/users/test2`
+
+
     const getUser = async () => {
         const token = localStorage.getItem("user");
         axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
@@ -60,20 +65,70 @@ const Dashboard = () => {
             console.log(err)
         });
     }
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    const GoogleAuthentication = async () => {
+        const code = searchParams.get("code");
+        console.log(code)
+        await axios.post(test2Api, { code } )
+        }
+    
     const updateUser = async () => {
         const token = localStorage.getItem("user")
         await axios.post(updateUserApi, { password: updated_password, country: updated_country, city: updated_city, university: updated_university, university_country: updated_university_country, university_city: updated_university_city, job: updated_job, job_country: updated_job_country, job_city: updated_job_city, profile_picture: updated_profile_picture} ,
         { headers: {"Authorization" : `Bearer ${token}`} } )
     }
 
-    const uploadImage = async () => {
-        const token = localStorage.getItem("user")
-        await axios.post(updateUserApi, { password: updated_password, country: updated_country, city: updated_city, university: updated_university, university_country: updated_university_country, university_city: updated_university_city, job: updated_job, job_country: updated_job_country, job_city: updated_job_city, profile_picture: updated_profile_picture} ,
-        { headers: {"Authorization" : `Bearer ${token}`} } )
-    }
+    const [fileInputState, setFileInputState] = useState('');
+    const [previewSource, setPreviewSource] = useState('');
+    const [selectedFile, setSelectedFile] = useState();
+    const [successMsg, setSuccessMsg] = useState('');
 
-    useEffect(() => { getUser() }, []);
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        previewFile(file);
+        setSelectedFile(file);
+        setFileInputState(e.target.value);
+    };
+
+    const previewFile = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setPreviewSource(reader.result);
+        };
+    };
+
+    const handleSubmitFile = (e) => {
+        e.preventDefault();
+        if (!selectedFile) return;
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            uploadImage(reader.result);
+        };
+    };
+    const uploadimageApi = `http://localhost:8080/users/upload-image`
+
+    const uploadImage = async (base64EncodedImage) => {
+        try {
+            await fetch(uploadimageApi, {
+                method: 'POST',
+                body: JSON.stringify({ data: base64EncodedImage }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            setFileInputState('');
+            setPreviewSource('');
+            setSuccessMsg('Image uploaded successfully');
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => { 
+        // GoogleAuthentication()
+        getUser() 
+    }, []);
 
     const handleType = (val) => {
         const id = parseInt(val.target.value);
@@ -94,6 +149,42 @@ const Dashboard = () => {
     const redirectToApplcations = () => {
     navigate('/applications');
     }
+   
+    const [file, setFile] = useState('');
+    const [filename, setFilename] = useState('Choose File');
+    const [uploadedFile, setUploadedFile] = useState({});
+    const [message, setMessage] = useState('');
+    
+    const onChange = e => {
+        setFile(e.target.files[0]);
+        setFilename(e.target.files[0].name);
+    };
+    
+    const onSubmit = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+        const res = await axios.post(uploadimageApi, formData, {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            },});
+    
+        const { fileName, filePath } = res.data;
+    
+        setUploadedFile({ fileName, filePath });
+    
+        setMessage('File Uploaded');
+        } catch (err) {
+        if (err.response.status === 500) {
+            setMessage('There was a problem with the server');
+        } else {
+            setMessage(err.response.data.msg);
+        }
+        }
+
+    }
 
     if (localStorage.getItem('user') == null) {
         return (
@@ -108,20 +199,19 @@ const Dashboard = () => {
                     </div>
 
                     {editPicture &&
-                        <form className='edit-profile-picture-tag'>
+                        <form className='edit-profile-picture-tag' onSubmit={handleSubmitFile}>
                             <div className='edit-profile-picture-header'>
                                 <p className='edit-profile-picture-title'>Edit Profile Picture</p>
                             </div>
-                            <form className='edit-profile-picture-container' onSubmit={uploadImage}>
-                                <input type='file' label='Upload Image'/>
-                            </form>
+                            <div className='edit-profile-picture-container'>
+                                <input type="file" name='image' id="upload-piture" value={fileInputState} multiple accept="image/*" onChange={handleFileInputChange} />
+                            </div>
                             <div className='edit-profile-picture-buttons'>
                                 <Button className='edit-profile-picture-cancel-button' onClick={closeEditPicture} text='Cancel'/>
                                 <button className='edit-profile-picture-update-button' type='submit'>Save</button>
                             </div>
                         </form>
                     }
-
                     <div className='dashboard-sidebar-details'>
                     <div div className='dashboard-sidebar-fullname'>
                             <div className='dashboard-sidebar-details-data dashboard-user-name'>{first_name} &nbsp;</div>

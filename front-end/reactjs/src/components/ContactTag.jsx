@@ -3,6 +3,12 @@ import '../style/contact-tag.css';
 import Button from './Button';
 
 const ContactTag = () => {
+
+    let text = 'Connect';
+    const onClick = () => {
+        text = 'Chat'
+    }
+    
   return (
     <div className='contact-tag'>
         <div className='contact-tag-image'>
@@ -20,7 +26,7 @@ const ContactTag = () => {
             
         </div>
 
-        <Button className='contact-tag-button' text='Connect'/>
+        <Button className='contact-tag-button' text={text} onClick={onClick}/>
     </div>
   )
 }

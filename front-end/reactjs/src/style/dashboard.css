@@ -23,6 +23,11 @@
 
 }
 
+.dashboard-profile-image{
+    border-radius: 200px;
+    width: 200px;
+}
+
 .dashboard-user-name{
     font-size: 25px;
     font-weight: 700;

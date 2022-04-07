@@ -3,7 +3,9 @@ import TeamTag from '../components/TeamTag';
 import Button from '../components/Button';
 import '../style/team.css'
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Spinner from '../components/Spinner'
 
 const Team = () => {
 
@@ -12,7 +14,24 @@ const Team = () => {
       navigate('/records');
   }
 
-  return (
+  const [team, setTeam] = useState(null)
+  const teamApi = "http://localhost:8080/team/"
+
+  const getTeam = ( () => {
+    axios.get(teamApi)
+    .then(response => {
+        setTeam(response.data)
+    }).catch(err => {
+        console.log(err)
+    })
+})
+
+useEffect(() => {getTeam()}  , [])
+
+if (!team){
+  return <Spinner/>
+} else{
+   return (
     <div className='team'>
       
       <div className='header'>
@@ -26,11 +45,16 @@ const Team = () => {
         </div>
 
         <div className='board-pictures'>
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
+          {Array.isArray(team) && team.map((member) => {
+            return(
+              <>
+                {member.type === 'board' ? 
+                  <TeamTag name={member.name} image={member.profile_picture} position={member.position} role={member.role}/>
+                  : null
+                }
+              </>
+            )
+          })}
         </div>
       </div>
 
@@ -40,16 +64,16 @@ const Team = () => {
         </div>
 
         <div className='members-pictures'>
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
-          <TeamTag />
+        {Array.isArray(team) && team.map((member) => {
+            return(
+              <>
+                {member.type === 'member' ? 
+                  <TeamTag name={member.name} image={member.profile_picture} position={member.position} role={member.role}/>
+                  : null
+                }
+              </>
+            )
+          })}
         </div>
       </div>
 
@@ -75,6 +99,7 @@ const Team = () => {
 
     </div>
   )
+  }
 }
 
 export default Team

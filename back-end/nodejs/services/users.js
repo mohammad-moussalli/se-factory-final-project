@@ -4,14 +4,114 @@ const bcrypt = require('bcryptjs');
 //const admin = require("../config/firebase");
 const config = require('../config/config.json');
 const business_inteligence = require('../business_intelligence/permissions')
+const queryString = require('query-string');
+const { cloudinary } = require('../config/cloudinary');
+
+
+var express = require('express');
+var router = express.Router();
+var axios = require('axios');
+
+// var google = require('googleapis');
+
+// var querystring = require('querystring');
+
 module.exports = {
     create,
     login,
     update,
     getUser,
     getAllUsers,
-    // uploadImage
+    // getGoogleAuthURL,
+    // getGoogleUser
+    updatePicture
 };
+
+// function getTokens({
+//   code,
+//   clientId,
+//   clientSecret,
+//   redirectUri,
+// }) {
+
+//   /*
+//   Returns:
+//   Promise<{
+//     access_token: string;
+//     expires_in: Number;
+//     refresh_token: string;
+//     scope: string;
+//     id_token: string;
+//   }>
+//   */
+//   const url = 'https://oauth2.googleapis.com/token';
+//   const values = {
+//     code,
+//     client_id: clientId,
+//     client_secret: clientSecret,
+//     redirect_uri: redirectUri,
+//     grant_type: 'authorization_code',
+//   };
+//   console.log(values)
+//   return axios
+//     .post(url, queryString.stringify(values), {
+//       headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded',
+//       },
+//     })
+//     .then((res) => res.data)
+//     .catch((error) => {
+//       throw new Error(error.message);
+//     });
+// }
+
+// async function getGoogleUser(code) {
+// console.log(code)
+//   const {id_token, access_token} = await getTokens({
+//     code,
+//     clientId: config.development.client_id,
+//     clientSecret: config.development.client_secret,
+//     redirectUri: "http://localhost:3000/dashboard"
+//   })
+//   // Fetch the user's profile with the access token and bearer
+//   console.log('hi2')
+
+//   const googleUser = await axios
+//     .get(
+//       `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
+//       {
+//         headers: {
+//           Authorization: `Bearer ${id_token}`,
+//         },
+//       },
+//     )
+//     .then(res => 
+//       {console.log(res.data)
+//       res.data})
+//     .catch(error => {
+//       throw new Error(error.message);
+//     });
+
+//   return googleUser;
+// }
+
+// function getGoogleAuthURL() {
+//   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+  
+//   const options = {
+//     redirect_uri: `http://localhost:3000/dashboard`,
+//     client_id: config.development.client_id,
+//     access_type: 'offline',
+//     response_type: 'code',
+//     prompt: 'consent',
+//     scope: [
+//       'https://www.googleapis.com/auth/userinfo.profile',
+//       'https://www.googleapis.com/auth/userinfo.email',
+//     ].join(' '),
+//   };
+
+//   return `${rootUrl}?${queryString.stringify(options)}`;
+// }
 
 async function login({ email, password }) {
     const user = await model.User.findOne({ where: { email } });
@@ -59,7 +159,7 @@ async function create(params) {
         country: params.country,
         city: params.city,
         nationality: params.nationality,
-        profile_picture: params.profile_picture
+        profile_picture:'https://res.cloudinary.com/kaffi-lb/image/upload/v1649278237/kaffi-lb/AvatarProfilePicture_aw0wtq.png',
     });
 
     if(params.user_type_id === 3){
@@ -77,7 +177,6 @@ async function create(params) {
 
 }
 
-/// Update function not working (updating on database but not sending anyhting in postman)
 async function update(body, token) {
     let user =  await business_inteligence.getUser(token)
 
@@ -185,85 +284,20 @@ async function getAllUsers(){
     return users;
 }
 
-// async function uploadImage(req){
-//     const BusBoy = require("busboy");
-//     const path = require("path");
-//     const os = require("os");
-//     const fs = require("fs");
-//     console.log('req.files outside: ', req.files);
-//     const filepath = path.join(os.tmpdir(), req.files[0].originalname);
-//     const imageToUpload = { filepath, mimetype: req.files[0].mimetype };
 
-//     admin
-//     .storage()
-//     .bucket()
-//     .upload(imageToUpload.filepath, {
-//       resumable: false,
-//       metadata: {
-//         metadata: {
-//           contentType: imageToUpload.mimetype,
-//         },
-//       },
-//     })
-//     .then(() => {
-//       imageUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.STORAGE_BUCKET}/o/${imageFileName}?alt=media`;
-//       return imageUrl;
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       return res.status(500).json({ error: err.code });
-//     });
+async function updatePicture(body, token){
+    let user =  await business_inteligence.getUser(token)
+    const fileStr = body.data;
+    const uploaded = await cloudinary.uploader.upload(fileStr, {
+        upload_preset: 'ml_default',
+    });
+    await model.User.update({
+        profile_picture: uploaded.url
+      }, {
+          where: {id: user.id}
+      })
   
-    // const busboy = new BusBoy({ headers: req.headers });
-    // req.pipe(busboy); 
-    // let imageFileName;
-    // let imageToUpload = {};
-    // let imageUrl;
-
-    // console.log("outside", req.headers)
-  
-    // busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
-
-    // console.log("inside", file, filename)
+    return uploaded.url
+}
 
 
-    //   if (mimetype !== "image/jpeg" && mimetype !== "image/png") {
-    //     return res.status(400).json({ error: "Wrong file type submitted" });
-    //   }
-    //   //to get file type (png, jpeg)
-    //   const imageExtension = filename.split(".")[filename.split(".").length - 1];
-    //   imageFileName = `${Math.random(
-    //     Math.random() * 10000000000
-    //   )}.${imageExtension}`;
-    //   const filepath = path.join(os.tmpdir(), imageFileName);
-    //   imageToUpload = { filepath, mimetype };
-    //   const fiiile = fs.createWriteStream(filepath);
-    // });
-
-    // busboy.on('error', (err) => { console.log(err, "error") })
-  
-    // busboy.on("finish", () => {
-    //     console.log("finish", imageToUpload)
-    //   admin
-    //     .storage()
-    //     .bucket()
-    //     .upload(imageToUpload.filepath, {
-    //       resumable: false,
-    //       metadata: {
-    //         metadata: {
-    //           contentType: imageToUpload.mimetype,
-    //         },
-    //       },
-    //     })
-    //     .then(() => {
-    //       imageUrl = `https://firebasestorage.googleapis.com/v0/b/${process.env.STORAGE_BUCKET}/o/${imageFileName}?alt=media`;
-    //       return imageUrl;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //       return res.status(500).json({ error: err.code });
-    //     });
-    // });
-  
-    // busboy.end(req.rawBody);
-//  }

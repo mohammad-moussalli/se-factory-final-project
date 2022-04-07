@@ -16,6 +16,7 @@ var applicationsRouter = require('./routes/applications');
 var relationshipRouter = require('./routes/relationships');
 var teamRouter = require('./routes/team');
 var blogRouter = require('./routes/blogs');
+var reportRouter = require('./routes/reports');
 
 var app = express();
 app.use(fileupload())
@@ -45,6 +46,7 @@ app.use('/applications', applicationsRouter);
 app.use('/mentorship', relationshipRouter);
 app.use('/team', teamRouter);
 app.use('/blogs', blogRouter);
+app.use('/reports', reportRouter);
 
 
 app.use(function(req, res, next) {

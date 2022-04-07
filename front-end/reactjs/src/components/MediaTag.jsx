@@ -1,6 +1,6 @@
 import '../style/media-tag.css';
 
-const MediaTag = ({link, link_text, title, subtitle, screenshot}) => {
+const MediaTag = ({link, title, subtitle, screenshot}) => {
   return (
     <div className='media-tag'>
         <div className='media-tag-screenshot-container'>
@@ -8,7 +8,7 @@ const MediaTag = ({link, link_text, title, subtitle, screenshot}) => {
           <div className='media-tag-title'>{title}</div>
         </div>
         <div className='media-tag-subtitle'>{subtitle}</div>
-        <div className='media-tag-link'><a href={link} target="_blank">{link_text} </a></div>
+        <div className='media-tag-link'><a href={link} target="_blank"> View Details </a></div>
     </div>
   )
 }

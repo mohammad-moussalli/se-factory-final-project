@@ -90,7 +90,7 @@ const Donate = () => {
                 </div>
                 <div className="donate-success-stories-row2">
                     {Array.isArray(successStory) && successStory.slice(0, 2).map((items) => {
-                        return <SuccessStories story={items.story} name={items.name}/>
+                        return <SuccessStories story={items.story} name={items.name} picture={items.picture}/>
                     })}
                 </div>
             </div>

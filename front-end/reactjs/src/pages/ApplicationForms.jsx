@@ -44,7 +44,6 @@ const ScholarshipForms = () => {
         await axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
         .then(response => {
             setId(response.data.id)
-            console.log(response, "RECENT")
             setFirstName(response.data.first_name)
             setLastName(response.data.last_name)
             setCountry(response.data.country)
@@ -101,7 +100,6 @@ const ScholarshipForms = () => {
         const target_id = parseInt(val.target.value);
         setCycle(target_id);
     }
-    console.log(id, "HERRREEE")
     const createScholarshipApplicationApi = 'http://localhost:8080/applications/scholarship'
     const createScholarship = async () => {
         const token = localStorage.getItem("user")
@@ -164,11 +162,11 @@ const ScholarshipForms = () => {
                                       <form className='UpdateUser' onSubmit={createScholarship}>
                                           <select className="user-type form-control single-line" name="scholarship" id="scholarship" onChange={handleCycle}>
                                               <option className="user-type-option" value="" disabled selected hidden>Select Scholarship</option>
-                                              {scholarshipsWithCycle.map((scholarshipWithCycle) => {                                                
+                                              {scholarshipsWithCycle.map((scholarshipWithCycle) => {  
                                                   return(
                                                       <>
-                                                          {(boostCycle.id === scholarshipWithCycle.cycle.id)  &&  <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
-                                                          {(launchCycle.id === scholarshipWithCycle.cycle.id) && <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
+                                                          {boostCycle && (boostCycle.id === scholarshipWithCycle.cycle.id)  &&  <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
+                                                          {launchCycle && (launchCycle.id === scholarshipWithCycle.cycle.id) && <option className="user-type-option" value={scholarshipWithCycle.cycle.id}>{scholarshipWithCycle.scholarship.name} {scholarshipWithCycle.cycle.cycle}</option>}
                                                       </>
                                                    )
                                               })}

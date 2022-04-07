@@ -62,7 +62,7 @@ const RecordsPage = () => {
                         {Array.isArray(successStories) && successStories.map((successStory) => {
                             return(
                                 <>
-                                    <SuccessStory story={successStory.story} name={successStory.name} />
+                                    <SuccessStory story={successStory.story} name={successStory.name} picture={successStory.picture} />
                                 </>
                             )
                         })}

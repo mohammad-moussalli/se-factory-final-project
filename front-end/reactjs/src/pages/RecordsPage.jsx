@@ -13,6 +13,9 @@ const RecordsPage = () => {
     const [successStories, setSuccessStories] = useState(null)
     const successStoriesApi = "http://localhost:8080/stories"
 
+    const [reports, setReports] = useState(null)
+    const reportsApi = "http://localhost:8080/reports"
+
     const getSuccessStory = async () => {
         await axios.get(successStoriesApi)
         .then((response) => {
@@ -22,7 +25,19 @@ const RecordsPage = () => {
             console.log(err)
         })
     }
-    useEffect(() => { getSuccessStory() }, [])
+
+    const getReports = async () => {
+        await axios.get(reportsApi)
+        .then((response) => {
+            setReports(response.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    useEffect(() => { getSuccessStory();
+                        getReports() 
+                    }, [])
 
     if (!successStories){
         return <Spinner/>
@@ -59,14 +74,16 @@ const RecordsPage = () => {
                         <p className='reports-title'>Latest Reports</p>
                     </div>
                     <div className='reports-row2'>
-                        <div className='cycle-report'>
-                            <img className='report-cycle-image' src={image} alt="logo"></img>
-                            <Button text="View Fall 2022 Records" className="report-cycle-button"/>
-                        </div>
-                        <div className='cycle-report'>
-                            <img className='report-cycle-image' src={image} alt="logo"></img>
-                            <Button text="View Spring 2022 Records" className="report-cycle-button"/>
-                        </div>
+                        {Array.isArray(reports) && reports.map((report) => {
+                            return(
+                                <div className='cycle-report'>
+                                    <img className='report-cycle-image' src={report.screenshot} alt="logo"></img>
+                                    {/* <Link text={`View ${report.title} Records`} className="report-cycle-button"/> */}
+                                    <div className='report-cycle-button'><a className='href-records' href={report.link} target="_blank"> View {report.title} Details </a></div>
+
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

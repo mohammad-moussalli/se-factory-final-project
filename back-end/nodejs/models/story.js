@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Story.init({
-    user_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    story: DataTypes.STRING
+    story: DataTypes.STRING,
+    picture: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Story',

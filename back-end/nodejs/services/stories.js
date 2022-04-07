@@ -14,16 +14,11 @@ async function getAll() {
 
 async function create(params) {
     // validate
-    if (await model.Story.findOne({ where: { user_id: params.id } })) {
-        return "User already exists";
-    }
-
-    const user = await model.User.findOne({ where: { id: params.id} });
-    if (!user) {
-        return "User doesn't exists";
+    if (await model.Story.findOne({ where: { name: params.name } })) {
+        return "Story already exists";
     }
     // save story
-    await model.Story.create({user_id: params.id, story: params.story});
+    await model.Story.create({name: params.name, story: params.story, picture: params.picture});
     return "Story created successfully";
 }
 

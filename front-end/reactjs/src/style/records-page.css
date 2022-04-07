@@ -63,6 +63,13 @@
     font-size: 15px;
     border: 2px solid #000000;
     width: 260px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.href-records {
+    color: black;
+    text-decoration: none;
 }
 
 .reports-row2{
@@ -73,6 +80,8 @@
     width: 300px;
     height: 250px;
     margin-bottom: 40px;
+    border-radius: 25px;
+    
 }
 
 .cycle-report{

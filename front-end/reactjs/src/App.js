@@ -12,6 +12,7 @@ import LaunchScholarship from './pages/LaunchScholarship';
 import RecordsPage from './pages/RecordsPage';
 import Scholarships from './pages/Scholarships';
 import Team from './pages/Team';
+import Buddies from './pages/FindBuddy';
 import Webinars from './pages/Webinars';
 import ApplicationForms from './pages/ApplicationForms';
 import Faq from './pages/Faq'
@@ -49,6 +50,8 @@ function App() {
               <Route exact path='/webinars' element={ <Webinars /> } />
               <Route exact path='/applications' element={ <ApplicationForms /> } />
               <Route exact path='/contact-us' element={ <ContactUs /> } />
+              <Route exact path='/buddies' element={ <Buddies /> } />
+
             </Routes>
           </div>
           <Footer />

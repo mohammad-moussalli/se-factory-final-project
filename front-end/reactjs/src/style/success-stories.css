@@ -37,6 +37,14 @@
     margin-right: 25px;
 }
 
+.success-stories-picture{
+    margin-right: 25px;
+    width: 125px;
+    height: 125px;
+    margin-right: 25px;    
+    border-radius: 100px;
+}
+
 @media(max-width: 1250px){
     .success-stories-message{
         font-size: 17px;

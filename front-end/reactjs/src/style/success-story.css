@@ -40,7 +40,14 @@
 }
 
 .success-story-image{
-    margin-right: 25px;
+    border-radius: 300px;
+}
+
+.success-story-picture{
+    width: 125px;
+    height: 125px;
+    margin-right: 25px;    
+    border-radius: 100px;
 }
 
 @media(max-width:1100px){

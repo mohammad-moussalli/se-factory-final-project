@@ -4,8 +4,11 @@
     "password": null,
     "database": "kaffidb",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "client_id" : "146285219537-b29hkeu7mma44i2qeia7hbo3o0ldqme0.apps.googleusercontent.com",
+    "client_secret" :"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"
   },
+
   "test": {
     "username": "root",
     "password": null,

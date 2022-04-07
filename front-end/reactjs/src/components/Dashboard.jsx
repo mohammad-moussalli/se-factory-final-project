@@ -94,7 +94,6 @@ const Dashboard = () => {
 
     const previewFile = (file) => {
         const reader = new FileReader();
-        console.log(file)
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setPreviewSource(reader.result);
@@ -110,7 +109,6 @@ const Dashboard = () => {
             uploadImage(reader.result);
         };
     };
-    const uploadimageApi = `http://localhost:8080/users/upload-image`
 
     const uploadImage = async (base64EncodedImage) => {
         const token = localStorage.getItem("user")
@@ -123,7 +121,6 @@ const Dashboard = () => {
                 headers: { 'Content-Type': 'application/json',
                             "Authorization" : `Bearer ${token}` },
             });
-            console.log('hiiii')
             setFileInputState('');
             setPreviewSource('');
             setSuccessMsg('Image uploaded successfully');
@@ -135,6 +132,7 @@ const Dashboard = () => {
     useEffect(() => { 
         // GoogleAuthentication()
         getUser() 
+        uploadImage()
     }, []);
 
     const handleType = (val) => {
@@ -150,6 +148,8 @@ const Dashboard = () => {
 
     const closeEditPicture = () => {
         setEditPicture(false)
+        window.location.reload(false);    
+
     }
 
     const navigate = useNavigate()
@@ -178,7 +178,7 @@ const Dashboard = () => {
                                 <input type="file" name='image' id="upload-piture" value={fileInputState} multiple accept="image/*" onChange={handleFileInputChange} />
                             </div>
                             <div className='edit-profile-picture-buttons'>
-                                <Button className='edit-profile-picture-cancel-button' onClick={closeEditPicture} text='Cancel'/>
+                                <Button className='edit-profile-picture-cancel-button' onClick={closeEditPicture} text='Close'/>
                                 <button className='edit-profile-picture-update-button' type='submit'>Save</button>
                             </div>
                         </form>

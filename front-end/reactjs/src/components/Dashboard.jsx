@@ -61,6 +61,7 @@ const Dashboard = () => {
             setUniversity(response.data.university)
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
+            setProfilePicture(response.data.profile_picture)
         }).catch (err => {
             console.log(err)
         });
@@ -93,6 +94,7 @@ const Dashboard = () => {
 
     const previewFile = (file) => {
         const reader = new FileReader();
+        console.log(file)
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setPreviewSource(reader.result);
@@ -111,12 +113,17 @@ const Dashboard = () => {
     const uploadimageApi = `http://localhost:8080/users/upload-image`
 
     const uploadImage = async (base64EncodedImage) => {
+        const token = localStorage.getItem("user")
+
         try {
-            await fetch(uploadimageApi, {
+            await fetch(`http://localhost:8080/users/upload-image`, {
                 method: 'POST',
+                // mode: 'no-cors',
                 body: JSON.stringify({ data: base64EncodedImage }),
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json',
+                            "Authorization" : `Bearer ${token}` },
             });
+            console.log('hiiii')
             setFileInputState('');
             setPreviewSource('');
             setSuccessMsg('Image uploaded successfully');
@@ -149,42 +156,6 @@ const Dashboard = () => {
     const redirectToApplcations = () => {
     navigate('/applications');
     }
-   
-    const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState({});
-    const [message, setMessage] = useState('');
-    
-    const onChange = e => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
-    };
-    
-    const onSubmit = async e => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('file', file);
-    
-        try {
-        const res = await axios.post(uploadimageApi, formData, {
-            headers: {
-            'Content-Type': 'multipart/form-data'
-            },});
-    
-        const { fileName, filePath } = res.data;
-    
-        setUploadedFile({ fileName, filePath });
-    
-        setMessage('File Uploaded');
-        } catch (err) {
-        if (err.response.status === 500) {
-            setMessage('There was a problem with the server');
-        } else {
-            setMessage(err.response.data.msg);
-        }
-        }
-
-    }
 
     if (localStorage.getItem('user') == null) {
         return (
@@ -194,7 +165,7 @@ const Dashboard = () => {
             <div className='dashboard-component'>
                 <div className='dashboard-sidebar'>
                     <div className='dashboard-profile-picture'>
-                        <img src={image} alt='profile-picture'/>
+                        <img className='dashboard-profile-image' src={profile_picture} alt='profile-picture'/>
                         <button className='edit-profile-picture-button' onClick={openEditPicture}><img src={pen} alt='pen'></img></button>
                     </div>
 

@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 require('dotenv').config();
 
-
 const firebaseConfig = {
 	apiKey: process.env.PROJECT_API_KEY,
 	authDomain: process.env.PROJECT_AUTH_DOMAIN,

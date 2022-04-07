@@ -14,6 +14,8 @@ var webinarRouter = require('./routes/webinars');
 var webinarQuestionsRouter = require('./routes/webinars_questions');
 var applicationsRouter = require('./routes/applications');
 var relationshipRouter = require('./routes/relationships');
+var teamRouter = require('./routes/team');
+var blogRouter = require('./routes/blogs');
 
 var app = express();
 app.use(fileupload())
@@ -41,6 +43,9 @@ app.use('/webinars', webinarRouter);
 app.use('/webinar-questions', webinarQuestionsRouter);
 app.use('/applications', applicationsRouter);
 app.use('/mentorship', relationshipRouter);
+app.use('/team', teamRouter);
+app.use('/blogs', blogRouter);
+
 
 app.use(function(req, res, next) {
   next(createError(404));

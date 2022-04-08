@@ -63,6 +63,11 @@
     justify-content: space-between;
 }
 
+.donut-chart{
+    height: 200px;
+    width: 200px;
+}
+
 .records-applicant-recepient-scholarship-name{
     margin: 0px;
     font-size: 15px;

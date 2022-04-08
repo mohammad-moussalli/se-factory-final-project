@@ -6,7 +6,6 @@ import Menu from './pages/Menu';
 import AboutUs from './pages/AboutUs';
 import Blog from './pages/Blog';
 import BoostScholarship from './pages/BoostScholarship';
-import CvTips from './pages/CvTips';
 import Donate from './pages/Donate';
 import LaunchScholarship from './pages/LaunchScholarship';
 import RecordsPage from './pages/RecordsPage';
@@ -41,7 +40,6 @@ function App() {
               <Route exact path='/about-us' element={ <AboutUs /> } />
               <Route exact path='/blog' element={ <Blog /> } />
               <Route exact path='/scholarships/boost' element={ <BoostScholarship /> } />
-              <Route exact path='/cv' element={ <CvTips /> } />
               <Route exact path='/donate' element={ <Donate /> } />
               <Route exact path='/scholarships/launch' element={ <LaunchScholarship /> } />
               <Route exact path='/records' element={ <RecordsPage /> } />

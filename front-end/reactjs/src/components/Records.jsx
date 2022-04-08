@@ -2,27 +2,8 @@ import '../style/records.css'
 import { useEffect, useState} from 'react'
 import axios from 'axios';
 import Spinner from './Spinner';
-import { Doughnut } from 'react-chartjs-2';
-
+import Donut from './Donut';
 const Records = () => {
-
-  
-// const [yearId, setYearId] = useState();
-// const [cycleId, setCycleId] = useState();
-
-//     const onChange = (e) => {
-        
-//     }
-
-//     const handleYear = (val) => {
-//         const year = (val.target.year);
-//         setYearId(year);
-//     }
-
-//     const handleCycle = (val) => {
-//         const cycle = parseInt(val.target.cycle);
-//         setCycleId(cycle);
-//     }
 
     const [scholarshipRecords, setScholarshipRecords] = useState(null)
     const getScholarshipRecordsApi = "http://localhost:8080/applications/scholarship/records"
@@ -30,7 +11,8 @@ const Records = () => {
     useEffect( async () => {
         await axios.get(getScholarshipRecordsApi)
         .then(response => {
-            setScholarshipRecords(response.data.response)})
+            setScholarshipRecords(response.data.response)
+        })
         .catch(err => {
             console.log(err)
         });
@@ -38,9 +20,6 @@ const Records = () => {
 
     const [scholarships, setScholarships] = useState(null)
     const getScholarshipsApi = "http://localhost:8080/scholarships";
-
-    const [cycleId, setCycleId] = useState(null)
-
 
     useEffect( async () => {
         await axios.get(getScholarshipsApi)
@@ -51,10 +30,29 @@ const Records = () => {
         });
     }, [])
 
+    const [cycleId, setCycleId] = useState(null)
+
     const handleType = (val) => {
       const id = parseInt(val.target.value);
       setCycleId(id);
-  }
+    }
+
+    let applicants = 0;
+    let launch_applicants = 0;
+    let boost_applicants = 0;
+
+    if(scholarshipRecords){
+        for( let i = 0; i <scholarshipRecords.length; i++){
+            applicants += scholarshipRecords[i].cycle_applicants
+            if(scholarshipRecords[i].name =='Launch'){
+                launch_applicants = scholarshipRecords[i].cycle_applicants
+            }
+            if(scholarshipRecords[i].name =='Boost'){
+                boost_applicants = scholarshipRecords[i].cycle_applicants
+            }
+        }
+    }
+
 
     if (!scholarshipRecords){
       return <Spinner/>
@@ -75,22 +73,17 @@ const Records = () => {
 
                   <div className='records-scholarship-cycle-year'>
                     <select className="records-scholarship-cycle" name="scholarship-cycle" id="scholarship-cycle"  onChange={handleType}>
-                        <option className="records-scholarship-cycle-option" value="" disabled selected hidden>Select Cycle</option>
+                        {/* <option className="records-scholarship-cycle-option" value="" disabled selected hidden>Select Cycle</option> */}
 
                         {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
+
                         return(
                             <>
-                              <option className="records-scholarship-cycle-option" value={scholarshipRecord.id}>{scholarshipRecord.cycle}</option>
+                              <option className="records-scholarship-cycle-option" value={scholarshipRecord.cycle_id}>{scholarshipRecord.cycle}</option>
                             </> 
                         )
                         })}
                     
-                    </select>
-
-                    <select className="records-scholarship-year" name="scholarship-year" id="scholarship-year">
-                        <option className="records-scholarship-year-option" value="" disabled selected hidden>Select Year</option>
-                        <option className="records-scholarship-year-option" value="2">2021</option>
-                        <option className="records-scholarship-year-option" value="3">2022</option>
                     </select>
                   </div>
                 </div>
@@ -114,22 +107,23 @@ const Records = () => {
                             {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
                         return(
                               <>
-                                  {cycleId === scholarshipRecord.id &&
-                                      <div className='number-of-applicants'>{scholarshipRecord.cycle_applicants}</div>                            
+                                  {cycleId === scholarshipRecord.cycle_id ?
+                                      <div className='number-of-applicants'>{scholarshipRecord.cycle_applicants}</div>
+                                      :<div className='number-of-applicants'>0</div>                             
                                   }
                               </> 
                         )
                         })}
-                            {/* <div className='number-of-applicants'>10</div>
-                            <div className='number-of-applicants'>12</div> */}
+                        
                         </div>
                         <div className='records-applicant-recepient-table-col3'>
                             <p className='records-applicant-recepient-text'>Recepient</p>
                             {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
                         return(
                                <>
-                                  {cycleId === scholarshipRecord.id &&
-                                      <div className='number-of-recepients'>{scholarshipRecord.cycle_recepients}</div>                            
+                                  {cycleId === scholarshipRecord.cycle_id ?
+                                      <div className='number-of-recepients'>{scholarshipRecord.cycle_recepients}</div>
+                                      :<div className='number-of-recepients'>0</div>                           
                                   }
                               </> 
                         )
@@ -138,7 +132,9 @@ const Records = () => {
                     </div>
 
                     <div className='records-dognut-chart'>
-                      <div className='donut-chart'>  </div>
+                        <div className='donut-chart'> 
+                            <Donut launch_applicants={launch_applicants} boost_applicants={boost_applicants} applicants={applicants}/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,13 @@ max-height: 150px;
 .contact-tag-image{
   max-height: 150px;
   overflow: hidden;
+  width: 100%;
+}
+
+.contact-tag-profile-picture{
+    width: 100%;
+    border-top-left-radius: 23px;
+    border-top-right-radius: 23px;
 }
 
 .contact-tag-name{

@@ -5,6 +5,7 @@ import firebase from 'firebase';
 const firebaseConfig = {
   apiKey: "AIzaSyB-W8nuhgszpCkf0CqxWQGH4kXyGSdArlE",
   authDomain: "kaffi-project.firebaseapp.com",
+  databaseURL: "http://kaffi-project.firebaseio.com",
   projectId: "kaffi-project",
   storageBucket: "gs://kaffi-project.appspot.com",
   messagingSenderId: "884089590617",
@@ -15,6 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app, firebaseConfig.storageBucket);
   
-const db = firebase.firestore();
+const db = app.firestore();
 
 export default { storage, db };

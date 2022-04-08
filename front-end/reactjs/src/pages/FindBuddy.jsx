@@ -2,8 +2,10 @@ import image from '../assets/images/vision.png';
 import ContactTag from '../components/ContactTag';
 import Button from '../components/Button';
 import '../style/find-buddy.css'
+import '../style/contact-tag.css';
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Team = () => {
 
@@ -11,6 +13,53 @@ const Team = () => {
   const redirect = () => {
       navigate('/records');
   }
+
+
+    const [type, setType] = useState();
+    const [user, setUser] = useState();
+
+    const [students, setStudents] = useState();
+    const [mentors, setMentors] = useState();
+
+    const getUserApi = "http://localhost:8080/users/"
+
+    const getUser = async () => {
+        const token = localStorage.getItem("user");
+        await axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(response => {
+            setType(response.data.type)
+            setUser(response.data)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+    const getStudentApi = "http://localhost:8080/users/students"
+    const getStudents = async () => {
+        await axios.get(getStudentApi)
+        .then(response => {
+            setStudents(response.data)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+    const getMentorsApi = "http://localhost:8080/users/mentors"
+    const getMentors = async () => {
+        await axios.get(getMentorsApi)
+        .then(response => {
+            setMentors(response.data)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+    useEffect(() => { 
+        getUser();
+        getStudents();
+        getMentors();
+    }, []);    
+
 
   if (localStorage.getItem('user') == null) {
     return (
@@ -30,17 +79,55 @@ const Team = () => {
                 </div>
 
                 <div className='buddy-pictures'>
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-                <ContactTag />
-
+                    {user && type =='student' ? 
+                        <>
+                            {mentors && Array.isArray(mentors) && mentors.map((mentor) => {
+                                console.log(mentor, 'hello')
+                                return(
+                                    <>
+                                    <div className='contact-tag' id={mentor.id}>
+                                        <div className='contact-tag-image'>
+                                            <img className='contact-tag-profile-picture' src={mentor.profile_picture} alt='profile_picture'/>            
+                                        </div>
+                                        <div className='contact-tag-text'>
+                                            <div>
+                                                <p className='contact-tag-name'>{mentor.first_name + ' ' + mentor.last_name}</p>
+                                            </div>
+                                            <div>
+                                                <p className='contact-tag-title'>{mentor.country}</p>
+                                                <p className='contact-tag-role'>Mentor</p>  
+                                            </div>
+                                        </div>
+                                        <Button className='contact-tag-button' text='Chat'/>
+                                    </div>
+                                    </>
+                                )
+                            })}
+                        </>
+                        :<>
+                            {students && Array.isArray(students) && students.map((student) => {
+                                return(
+                                    <>
+                                     <div className='contact-tag' id={student.id}>
+                                        <div className='contact-tag-image'>
+                                            <img className='contact-tag-profile-picture' src={student.profile_picture} alt='profile_picture'/>            
+                                        </div>
+                                        <div className='contact-tag-text'>
+                                            <div>
+                                                <p className='contact-tag-name'>{student.first_name + ' ' + student.last_name}</p>
+                                            </div>
+                                            <div>
+                                                <p className='contact-tag-title'>{student.country}</p>
+                                                <p className='contact-tag-role'>Student</p>  
+                                            </div>
+                                        </div>
+                                        <Button className='contact-tag-button' text='Chat'/>
+                                    </div>
+                                    </>
+                                )
+                            })}
+                        </>
+                    }
                 </div>
             </div>
 

@@ -12,7 +12,12 @@
 
 .header{
     margin: 0px 150px;
+}
 
+.contact-tag-profile-picture{
+    width: 100%;
+    border-top-left-radius: 23px;
+    border-top-right-radius: 23px;
 }
 
 .vision{

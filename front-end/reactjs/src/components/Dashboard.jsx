@@ -157,6 +157,10 @@ const Dashboard = () => {
     navigate('/applications');
     }
 
+    const redirectToBuddies = () => {
+        navigate('/buddies');
+        }
+
     if (localStorage.getItem('user') == null) {
         return (
           <h1 className="dashboard">Please Register or Login to access this page</h1>
@@ -184,7 +188,7 @@ const Dashboard = () => {
                         </form>
                     }
                     <div className='dashboard-sidebar-details'>
-                    <div div className='dashboard-sidebar-fullname'>
+                        <div div className='dashboard-sidebar-fullname'>
                             <div className='dashboard-sidebar-details-data dashboard-user-name'>{first_name} &nbsp;</div>
                             <div className='dashboard-sidebar-details-data dashboard-user-name'>{last_name}</div>
                         </div>
@@ -228,7 +232,9 @@ const Dashboard = () => {
                                 </AccordionDetails>
                             </Accordion> 
                         </div>
-                        <Button className='applications-button' text='View Applications' onClick={redirectToApplcations}/>
+                        <Button className='applications-button' text='View Applications' onClick={redirectToApplcations}/>                
+                        <Button className='buddies-button' text='Connect with Buddies' onClick={redirectToBuddies}/>                        
+
                     </div>
                 </div>
             </div>

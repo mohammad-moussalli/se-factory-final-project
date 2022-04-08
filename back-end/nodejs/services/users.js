@@ -185,19 +185,9 @@ async function update(body, token) {
     const university = await model.University.findOne({where:{id: user.university_id}})
     const mentor = await model.Mentor.findOne({where:{user_id: user.id}})
    
-
-    // validate
-    // const userChanged = params.body.email && user.email !== params.body.email;
-    // if (userChanged && await model.User.findOne({ where: { email: params.body.email } })) {
-    //     return {message: 'Email "' + params.body.email + '" is already taken'};
-    // }
-
-    // hash password if it was entered
     if (body.password) {
         body.password = await bcrypt.hash(params.body.password, 10);
     }
-
-    // copy params to user and save
 
     if(!body.university){
         body.university = university.university;
@@ -266,7 +256,6 @@ function omitHash(user) {
     return userWithoutHash;
 }
 
-// if statement is not working only works if not valid
 async function getUser(token){
     const user = await business_inteligence.getUser(token);
     const university = await model.University.findOne({attributes: {exclude: ['id']}, where: {id: user.university_id }});
@@ -296,12 +285,11 @@ async function getAllStudents(){
 
 async function getAllMentors(){
     const users = await model.User.findAll({where:{user_type_id:3}});
-     if (!users){
-         return 'Mentors not found';
-     } 
-     return users;
+    if (!users){
+        return 'Mentors not found';
+    } 
+    return users;
 }
-
 
 async function updatePicture(body, token){
     let user =  await business_inteligence.getUser(token)

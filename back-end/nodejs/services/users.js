@@ -22,6 +22,8 @@ module.exports = {
     update,
     getUser,
     getAllUsers,
+    getAllMentors,
+    getAllStudents,
     // getGoogleAuthURL,
     // getGoogleUser
     updatePicture
@@ -282,6 +284,22 @@ async function getAllUsers(){
         return 'Users not found';
     } 
     return users;
+}
+
+async function getAllStudents(){
+    const users = await model.User.findAll({where:{user_type_id:2}});
+     if (!users){
+         return 'Students not found';
+     } 
+     return users;
+}
+
+async function getAllMentors(){
+    const users = await model.User.findAll({where:{user_type_id:3}});
+     if (!users){
+         return 'Mentors not found';
+     } 
+     return users;
 }
 
 

@@ -6,6 +6,8 @@ module.exports = {
     login,
     getUser,
     getAllUsers,
+    getAllMentors,
+    getAllStudents,
     update,
     // getGoogleAuthURL,
     // getGoogleUser
@@ -45,6 +47,26 @@ async function getUser(req, res, err) {
 async function getAllUsers(req, res, err) {
     try{
         const users = await userServices.getAllUsers()
+        return res.status(200).json(users)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function getAllMentors(req, res, err) {
+    try{
+        const users = await userServices.getAllMentors()
+        return res.status(200).json(users)
+
+    }catch(err){
+        (res.status(400).json(err));
+    }
+}
+
+async function getAllStudents(req, res, err) {
+    try{
+        const users = await userServices.getAllStudents()
         return res.status(200).json(users)
 
     }catch(err){

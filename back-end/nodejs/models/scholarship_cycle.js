@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Scholarship_Cycle.init({
     scholarship_id: DataTypes.INTEGER,
+    cycle_id: DataTypes.INTEGER,
     cycle: DataTypes.STRING,
     start_date: DataTypes.DATEONLY,
     deadline: DataTypes.DATEONLY,

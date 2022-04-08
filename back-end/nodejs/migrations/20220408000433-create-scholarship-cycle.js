@@ -11,6 +11,9 @@ module.exports = {
       scholarship_id: {
         type: Sequelize.INTEGER
       },
+      cycle_id: {
+        type: Sequelize.INTEGER
+      },
       cycle: {
         type: Sequelize.STRING
       },

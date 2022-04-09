@@ -13,6 +13,8 @@ function Login() {
   const auth = getAuth();
 
 
+
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -71,6 +73,7 @@ const fs_login = async () => {
     );
 
     const userId = responseFromAuth.user.uid;
+    
 
     // save user to localstorage
     localStorage.setItem(

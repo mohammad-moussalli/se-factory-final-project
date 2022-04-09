@@ -1,5 +1,4 @@
 import React from "react";
-import { FaEdit, FaEllipsisH, FaVideo } from "react-icons/fa";
 import "../style/chat-heads.css";
 
 const ChatHeads = ({ items, setReceiver }) => {
@@ -7,14 +6,10 @@ const ChatHeads = ({ items, setReceiver }) => {
   return (
     <div>
       <div className="conv-header-container">
-        <p className="conversations-header">Conversations</p>
+        <p className="conversations-header">Buddies</p>
         <div>
-          <FaEllipsisH />
-          <FaVideo />
-          <FaEdit />
         </div>
       </div>
-      <input className="chat-heads-search" placeholder="Search in Messenger" />
       <div className="chat-heads-container">
         {items.map((obj, i) => (
           <div
@@ -25,7 +20,7 @@ const ChatHeads = ({ items, setReceiver }) => {
             <div className="user-profile-pic-container">
               <p className="user-profile-pic-text">{obj.email[0]}</p>
             </div>
-            <p>{obj.email}</p>
+            <p>{obj.first_name + ' ' + obj.last_name}</p>
           </div>
         ))}
       </div>

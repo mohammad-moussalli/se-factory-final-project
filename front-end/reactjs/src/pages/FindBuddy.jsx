@@ -16,7 +16,6 @@ const Team = () => {
 
   const redirectToChat = (mentor) => {
     navigate('/chat');
-    console.log(mentor.id)
 }
 
 

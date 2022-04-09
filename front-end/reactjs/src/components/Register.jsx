@@ -116,6 +116,7 @@ const Register = () => {
         country: country,
         user_type_id: typeId,
         uid: userId,
+        city: city,
       });
 
       // save user to localstorage
@@ -124,6 +125,7 @@ const Register = () => {
         JSON.stringify({
           email: email,
           uid: userId,
+          user_type_id: typeId,
         })
       );
 

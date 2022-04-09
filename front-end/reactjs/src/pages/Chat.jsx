@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatHeads from "../components/ChatHeads";
 import Conversation from "../components/Conversation";
@@ -6,14 +6,35 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
+import axios from "axios";
 
-import { collection, getDocs } from "firebase/firestore";
+
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 import "../style/chat.css";
 
 const Chat = () => {
 
 let navigate = useNavigate();
+
+const [typeId, setTypeId] = useState();
+
+const getUserApi = "http://localhost:8080/users/"
+
+const getUser = async () => {
+    const token = localStorage.getItem("user");
+    axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
+    .then(response => {
+        console.log(response.data.user_type_id)
+        setTypeId(response.data.user_type_id)
+    }).catch (err => {
+        console.log(err)
+    });
+}
+
+useEffect(() => { 
+    getUser() 
+}, []);
 
 const [chatHeads, setChatHeads] = useState([]);
 const [receiver, setReceiver] = useState(null);
@@ -35,27 +56,26 @@ const storage = getStorage(app, firebaseConfig.storageBucket);
 const db = getFirestore();
 const auth = getAuth();
 
+const [fs_user, setFsUser] = useState();
 
-const [user, setUser] = useState();
-
-React.useEffect(() => {
-const user = JSON.parse(localStorage.getItem("fs_user"));
-if (user) setUser(user);
+useEffect(() => {
+const fs_user = JSON.parse(localStorage.getItem("fs_user"));
+if (fs_user) setFsUser(fs_user);
 else navigate("/");
-}, [navigate, setUser]);
+}, [navigate, setFsUser]);
 
-React.useEffect(() => {
-if (!user) return;
+useEffect(() => {
+if (!fs_user) return;
 
 (async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
     setChatHeads(
     querySnapshot.docs
         .map((doc) => doc.data())
-        .filter((obj) => obj.uid !== user.uid)
+        .filter((obj) => obj.user_type_id != typeId)
     );
 })();
-}, [user]);
+}, [fs_user]);
 
 
     return (
@@ -65,7 +85,7 @@ if (!user) return;
             </div>
 
             <div className="half-screen">
-                <Conversation receiver={receiver} user={user} />
+                <Conversation receiver={receiver} user={fs_user} />
             </div>
         </div>
     )

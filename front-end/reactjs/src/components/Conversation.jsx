@@ -1,43 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { doc, getDoc, updateDoc, setDoc, onSnapshot } from "firebase/firestore";
 import "../style/conversation.css";
-// import { initializeApp } from "firebase/app";
-// import { getAuth } from "firebase/auth";
-// import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-
-import {
-  FaCommentAlt,
-  FaComments,
-  FaImage,
-  FaInfoCircle,
-  FaPhone,
-  FaPlusCircle,
-  FaStickyNote,
-  FaThumbsUp,
-  FaVideo,
-} from "react-icons/fa";
+import { FaCommentAlt, FaComments } from "react-icons/fa";
 
 const Conversation = ({ receiver, user }) => {
- 
-//   const firebaseConfig = {
-//     apiKey: "AIzaSyB-W8nuhgszpCkf0CqxWQGH4kXyGSdArlE",
-//     authDomain: "kaffi-project.firebaseapp.com",
-//     databaseURL: "http://kaffi-project.firebaseio.com",
-//     projectId: "kaffi-project",
-//     storageBucket: "gs://kaffi-project.appspot.com",
-//     messagingSenderId: "884089590617",
-//     appId: "1:884089590617:web: '23ffbd6d7275d23315f248'",
-//     measurementId: "G-LLYVEJH9WW",
-// };
-    
-// const app = initializeApp(firebaseConfig);
-// const storage = getStorage(app, firebaseConfig.storageBucket);
 
 const db = getFirestore();
-// const auth = getAuth();
-
-
 
   const [conversationId, setConversationId] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -45,7 +14,6 @@ const db = getFirestore();
   const currentMessage = useRef(null);
   const chatBodyRef = useRef(null);
 
-  // handle sending the messages
   const sendMessage = async () => {
     if (!currentMessage.current.value) return;
 
@@ -54,18 +22,18 @@ const db = getFirestore();
       uid: user.uid,
     };
 
-    // add and save message to firestore
+    // Add and save message to firestore
     const conversationRef = doc(db, "conversations", conversationId);
     const docSnap = await getDoc(conversationRef);
 
-    // append message to existing conversation
+    // Append message to existing conversation
     if (docSnap.exists()) {
       const docData = docSnap.data();
       await updateDoc(conversationRef, {
         messages: [...docData.messages, myMessage],
       });
     } else {
-      // create a new conversation
+      // Create a new conversation
       await setDoc(doc(db, "conversations", conversationId), {
         messages: [myMessage],
       });
@@ -74,8 +42,8 @@ const db = getFirestore();
     currentMessage.current.value = "";
   };
 
-  // set conversationId
-  React.useEffect(() => {
+  // Set conversationId
+  useEffect(() => {
     if (!receiver || !user) return;
 
     let myConvId;
@@ -86,8 +54,8 @@ const db = getFirestore();
     setConversationId(myConvId);
   }, [receiver, user]);
 
-  // get converastion from firestore
-  React.useEffect(() => {
+  // Get conversation from firestore
+  useEffect(() => {
     if (!conversationId) return;
 
     const unsub = onSnapshot(
@@ -103,7 +71,7 @@ const db = getFirestore();
     return unsub;
   }, [conversationId]);
 
-  // send message with enter
+  // Send message with enter
   const handleEnterKeyPressDown = (e) => {
     if ((e.code === "Enter" || e.key === "Enter") && !e.shiftKey) {
       sendMessage();
@@ -116,8 +84,8 @@ const db = getFirestore();
     chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
   };
 
-  // top scroll after new message
-  React.useEffect(() => {
+  // Top scroll after new message
+  useEffect(() => {
     scollToBottomOfChat();
   }, [messages, chatBodyRef]);
   return (
@@ -129,17 +97,10 @@ const db = getFirestore();
               <div className="user-profile-pic-container">
                 <p className="user-profile-pic-text">{receiver.email[0]}</p>
               </div>
-              <p>{receiver.email}</p>
-            </div>
-
-            <div className="user-conv-header-container">
-              <FaPhone color="dodgerblue" size="2vh" />
-              <FaVideo color="dodgerblue" size="2vh" />
-              <FaInfoCircle color="dodgerblue" size="2vh" />
+              <p>{receiver.first_name + ' ' + receiver.last_name}</p>
             </div>
           </div>
 
-          {/* Conversation messages */}
           <div className="conversation-messages" ref={chatBodyRef}>
             {messages.length > 0 ? (
               messages.map((obj, i) => (
@@ -161,16 +122,11 @@ const db = getFirestore();
             )}
           </div>
 
-          {/* Input bar */}
           <div className="input-container">
-            <FaPlusCircle />
-            <FaImage />
-            <FaStickyNote />
             <div className="input-message">
-              <input placeholder="Hi.." ref={currentMessage} onKeyPress={handleEnterKeyPressDown} />
+              <input placeholder="Enter a text" ref={currentMessage} onKeyPress={handleEnterKeyPressDown} />
             </div>
             <button onClick={sendMessage}>Send</button>
-            <FaThumbsUp />
           </div>
         </div>
       ) : (

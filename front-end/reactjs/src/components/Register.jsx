@@ -1,15 +1,36 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";   
 import { useSelector, useDispatch } from 'react-redux'
-import authService from "../features/auth/authService";
 import '../style/register.css'
-import Button from './Button'
 import image from '../assets/images/gmail.png'
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { register, reset } from '../features/auth/authSlice'
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { addDoc, collection } from "@firebase/firestore";
+import React, { useRef } from "react";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 const Register = () => {
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyB-W8nuhgszpCkf0CqxWQGH4kXyGSdArlE",
+        authDomain: "kaffi-project.firebaseapp.com",
+        databaseURL: "http://kaffi-project.firebaseio.com",
+        projectId: "kaffi-project",
+        storageBucket: "gs://kaffi-project.appspot.com",
+        messagingSenderId: "884089590617",
+        appId: "1:884089590617:web: '23ffbd6d7275d23315f248'",
+        measurementId: "G-LLYVEJH9WW",
+    };
+        
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app, firebaseConfig.storageBucket);
+
+    const db = getFirestore();
+    const auth = getAuth();
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -72,6 +93,53 @@ const Register = () => {
         const id = parseInt(val.target.value);
         setTypeId(id);
     }
+
+
+    // const email = useRef(null);
+    // const password = useRef(null);
+
+    const fs_register = async () => {
+
+      const responseFromAuth = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const userId = responseFromAuth.user.uid;
+
+      // saving to firestore
+      await addDoc(collection(db, "users"), {
+        email: email,
+        first_name: first_name,
+        last_name: last_name,
+        country: country,
+        user_type_id: typeId,
+        uid: userId,
+      });
+
+      // save user to localstorage
+      localStorage.setItem(
+        "fs_user",
+        JSON.stringify({
+          email: email,
+          uid: userId,
+        })
+      );
+
+    }
+    const [fs_user, setFsUser] = useState();
+
+    React.useEffect(() => {
+        // get user from localstorage
+        const fs_user = JSON.parse(localStorage.getItem("fs_user"));
+    
+        if (fs_user) {
+          setFsUser(fs_user);
+          navigate("/dashboard");
+        }
+      }, [navigate, setFsUser]);
+
 
     return (
         <div className="register">
@@ -173,7 +241,7 @@ const Register = () => {
                         }
                         
                         <div className='form-group form-group-class single-line'>
-                            <button type='submit' className='register-btn'>Create Account</button>
+                            <button type='submit' className='register-btn' onClick={fs_register}>Create Account</button>
                         </div>
 
                         </>

@@ -4,8 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { login, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
 import '../style/login.css';
+import { getAuth } from "firebase/auth";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+
 
 function Login() {
+      
+  const auth = getAuth();
+
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -55,6 +62,26 @@ function Login() {
     return <Spinner />
   }
 
+const fs_login = async () => {
+
+    const responseFromAuth = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    const userId = responseFromAuth.user.uid;
+
+    // save user to localstorage
+    localStorage.setItem(
+      "fs_user",
+      JSON.stringify({
+        email: email,
+        uid: userId,
+      })
+    );
+}
+
   return (
     <div className='login'>
       <div className='login-form'>
@@ -90,7 +117,7 @@ function Login() {
           </div>
 
           <div className='form-group'>
-            <button type='submit' className='login-btn'>
+            <button type='submit' onClick={fs_login} className='login-btn'>
               Submit
             </button>
           </div>

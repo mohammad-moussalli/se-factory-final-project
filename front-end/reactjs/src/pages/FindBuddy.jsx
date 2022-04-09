@@ -14,6 +14,11 @@ const Team = () => {
       navigate('/records');
   }
 
+  const redirectToChat = (mentor) => {
+    navigate('/chat');
+    console.log(mentor.id)
+}
+
 
     const [type, setType] = useState();
     const [user, setUser] = useState();
@@ -82,7 +87,6 @@ const Team = () => {
                     {user && type =='student' ? 
                         <>
                             {mentors && Array.isArray(mentors) && mentors.map((mentor) => {
-                                console.log(mentor, 'hello')
                                 return(
                                     <>
                                     <div className='contact-tag' id={mentor.id}>
@@ -98,7 +102,7 @@ const Team = () => {
                                                 <p className='contact-tag-role'>Mentor</p>  
                                             </div>
                                         </div>
-                                        <Button className='contact-tag-button' text='Chat'/>
+                                        <Button className='contact-tag-button' onClick={redirectToChat} text='Chat'/>
                                     </div>
                                     </>
                                 )
@@ -121,7 +125,7 @@ const Team = () => {
                                                 <p className='contact-tag-role'>Student</p>  
                                             </div>
                                         </div>
-                                        <Button className='contact-tag-button' text='Chat'/>
+                                        <Button className='contact-tag-button' text='Chat' onClick={redirectToChat}/>
                                     </div>
                                     </>
                                 )

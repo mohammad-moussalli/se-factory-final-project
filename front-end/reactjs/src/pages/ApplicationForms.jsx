@@ -3,7 +3,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import image from '../assets/images/DashboardProfilePicture.png';
 import '../style/dashboard.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -16,6 +15,7 @@ const ScholarshipForms = () => {
     const [last_name, setLastName] = useState();
     const [country, setCountry] = useState();
     const [city, setCity] = useState();
+    const [profile_picture, setProfilePicture] = useState();
     const [university, setUniversity] = useState();
     const [createdAt, setCreatedAt] = useState();
     
@@ -51,6 +51,7 @@ const ScholarshipForms = () => {
             setUniversity(response.data.university)
             setType(response.data.type)
             setCreatedAt(response.data.createdAt)
+            setProfilePicture(response.data.profile_picture)
         }).catch (err => {
             console.log(err)
         });
@@ -129,7 +130,7 @@ const ScholarshipForms = () => {
             <div className='dashboard-component'>
                 <div className='dashboard-sidebar'>
                     <div className='dashboard-profile-picture'>
-                        <img src={image} alt='profile-picture'/>
+                        <img className='dashboard-profile-image' src={profile_picture} alt='profile'/>
                     </div>
                     <div className='dashboard-sidebar-details'>
                         <div div className='dashboard-sidebar-fullname'>
@@ -152,7 +153,7 @@ const ScholarshipForms = () => {
 
                     <div className='dashboard-update-form'>
                         <div className="accordion">
-                        { type =='student' ? 
+                        { type === 'student' ? 
                             <>
                               <Accordion className='accordion-part'>
                                   <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel1a-content`} id={`panel1a-header`}>

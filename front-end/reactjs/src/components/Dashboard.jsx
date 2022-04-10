@@ -61,7 +61,6 @@ const Dashboard = () => {
             setCity(response.data.city)
             setUniversity(response.data.university)
             setType(response.data.type)
-            console.log(response.data)
             setCreatedAt(moment(response.data.createdAt).format('DD MMM, YYYY'))
             setProfilePicture(response.data.profile_picture)
         }).catch (err => {

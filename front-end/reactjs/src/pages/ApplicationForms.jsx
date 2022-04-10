@@ -6,6 +6,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../style/dashboard.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
+var moment = require('moment');
+
 
 const ScholarshipForms = () => {
 
@@ -50,7 +52,7 @@ const ScholarshipForms = () => {
             setCity(response.data.city)
             setUniversity(response.data.university)
             setType(response.data.type)
-            setCreatedAt(response.data.createdAt)
+            setCreatedAt(moment(response.data.createdAt).format('DD MMM, YYYY'))
             setProfilePicture(response.data.profile_picture)
         }).catch (err => {
             console.log(err)

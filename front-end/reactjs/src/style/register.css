@@ -5,7 +5,10 @@
     display: flex;
     justify-content: end;
     min-height: 100vh;
+}
 
+.error{
+    color: red;
 }
 
 .register-form{

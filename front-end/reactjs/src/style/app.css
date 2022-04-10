@@ -7,3 +7,7 @@
 .main-container{
     min-height: 69vh;
 }
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}

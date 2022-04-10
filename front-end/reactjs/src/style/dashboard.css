@@ -14,6 +14,8 @@
     justify-content: flex-start;
     min-height: 300px;
     margin: 20px 10px 20px 0px;
+    background-image: url("../assets/images/bk.png");
+
 }
 
 .dashboard-profile-picture{
@@ -67,6 +69,15 @@
 
 .dashboard-sidebar-details-data{
     margin-bottom: 15px;
+}
+
+.dashboard-sidebar-details{
+    color: white;
+}
+
+.prohibited-entry{
+    text-align: center;
+    padding-top: 240px;
 }
 
 .updateButton{
@@ -195,11 +206,9 @@
 
 .applications-button{
     border-radius: 25px;
-    color: black;
     text-align: center;
     width: fit-content;
     padding: 8px 20px;
-    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,15 +216,19 @@
     font-weight: 500;
     cursor: pointer;
     margin-bottom: 20px;
+    background-color: #E6A522;
+    border: 2px solid #E6A522;
+    color: white;
+
 }
+
+
 
 .buddies-button{
     border-radius: 25px;
-    color: black;
     text-align: center;
     width: fit-content;
     padding: 8px 20px;
-    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,6 +236,9 @@
     font-weight: 500;
     cursor: pointer;
     margin-bottom: 50px;
+    background-color: #E6A522;
+    border: 2px solid #E6A522;
+    color: white;
 }
 
 .dashboard-sidebar-user-type{
@@ -230,7 +246,7 @@
     font-weight: 500;
     text-align: center;
     color: rgba(255, 255, 255, 1);
-    background: #11D0D1;
+    background: #E6A522;
     mix-blend-mode: normal;
     border-radius: 25px;
     display: flex;

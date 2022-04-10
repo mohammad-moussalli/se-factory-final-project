@@ -124,7 +124,7 @@ const ScholarshipForms = () => {
 
     if (localStorage.getItem('user') === null) {
         return (
-          <h1 className="dashboard">Please Register or Login to access this page</h1>
+          <h1 className="dashboard prohibited-entry">Please Register or Login to access this page</h1>
         )} else {
         return ( 
             <div className='dashboard-component'>

@@ -11,6 +11,7 @@ import pen from '../assets/images/edit-pen.png'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+var moment = require('moment');
 
 
 const Dashboard = () => {
@@ -60,7 +61,8 @@ const Dashboard = () => {
             setCity(response.data.city)
             setUniversity(response.data.university)
             setType(response.data.type)
-            setCreatedAt(response.data.createdAt)
+            console.log(response.data)
+            setCreatedAt(moment(response.data.createdAt).format('DD MMM, YYYY'))
             setProfilePicture(response.data.profile_picture)
         }).catch (err => {
             console.log(err)
@@ -163,7 +165,7 @@ const Dashboard = () => {
 
     if (localStorage.getItem('user') == null) {
         return (
-          <h1 className="dashboard">Please Register or Login to access this page</h1>
+          <h1 className="dashboard prohibited-entry">Please Register or Login to access this page</h1>
         )} else {
           return ( 
             <div className='dashboard-component'>

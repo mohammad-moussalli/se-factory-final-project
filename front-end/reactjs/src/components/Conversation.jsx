@@ -117,14 +117,14 @@ const db = getFirestore();
                 <div>
                   <FaComments />
                 </div>
-                <p>Start a conversation with {receiver.email}</p>
+                <p>Start a conversation with {receiver.first_name + ' ' + receiver.last_name}</p>
               </div>
             )}
           </div>
 
           <div className="input-container">
             <div className="input-message">
-              <input placeholder="Enter a text" ref={currentMessage} onKeyPress={handleEnterKeyPressDown} />
+              <input className='input-chat'placeholder="Enter a text" ref={currentMessage} onKeyPress={handleEnterKeyPressDown} />
             </div>
             <button onClick={sendMessage}>Send</button>
           </div>

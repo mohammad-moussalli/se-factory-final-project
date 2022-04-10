@@ -5,6 +5,7 @@
     padding: 1vh;
     border-radius: 10px;
     cursor: pointer;
+    font-weight: 500;
   }
   
   .user-profile-pic-text {
@@ -35,8 +36,15 @@
   }
   
   .chat-heads-search {
-    width: 95%;
+    width: 80%;
     margin-bottom: 2vh;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .chat-heads-search:focus {
+    border: 3px solid black;
   }
   
   .conv-header-container {
@@ -56,6 +64,26 @@
   
   .chat-heads-container {
     overflow-y: scroll;
-    height: 80vh;
+    height: 65vh;
     padding-right: 10px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
   }

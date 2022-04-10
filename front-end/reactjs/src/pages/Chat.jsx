@@ -9,7 +9,7 @@ import { getFirestore } from "firebase/firestore";
 import axios from "axios";
 
 
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 import "../style/chat.css";
 
@@ -25,7 +25,6 @@ const getUser = async () => {
     const token = localStorage.getItem("user");
     axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
     .then(response => {
-        console.log(response.data.user_type_id)
         setTypeId(response.data.user_type_id)
     }).catch (err => {
         console.log(err)

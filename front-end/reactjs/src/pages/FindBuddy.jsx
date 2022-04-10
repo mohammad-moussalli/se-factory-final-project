@@ -79,7 +79,7 @@ const Team = () => {
 
             <div className='buddies'>
                 <div className='buddies-title'>
-                <p className='title'>Kaffi Buddies</p>
+                    <p className='title'>Kaffi Buddies</p>
                 </div>
 
                 <div className='buddy-pictures'>
@@ -101,7 +101,6 @@ const Team = () => {
                                                 <p className='contact-tag-role'>Mentor</p>  
                                             </div>
                                         </div>
-                                        <Button className='contact-tag-button' onClick={redirectToChat} text='Chat'/>
                                     </div>
                                     </>
                                 )
@@ -132,6 +131,9 @@ const Team = () => {
                         </>
                     }
                 </div>
+
+                <Button className='contact-tag-button' onClick={redirectToChat} text='Chat with Buddies'/>
+
             </div>
 
             <div className='vision'>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Spinner from './Spinner';
 
 import { useEffect, useState} from 'react'
 import axios from 'axios';

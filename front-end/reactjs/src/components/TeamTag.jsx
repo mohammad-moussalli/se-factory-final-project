@@ -1,4 +1,3 @@
-import image from '../assets/images/TeamImage.png';
 import '../style/team-tag.css';
 
 const TeamTag = ({name, image, position, role}) => {

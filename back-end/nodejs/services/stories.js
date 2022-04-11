@@ -13,11 +13,9 @@ async function getAll() {
 }
 
 async function create(params) {
-    // validate
     if (await model.Story.findOne({ where: { name: params.name } })) {
         return "Story already exists";
     }
-    // save story
     await model.Story.create({name: params.name, story: params.story, picture: params.picture});
     return "Story created successfully";
 }

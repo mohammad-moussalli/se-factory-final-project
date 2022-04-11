@@ -2,8 +2,6 @@ import React from 'react'
 import SuccessStory from '../components/SuccessStory'
 import Records from '../components/Records'
 import '../style/records-page.css'
-import image from '../assets/images/CycleReports.png'
-import Button from '../components/Button'
 import { useEffect, useState} from 'react'
 import axios from 'axios';
 import Spinner from '../components/Spinner';
@@ -78,9 +76,7 @@ const RecordsPage = () => {
                             return(
                                 <div className='cycle-report'>
                                     <img className='report-cycle-image' src={report.screenshot} alt="logo"></img>
-                                    {/* <Link text={`View ${report.title} Records`} className="report-cycle-button"/> */}
                                     <div className='report-cycle-button'><a className='href-records' href={report.link} target="_blank"> View {report.title} Details </a></div>
-
                                 </div>
                             )
                         })}

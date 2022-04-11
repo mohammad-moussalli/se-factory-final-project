@@ -20,6 +20,7 @@
 .menu-option{
     color:rgba(255, 255, 255, 0.639);
     cursor: pointer;
+    width: 15%;
 }
 
 .menu-option:not(:last-child) {
@@ -42,7 +43,8 @@
 
 .foundation-menu:hover > .foundation-links, .apply-menu:hover > .apply-links, 
 .volunteer-menu:hover > .volunteer-links, .donate-menu:hover > .donate-links, .academic-menu:hover > .academic-links {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-option:hover{
@@ -57,6 +59,7 @@
     position: absolute;
     right: 40px;
     color: white;
+    cursor: pointer;
 }
 
 .menu-button{

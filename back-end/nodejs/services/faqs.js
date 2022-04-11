@@ -10,14 +10,12 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
     if(!await model.Faq_Category.findByPk(params.category_id)){
         return "FAQ Category doens't exist";
     }
     if (await model.Faq.findOne({ where: { category_id: params.category_id, question: params.question } })) {
         return "Faq already exists"
     }
-    // save faq
     await model.Faq.create({category_id: params.category_id,
                             question: params.question,
                             answer: params.answer            
@@ -43,20 +41,16 @@ async function getFaq(id) {
 
 async function update(params) {
     const faq = await getFaq(params.id);
-    // validate
     const faqChanged = faq.category_id !== params.category_id || faq.question !== params.question || faq.answer !== params.answer;
     if (faqChanged && await model.Faq.findOne({ where: { question: params.question, category_id:params.category_id } })) {
         return 'FAQ already exists';
     }
 
-    // update params to faq and save but not working directly on postman
     model.Faq.update(
         { category_id: params.category_id, question: params.question, answer: params.answer},	
         { where: { id: params.id } },	 
       )
     
-    //await faq.save();
-
     return "Updated Successfuly";
 }
 

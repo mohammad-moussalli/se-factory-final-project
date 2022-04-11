@@ -20,11 +20,10 @@ async function getCategory(id) {
 async function create(params) {
     const isAdmin = await business_intelligence.hasPermission(params.token, "admin");
     if (isAdmin)
-    {   // validate
+    {   
         if (await model.Faq_Category.findOne({ where: { category: params.category } })) {
             return "Category already exists"
         }
-        // save category
         await model.Faq_Category.create({category: params.category});
         return "Category created successfully"
     }
@@ -39,13 +38,11 @@ async function getAll() {
 async function update(params) {
     const faq_category = await getCategory(params.id);
 
-    // validate
     const faqCategoryChanged = params.category && faq_category.category !== params.category;
     if (faqCategoryChanged && await model.Faq_Category.findOne({where:{category: params.category}})){
         return 'Category already exists';
     }
 
-    // update params to faq and save but not working directly on postman
     model.Faq_Category.update(
         { category: params.category},	
         { where: { id: faq_category.id } },	 

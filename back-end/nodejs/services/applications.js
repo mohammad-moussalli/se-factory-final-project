@@ -1,5 +1,4 @@
 const model = require('../models');
-const { Sequelize } = require('sequelize');
 var scholarships = require('./scholarships');
 const business_inteligence = require('../business_intelligence/permissions')
 
@@ -13,12 +12,10 @@ module.exports = {
     getScholarshipApplication
 };
 
-
 async function createScholarshipApplication(body) {
     if (await model.Scholarship_Application.findOne({ where: { user_id: body.user_id, cycle_id: body.cycle_id } })) {
         return "You already submitted an application"
     }
-    // save application
     await model.Scholarship_Application.create({
         user_id: body.user_id,
         cycle_id: body.cycle_id,
@@ -38,7 +35,6 @@ async function createStudentBuddyApplication(params) {
     if (await model.Student_Buddy_Application.findOne({ where: { user_id: params.user_id} })) {
         return "You already submitted an application"
     }
-    // save application
     await model.Student_Buddy_Application.create({
         user_id: params.user_id,
         degree: params.degree,
@@ -53,7 +49,6 @@ async function createMentorBuddyApplication(params) {
     if (await model.Mentor_Buddy_Application.findOne({ where: { user_id: params.user_id} })) {
         return "You already submitted an application"
     }
-    // save application
     await model.Mentor_Buddy_Application.create({
         user_id: params.user_id,
         degree: params.degree,
@@ -69,33 +64,27 @@ async function createMentorBuddyApplication(params) {
 async function getMentorApplication(token) {
     let user =  await business_inteligence.getUser(token)
     const mentor_application = await model.Mentor_Buddy_Application.findOne({where:{user_id: user.id}})
-
     if (mentor_application) {
         return true
     }
-
     return false
 }
 
 async function getStudentApplication(token) {
     let user =  await business_inteligence.getUser(token)
     const student_application = await model.Student_Buddy_Application.findOne({where:{user_id: user.id}})
-
     if (student_application) {
         return true
     }
-
     return false
 }
 
 async function getScholarshipApplication(token) {
     let user =  await business_inteligence.getUser(token)
     const scholarship_application = await model.Scholarship_Application.findOne({where:{user_id: user.id}})
-
     if (scholarship_application) {
         return true
     }
-
     return false
 }
 

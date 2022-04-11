@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var faq = require("../controllers/faqs")
 
-/* GET users listing. */
 router.get('/category/:category_id', faq.getFaqs);
 router.post('/add', faq.create);
 router.get('/:id', faq.getFaq)

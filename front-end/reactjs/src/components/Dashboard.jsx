@@ -3,7 +3,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import image from '../assets/images/DashboardProfilePicture.png';
 import '../style/dashboard.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -12,7 +11,6 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 var moment = require('moment');
-
 
 const Dashboard = () => {
 
@@ -68,12 +66,6 @@ const Dashboard = () => {
         });
     }
     const [searchParams, setSearchParams] = useSearchParams();
-
-    const GoogleAuthentication = async () => {
-        const code = searchParams.get("code");
-        console.log(code)
-        await axios.post(test2Api, { code } )
-        }
     
     const updateUser = async () => {
         const token = localStorage.getItem("user")
@@ -117,7 +109,6 @@ const Dashboard = () => {
         try {
             await fetch(`http://localhost:8080/users/upload-image`, {
                 method: 'POST',
-                // mode: 'no-cors',
                 body: JSON.stringify({ data: base64EncodedImage }),
                 headers: { 'Content-Type': 'application/json',
                             "Authorization" : `Bearer ${token}` },
@@ -131,7 +122,6 @@ const Dashboard = () => {
     };
 
     useEffect(() => { 
-        // GoogleAuthentication()
         getUser() 
         uploadImage()
     }, []);

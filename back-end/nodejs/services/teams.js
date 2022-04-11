@@ -8,12 +8,10 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
     
     if (await model.Team.findOne({ where: { name: params.name, type: params.type, position: params.position, role: params.role } })) {
         return "Member already exists"
     }
-    // Save Member
     await model.Team.create({name: params.name, type: params.type, position: params.position, role: params.role, profile_picture: params.profile_picture });
     return "Member created successfully"
 }

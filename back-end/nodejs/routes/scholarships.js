@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var scholarship = require("../controllers/scholarships")
 
-/* GET scholarship listing. */
 router.get('/', scholarship.getAll);
 router.post('/add', scholarship.create);
 router.post('/cycle', scholarship.createCycle);

@@ -8,12 +8,10 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
  
     if (await model.Blog.findOne({ where: { link: params.link } })) {
         return "Blog already exists"
     }
-    // save faq
     await model.Blog.create({title: params.title,
                             screenshot: params.screenshot,
                             text: params.text,
@@ -40,7 +38,6 @@ async function getBlog(id) {
 
 async function update(params) {
     const blog = await getBlog(params.id);
-    // validate
     const blogChanged = blog.title !== params.title || blog.text !== params.text || blog.link !== params.link || blog.screenshot !== params.screenshot
     if (blogChanged && await model.Blog.findOne({ where: { title: params.title, screenshot: params.screenshot, text: params.text, link:params.link } })) {
         return 'Blog already exists';

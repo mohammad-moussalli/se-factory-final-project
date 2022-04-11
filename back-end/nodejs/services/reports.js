@@ -8,12 +8,10 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
  
     if (await model.Report.findOne({ where: { link: params.link } })) {
         return "Report already exists"
     }
-    // save faq
     await model.Report.create({title: params.title,
                             screenshot: params.screenshot,
                             link:params.link            
@@ -39,7 +37,6 @@ async function getReport(id) {
 
 async function update(params) {
     const report = await getReport(params.id);
-    // validate
     const reportChanged = report.title !== params.title || report.link !== params.link || report.screenshot !== params.screenshot
     if (reportChanged && await model.Report.findOne({ where: { title: params.title, screenshot: params.screenshot, link:params.link } })) {
         return 'Report already exists';

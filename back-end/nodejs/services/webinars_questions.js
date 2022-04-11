@@ -26,7 +26,6 @@ async function getQuestion(id) {
 }
 
 async function createQuestions(params) {
-    // validate
     const webinar = await model.Webinar.findByPk(params.webinar_id)
     if (!webinar){
         return "Webinar Not Found"
@@ -34,14 +33,12 @@ async function createQuestions(params) {
     if (await model.Webinar_Questions.findOne({ where: { webinar_id: params.webinar_id, question: params.question, answer: params.answer } })) {
         return "Webinar question already exists"
     }
-    // save webinar
     await model.Webinar_Questions.create({webinar_id: params.webinar_id, question: params.question, answer: params.answer });
     return "Webinar question created successfully"
 }
 
 async function update(params) {
     const webinar_question = await getQuestion(params.id);
-    // validate
     if(webinar_question.message === "Webinar question not found"){
         return 'Webinar not found'
     }
@@ -59,7 +56,6 @@ async function update(params) {
         return 'Webinar Question already exists';
     }
 
-    // update params to faq and save but not working directly on postman
     model.Webinar_Questions.update(
         { webinar_id : params.webinar_id, question : params.question, answer : params.answer  },	
         { where: { id: params.id } },	 

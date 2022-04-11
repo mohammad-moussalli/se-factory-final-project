@@ -22,18 +22,15 @@ const db = getFirestore();
       uid: user.uid,
     };
 
-    // Add and save message to firestore
     const conversationRef = doc(db, "conversations", conversationId);
     const docSnap = await getDoc(conversationRef);
 
-    // Append message to existing conversation
     if (docSnap.exists()) {
       const docData = docSnap.data();
       await updateDoc(conversationRef, {
         messages: [...docData.messages, myMessage],
       });
     } else {
-      // Create a new conversation
       await setDoc(doc(db, "conversations", conversationId), {
         messages: [myMessage],
       });
@@ -42,7 +39,6 @@ const db = getFirestore();
     currentMessage.current.value = "";
   };
 
-  // Set conversationId
   useEffect(() => {
     if (!receiver || !user) return;
 
@@ -54,7 +50,6 @@ const db = getFirestore();
     setConversationId(myConvId);
   }, [receiver, user]);
 
-  // Get conversation from firestore
   useEffect(() => {
     if (!conversationId) return;
 
@@ -71,7 +66,6 @@ const db = getFirestore();
     return unsub;
   }, [conversationId]);
 
-  // Send message with enter
   const handleEnterKeyPressDown = (e) => {
     if ((e.code === "Enter" || e.key === "Enter") && !e.shiftKey) {
       sendMessage();
@@ -84,7 +78,6 @@ const db = getFirestore();
     chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
   };
 
-  // Top scroll after new message
   useEffect(() => {
     scollToBottomOfChat();
   }, [messages, chatBodyRef]);

@@ -7,9 +7,6 @@ module.exports = {
 
 async function create(params) {
 
-    // Validation
-
-    // Create Donor Model
     await model.Donor.create({
         first_name: params.first_name,
         last_name: params.last_name,
@@ -20,7 +17,6 @@ async function create(params) {
         nationality: params.nationality});
     return "Donor created successfully"
 }
-//Whn I console log it working but returning an empty object in postman
 async function getDonations(params) {
     const donations = await model.Donor
     if (Object.keys(donations).length === 0){

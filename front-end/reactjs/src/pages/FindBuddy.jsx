@@ -1,5 +1,4 @@
 import image from '../assets/images/vision.png';
-import ContactTag from '../components/ContactTag';
 import Button from '../components/Button';
 import '../style/find-buddy.css'
 import '../style/contact-tag.css';
@@ -123,7 +122,6 @@ const Team = () => {
                                                 <p className='contact-tag-role'>Student</p>  
                                             </div>
                                         </div>
-                                        <Button className='contact-tag-button' text='Chat' onClick={redirectToChat}/>
                                     </div>
                                     </>
                                 )

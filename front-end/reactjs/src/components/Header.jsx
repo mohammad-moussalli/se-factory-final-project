@@ -3,7 +3,6 @@ import Button from "./Button";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
-
 const Header = () => {
 
     let navbar = 'navbar';
@@ -48,7 +47,6 @@ const Header = () => {
         if (token){
             setLoggedIn(true);
         }
-    
     }
     
     useEffect(() => { isLoggedIn() }, []);

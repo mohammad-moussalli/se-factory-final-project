@@ -8,7 +8,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 var moment = require('moment');
 
-
 const ScholarshipForms = () => {
 
     const [id, setId] = useState();
@@ -98,10 +97,6 @@ const ScholarshipForms = () => {
             console.log(err)
         });
     }
-
-
-
-
 
     const [scholarshipsWithCycle, setScholarshipsWithCycle] = useState(null)
     const scholarshipsApi = "http://localhost:8080/scholarships/get-scholarships-cycle"

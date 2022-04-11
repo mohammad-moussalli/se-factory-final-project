@@ -10,5 +10,4 @@ router.get('/mentor/application', applications.getMentorApplication);
 router.get('/student/application', applications.getStudentApplication);
 router.get('/scholarship/application', applications.getScholarshipApplication);
 
-
 module.exports = router;

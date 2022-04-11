@@ -1,6 +1,5 @@
 const storyServices = require ("../services/stories")
 
-
 module.exports = {
     getAll,
     create,

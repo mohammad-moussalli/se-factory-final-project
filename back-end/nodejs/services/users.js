@@ -1,20 +1,14 @@
 const model = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-//const admin = require("../config/firebase");
 const config = require('../config/config.json');
 const business_inteligence = require('../business_intelligence/permissions')
 const queryString = require('query-string');
 const { cloudinary } = require('../config/cloudinary');
 
-
 var express = require('express');
 var router = express.Router();
 var axios = require('axios');
-
-// var google = require('googleapis');
-
-// var querystring = require('querystring');
 
 module.exports = {
     create,
@@ -24,96 +18,8 @@ module.exports = {
     getAllUsers,
     getAllMentors,
     getAllStudents,
-    // getGoogleAuthURL,
-    // getGoogleUser
     updatePicture
 };
-
-// function getTokens({
-//   code,
-//   clientId,
-//   clientSecret,
-//   redirectUri,
-// }) {
-
-//   /*
-//   Returns:
-//   Promise<{
-//     access_token: string;
-//     expires_in: Number;
-//     refresh_token: string;
-//     scope: string;
-//     id_token: string;
-//   }>
-//   */
-//   const url = 'https://oauth2.googleapis.com/token';
-//   const values = {
-//     code,
-//     client_id: clientId,
-//     client_secret: clientSecret,
-//     redirect_uri: redirectUri,
-//     grant_type: 'authorization_code',
-//   };
-//   console.log(values)
-//   return axios
-//     .post(url, queryString.stringify(values), {
-//       headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded',
-//       },
-//     })
-//     .then((res) => res.data)
-//     .catch((error) => {
-//       throw new Error(error.message);
-//     });
-// }
-
-// async function getGoogleUser(code) {
-// console.log(code)
-//   const {id_token, access_token} = await getTokens({
-//     code,
-//     clientId: config.development.client_id,
-//     clientSecret: config.development.client_secret,
-//     redirectUri: "http://localhost:3000/dashboard"
-//   })
-//   // Fetch the user's profile with the access token and bearer
-//   console.log('hi2')
-
-//   const googleUser = await axios
-//     .get(
-//       `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${id_token}`,
-//         },
-//       },
-//     )
-//     .then(res => 
-//       {console.log(res.data)
-//       res.data})
-//     .catch(error => {
-//       throw new Error(error.message);
-//     });
-
-//   return googleUser;
-// }
-
-// function getGoogleAuthURL() {
-//   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
-  
-//   const options = {
-//     redirect_uri: `http://localhost:3000/dashboard`,
-//     client_id: config.development.client_id,
-//     access_type: 'offline',
-//     response_type: 'code',
-//     prompt: 'consent',
-//     scope: [
-//       'https://www.googleapis.com/auth/userinfo.profile',
-//       'https://www.googleapis.com/auth/userinfo.email',
-//     ].join(' '),
-//   };
-
-//   return `${rootUrl}?${queryString.stringify(options)}`;
-// }
 
 async function login({ email, password }) {
     const user = await model.User.findOne({ where: { email } });
@@ -121,7 +27,6 @@ async function login({ email, password }) {
     if (!user || !(await bcrypt.compare(password, user.password)))
         return false;
 
-    // authentication successful
     const token = jwt.sign({ email: user.email }, config.secret, { expiresIn: '7d' });
     return token;
 }
@@ -129,15 +34,12 @@ async function login({ email, password }) {
 
 async function create(params) {
 
-    // validate
     if (await model.User.findOne({ where: { email: params.email } })) {
         throw new Error (`Email ${params.email} is already taken`);
     }
-    //hash password
     if (params.password) {
         params.password = await bcrypt.hash(params.password, 10);
     }
-    // save user
     await model.University.create({
 
         university: params.university,
@@ -176,7 +78,6 @@ async function create(params) {
     const token = jwt.sign({ email: params.email }, config.secret, { expiresIn: '7d' });
 
     return token;
-
 }
 
 async function update(body, token) {

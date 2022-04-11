@@ -19,17 +19,14 @@ async function getAll() {
 }
 
 async function create(params) {
-    // validate
     if (await model.Scholarship.findOne({ where: { name: params.name } })) {
         return "Name already exists";
     }
-    // save scholarship
     await model.Scholarship.create({name: params.name});
     return "Scholarship created successfully";
 }
 
 async function createCycle(params){
-    // validate
     const scholarship = await model.Scholarship.findOne({ where: { name: params.name } })
     if (scholarship && await model.Scholarship_Cycle.findOne({ where: { cycle:params.cycle, scholarship_id:scholarship.id, start_date:params.start_date, deadline:params.deadline, results:params.results} })) {
         return "Scholarship Cycle already exists";
@@ -107,7 +104,6 @@ async function getById(id) {
 async function update(id, name) {
     const scholarship = await getScholarship(id);
 
-    // validate
     const scholarshipNameChanged = name && scholarship.name !== name;
     if (scholarshipNameChanged && await model.Scholarship.findOne({ where: { name: name } })) {
         return 'Name "' + name + '" is already taken';

@@ -14,18 +14,6 @@ const ChatHeads = ({ items, setReceiver }) => {
       <input className="chat-heads-search" placeholder="Search for Buddies" onChange={event => setQuery(event.target.value)}/>
 
       <div className="chat-heads-container">
-        {/* {items.map((obj, i) => (
-          <div
-            key={i}
-            className="chat-head-item"
-            onClick={() => setReceiver(obj)}
-          >
-            <div className="user-profile-pic-container">
-              <p className="user-profile-pic-text">{obj.email[0]}</p>
-            </div>
-            <p>{obj.first_name + ' ' + obj.last_name}</p>
-          </div>
-        ))} */}
 
         {items.filter(obj => {
           if (query === '') {

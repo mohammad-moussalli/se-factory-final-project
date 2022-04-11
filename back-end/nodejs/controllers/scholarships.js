@@ -1,6 +1,5 @@
 const scholarshipServices = require ("../services/scholarships")
 
-
 module.exports = {
     getAll,
     create,

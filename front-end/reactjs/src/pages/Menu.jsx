@@ -52,10 +52,8 @@ const MenuPage = () => {
             </div>
 
             <div className="menu-option academic-menu">
-                <p className='menu-option-title'>Academic Advising</p>
+                <p className='menu-option-title'>Advising</p>
                 <div className='academic-links'>                
-                    {/* <Link to='/buddy/find' onhov className='menu-element'>Find A Buddy</Link>
-                    <Link to='/cv' className='menu-element'>CV Tips</Link> */}
                     <Link to='/webinars' className='menu-element'>Webinars</Link>
                     <Link to='/buddies' className='menu-element'>Buddies</Link>
                 </div>

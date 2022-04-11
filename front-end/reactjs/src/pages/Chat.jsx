@@ -7,10 +7,7 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import axios from "axios";
-
-
 import { collection, getDocs } from "firebase/firestore";
-
 import "../style/chat.css";
 
 const Chat = () => {

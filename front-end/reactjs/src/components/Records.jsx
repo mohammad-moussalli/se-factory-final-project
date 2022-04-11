@@ -73,8 +73,6 @@ const Records = () => {
 
                   <div className='records-scholarship-cycle-year'>
                     <select className="records-scholarship-cycle" name="scholarship-cycle" id="scholarship-cycle"  onChange={handleType}>
-                        {/* <option className="records-scholarship-cycle-option" value="" disabled selected hidden>Select Cycle</option> */}
-
                         {Array.isArray(scholarshipRecords) && scholarshipRecords.map((scholarshipRecord) => {
 
                         return(
@@ -92,7 +90,6 @@ const Records = () => {
                     <div className='records-applicant-recepient-table'>
                         <div className='records-applicant-recepient-table-col1'>
                             <p className='records-applicant-recepient-text'>Program</p>
-
                             {Array.isArray(scholarships) && scholarships.map((scholarship) => {
                               return(
                                 <div className='records-applicant-recepient-program-name'>

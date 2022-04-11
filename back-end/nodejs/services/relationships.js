@@ -10,12 +10,10 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
     
     if (await model.Mentorship.findOne({ where: { student_id: params.student_id, mentor_id: params.mentor_id } })) {
         return "Mentorship already exists"
     }
-    // save webinar
     await model.Mentorship.create({ student_id: params.student_id, mentor_id: params.mentor_id });
     return "Mentorship created successfully"
 }

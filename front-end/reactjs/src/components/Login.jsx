@@ -6,15 +6,10 @@ import Spinner from '../components/Spinner';
 import '../style/login.css';
 import { getAuth } from "firebase/auth";
 import { signInWithEmailAndPassword } from "@firebase/auth";
-import axios from "axios";
-
 
 function Login() {
       
   const auth = getAuth();
-
-
-
 
   const [formData, setFormData] = useState({
     email: '',
@@ -75,8 +70,6 @@ const fs_login = async () => {
 
     const userId = responseFromAuth.user.uid;
     
-
-    // save user to localstorage
     localStorage.setItem(
       "fs_user",
       JSON.stringify({

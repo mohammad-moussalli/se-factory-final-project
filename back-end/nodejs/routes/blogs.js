@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var blog = require("../controllers/blogs")
 
-/* GET users listing. */
 router.get('/', blog.getBlogs);
 router.post('/add', blog.create);
 router.post('/update', blog.update)

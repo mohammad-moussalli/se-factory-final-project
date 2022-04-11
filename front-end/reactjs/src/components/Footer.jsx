@@ -1,11 +1,6 @@
 import "../style/footer.css";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
-import Button from "./Button";
-import facebook from '../assets/images/facebook.png';
-import instagram from '../assets/images/insta.png';
-import linkedin from '../assets/images/linkedin.png';
-import twitter from '../assets/images/twitter.png'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';

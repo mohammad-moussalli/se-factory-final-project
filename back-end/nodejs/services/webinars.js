@@ -10,12 +10,10 @@ module.exports = {
 }
 
 async function create(params) {
-    // validate
     
     if (await model.Webinar.findOne({ where: { video_url: params.video_url, country: params.country } })) {
         return "Webinar already exists"
     }
-    // save webinar
     await model.Webinar.create({video_url: params.video_url, country: params.country });
     return "Faq created successfully"
 }
@@ -41,7 +39,6 @@ async function getWebinarByCountry(body) {
 
 async function update(params) {
     const webinar = await getWebinar(params.id);
-    // validate
     if (!params.country){
         params.country = webinar.country
     }
@@ -53,7 +50,6 @@ async function update(params) {
         return 'Webinar already exists';
     }
 
-    // update params to faq and save but not working directly on postman
     model.Webinar.update(
         { video_url: params.video_url, country:params.country },	
         { where: { id: params.id } },	 

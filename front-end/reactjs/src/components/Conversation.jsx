@@ -100,9 +100,9 @@ const db = getFirestore();
                 <div
                   key={i}
                   className="message-container"
-                  style={{ justifyContent: obj.uid === user.uid && "flex-end" }}
-                >
-                  <div className="message-bubble">{obj.message}</div>
+                  style={{ justifyContent: obj.uid === user.uid && "flex-end"}}
+                > 
+                  <div className="message-bubble" style={{ backgroundColor: obj.uid === user.uid ? '#25D366' : "dodgerblue"}}>{obj.message}</div>
                 </div>
               ))
             ) : (

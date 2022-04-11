@@ -23,6 +23,7 @@ const getUser = async () => {
     axios.get(getUserApi, { headers: {"Authorization" : `Bearer ${token}`} })
     .then(response => {
         setTypeId(response.data.user_type_id)
+        console.log(response.data.user_type_id)
     }).catch (err => {
         console.log(err)
     });
@@ -68,7 +69,7 @@ if (!fs_user) return;
     setChatHeads(
     querySnapshot.docs
         .map((doc) => doc.data())
-        .filter((obj) => obj.user_type_id != typeId)
+        .filter((obj) => obj.user_type_id !== typeId)
     );
 })();
 }, [fs_user]);

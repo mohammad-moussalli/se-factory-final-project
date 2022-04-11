@@ -21,7 +21,7 @@
   
   .input-message,
   .input-message input {
-    width: 98%;
+    width: 95%;
   }
 
   .input-chat{
@@ -47,7 +47,6 @@
   }
   
   .message-bubble {
-    background-color: dodgerblue;
     margin: 0.5vh 0vh 0.5vh 0vh;
     padding: 1vh;
     border-radius: 15px;

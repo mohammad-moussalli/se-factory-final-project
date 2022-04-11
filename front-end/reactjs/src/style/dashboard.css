@@ -75,6 +75,13 @@
     color: white;
 }
 
+.submitted-application{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    padding: 25px;
+}
+
 .prohibited-entry{
     text-align: center;
     padding-top: 240px;

@@ -59,7 +59,49 @@ const ScholarshipForms = () => {
         });
     }
 
-    useEffect(() => { getUser() }, []);
+
+    const [submittedMentor, setSubmittedMentor] = useState(false)
+    const getApplicationApi = "http://localhost:8080/applications/mentor/application"
+
+    const getMentorApplication = async () => {
+        const token = localStorage.getItem("user")
+        await axios.get(getApplicationApi, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(response => {
+           setSubmittedMentor(response.data.message)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+    const [submittedStudent, setSubmittedStudent] = useState(false)
+    const getStudentApplicationApi = "http://localhost:8080/applications/student/application"
+
+    const getStudentApplication = async () => {
+        const token = localStorage.getItem("user")
+        await axios.get(getStudentApplicationApi, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(response => {
+           setSubmittedStudent(response.data.message)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+    const [submittedScholarship, setSubmittedScholarship] = useState(false)
+    const getScholarshipApplicationApi = "http://localhost:8080/applications/scholarship/application"
+
+    const getScholarshipApplication = async () => {
+        const token = localStorage.getItem("user")
+        await axios.get(getScholarshipApplicationApi, { headers: {"Authorization" : `Bearer ${token}`} })
+        .then(response => {
+           setSubmittedScholarship(response.data.message)
+        }).catch (err => {
+            console.log(err)
+        });
+    }
+
+
+
+
 
     const [scholarshipsWithCycle, setScholarshipsWithCycle] = useState(null)
     const scholarshipsApi = "http://localhost:8080/scholarships/get-scholarships-cycle"
@@ -72,7 +114,6 @@ const ScholarshipForms = () => {
             console.log(err)
         });
     }
-    useEffect(() => { getScholarship() }, []);
 
     const scholarshipCycleApi = "http://localhost:8080/scholarships/get-cycle/"
 
@@ -96,32 +137,55 @@ const ScholarshipForms = () => {
         });
     }
 
-    useEffect(() => { getBoostCycle() }, []);
-    useEffect(() => { getlaunchCycle() }, []);
+    useEffect(() => { getUser(); 
+                    getMentorApplication(); 
+                    getStudentApplication(); 
+                    getScholarshipApplication(); 
+                    getScholarship(); 
+                    getBoostCycle();
+                    getlaunchCycle() }, []);
 
     const handleCycle = (val) => {
         const target_id = parseInt(val.target.value);
         setCycle(target_id);
     }
+
+    const [status, setStatus] = useState(undefined);
+
     const createScholarshipApplicationApi = 'http://localhost:8080/applications/scholarship'
     const createScholarship = async () => {
         const token = localStorage.getItem("user")
         axios.post(createScholarshipApplicationApi, {user_id: id, cycle_id: cycle, degree: degree, major: major, semester_tuition_fee: semester_tuition_fee, monthly_allowance: monthly_allowance} ,
-        { headers: {"Authorization" : `Bearer ${token}`} } )
+        { headers: {"Authorization" : `Bearer ${token}`} } ).then(() => {
+            setStatus({ type: 'success' });
+          })
+          .catch((error) => {
+            setStatus({ type: 'error', error });
+          });
     }
 
     const createStudentBuddyApi = "http://localhost:8080/applications/student-buddy"
     const createStudentBuddyApplication = async () => {
         const token = localStorage.getItem("user")
         axios.post(createStudentBuddyApi, {user_id: id, degree: student_degree, major: student_major, field: field_of_study} ,
-        { headers: {"Authorization" : `Bearer ${token}`} } )
+        { headers: {"Authorization" : `Bearer ${token}`} } ).then(() => {
+            setStatus({ type: 'success' });
+          })
+          .catch((error) => {
+            setStatus({ type: 'error', error });
+          });
     }
 
     const createMentorBuddyApi = "http://localhost:8080/applications/mentor-buddy"
     const createMentorBuddyApplication = async () => {
         const token = localStorage.getItem("user")
         axios.post(createMentorBuddyApi, {user_id: id, degree: mentor_degree, major: mentor_major, study_field: study_field, work_field: work_field, company: company, position: position} ,
-        { headers: {"Authorization" : `Bearer ${token}`} } )
+        { headers: {"Authorization" : `Bearer ${token}`} } ).then(() => {
+            setStatus({ type: 'success' });
+          })
+          .catch((error) => {
+            setStatus({ type: 'error', error });
+          });
     }
 
     if (localStorage.getItem('user') === null) {
@@ -149,15 +213,15 @@ const ScholarshipForms = () => {
                     <div className='dashboard-title'>
                         <p className='dashboard-welcome-title'>Welcome back {first_name}</p>
                         <p className='dashboard-join-date'>Joined {createdAt}</p>
-                        <p className='dashboard-welcome-subtitle'>Please Submit an Application</p>
+                        <p className='dashboard-welcome-subtitle'>Applications</p>
 
                     </div>
 
                     <div className='dashboard-update-form'>
                         <div className="accordion">
                         { type === 'student' ? 
-                            <>
-                              <Accordion className='accordion-part'>
+                            <>{!submittedStudent ? 
+                              <Accordion className='accordion-part'>                                                        
                                   <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel1a-content`} id={`panel1a-header`}>
                                       <Typography className="dashboard-form-title">Scholarship Application</Typography>
                                   </AccordionSummary>
@@ -178,13 +242,15 @@ const ScholarshipForms = () => {
                                           <input type='text' className='dashboard-form-control' id='major' name='major' value={major} placeholder='Major' onChange={e => setMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='semester-tuition-fee' name='semester_tuition_fee' value={semester_tuition_fee} placeholder='Tuition Fee per Semester' onChange={e => setSemesterTuitionFee(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='monthly-allowance' name='monthly_allowance' value={monthly_allowance} placeholder='Monthly Allowance' onChange={e => setMonthlyAllowance(e.target.value)}/>
+                                          {status?.type === 'success' && <p>Application have been submitted successfully</p>}
                                           <div className='dashboard-update-button'>
                                               <button className="updateButton" type="submit">Submit</button> 
                                           </div>
                                       </form>
                                   </AccordionDetails>
-                              </Accordion> 
-
+                                  
+                              </Accordion> : <div className='submitted-application'>A Scholarship Application has already been submitted</div>}
+                              {!submittedStudent ? 
                               <Accordion className='accordion-part'>
                                   <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel1a-content`} id={`panel1a-header`}>
                                       <Typography className="dashboard-form-title">Student Buddy Application</Typography>
@@ -194,31 +260,38 @@ const ScholarshipForms = () => {
                                           <input type='text' className='dashboard-form-control' id='student_degree' name='student_degree' value={student_degree} placeholder='Degree' onChange={e => setStudentDegree(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='student_major' name='student_major' value={student_major} placeholder='Major' onChange={e => setStudentMajor(e.target.value)}/>
                                           <input type='text' className='dashboard-form-control' id='field_of_study' name='field_of_study' value={field_of_study} placeholder='Field of Study' onChange={e => setFieldOfStudy(e.target.value)}/>
+                                          {status?.type === 'success' && <p>Application have been submitted successfully</p>}
                                           <div className='dashboard-update-button'>
                                               <button className="updateButton" type="submit">Submit</button> 
                                           </div>
                                       </form>
                                   </AccordionDetails>
-                              </Accordion> 
+                              </Accordion>:<div className='submitted-application'>A Student Buddy Application has already been submitted</div>}
+
                             </>
-                              :<Accordion className='accordion-part'>
-                                  <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel1a-content`} id={`panel1a-header`}>
-                                      <Typography className="dashboard-form-title">Mentor Buddy Application</Typography>
-                                  </AccordionSummary>
-                                  <AccordionDetails className="accordion-details">
-                                      <form className='UpdateUser' onSubmit={createMentorBuddyApplication}>
-                                          <input type='text' className='dashboard-form-control' id='mentor_degree' name='mentor_degree' value={mentor_degree} placeholder='Degree' onChange={e => setMentorDegree(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='mentor_major' name='mentor_major' value={mentor_major} placeholder='Major' onChange={e => setMentorMajor(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='study_field' name='study_field' value={study_field} placeholder='Field of Study' onChange={e => setStudyField(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='work_field' name='work_field' value={work_field} placeholder='Field of Work' onChange={e => setWorkField(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='company' name='company' value={company} placeholder='Company' onChange={e => setCompany(e.target.value)}/>
-                                          <input type='text' className='dashboard-form-control' id='position' name='position' value={position} placeholder='Position' onChange={e => setPosition(e.target.value)}/>
-                                          <div className='dashboard-update-button'>
-                                              <button className="updateButton" type="submit">Submit</button> 
-                                          </div>
-                                      </form>
-                                  </AccordionDetails>
+                              : <Accordion className='accordion-part'>
+                                  {!submittedMentor ? 
+                                  <>
+                                    <AccordionSummary className="accordion-summary" expandIcon={<ExpandMoreIcon />} aria-controls={`panel1a-content`} id={`panel1a-header`}>
+                                        <Typography className="dashboard-form-title">Mentor Buddy Application</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails className="accordion-details">
+                                        <form className='UpdateUser' onSubmit={createMentorBuddyApplication}>
+                                            <input type='text' className='dashboard-form-control' id='mentor_degree' name='mentor_degree' value={mentor_degree} placeholder='Degree' onChange={e => setMentorDegree(e.target.value)}/>
+                                            <input type='text' className='dashboard-form-control' id='mentor_major' name='mentor_major' value={mentor_major} placeholder='Major' onChange={e => setMentorMajor(e.target.value)}/>
+                                            <input type='text' className='dashboard-form-control' id='study_field' name='study_field' value={study_field} placeholder='Field of Study' onChange={e => setStudyField(e.target.value)}/>
+                                            <input type='text' className='dashboard-form-control' id='work_field' name='work_field' value={work_field} placeholder='Field of Work' onChange={e => setWorkField(e.target.value)}/>
+                                            <input type='text' className='dashboard-form-control' id='company' name='company' value={company} placeholder='Company' onChange={e => setCompany(e.target.value)}/>
+                                            <input type='text' className='dashboard-form-control' id='position' name='position' value={position} placeholder='Position' onChange={e => setPosition(e.target.value)}/>
+                                            {status?.type === 'success' && <p>Application have been submitted successfully</p>}
+                                            <div className='dashboard-update-button'>
+                                                <button className="updateButton" type="submit">Submit</button> 
+                                            </div>
+                                        </form>
+                                    </AccordionDetails>
+                                  </>: <div className='submitted-application'>A Mentor Buddy Application has already been submitted</div>}
                               </Accordion>
+                              
                         }
                     </div>
                 </div>

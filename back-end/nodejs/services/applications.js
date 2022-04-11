@@ -1,12 +1,16 @@
 const model = require('../models');
 const { Sequelize } = require('sequelize');
 var scholarships = require('./scholarships');
+const business_inteligence = require('../business_intelligence/permissions')
 
 module.exports = {
     createScholarshipApplication,
     createStudentBuddyApplication,
     createMentorBuddyApplication,
-    getScholarshipRecords
+    getScholarshipRecords,
+    getMentorApplication,
+    getStudentApplication,
+    getScholarshipApplication
 };
 
 
@@ -62,6 +66,39 @@ async function createMentorBuddyApplication(params) {
     return "Application created successfully"
 }
 
+async function getMentorApplication(token) {
+    let user =  await business_inteligence.getUser(token)
+    const mentor_application = await model.Mentor_Buddy_Application.findOne({where:{user_id: user.id}})
+
+    if (mentor_application) {
+        return true
+    }
+
+    return false
+}
+
+async function getStudentApplication(token) {
+    let user =  await business_inteligence.getUser(token)
+    const student_application = await model.Student_Buddy_Application.findOne({where:{user_id: user.id}})
+
+    if (student_application) {
+        return true
+    }
+
+    return false
+}
+
+async function getScholarshipApplication(token) {
+    let user =  await business_inteligence.getUser(token)
+    const scholarship_application = await model.Scholarship_Application.findOne({where:{user_id: user.id}})
+
+    if (scholarship_application) {
+        return true
+    }
+
+    return false
+}
+
 async function getScholarshipRecords() {
     const scholarships_cycle = await model.Scholarship_Cycle.findAll();
     const cycle_records = scholarships_cycle.map( async (scholarship_cycle) => {
@@ -81,7 +118,6 @@ async function getScholarshipRecords() {
         return {cycle_applicants, cycle_recepients, name, cycle, scholarship_id, cycle_id}
     })
     const all_records = await Promise.all(cycle_records)
-    console.log(all_records, 'heree')
 
     return all_records
 }

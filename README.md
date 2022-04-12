@@ -2,42 +2,58 @@
 
 <div align="center">
 
-> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
-**[PROJECT PHILOSOPHY](https://github.com/julescript/well_app#-project-philosophy) • [WIREFRAMES](https://github.com/julescript/well_app#-wireframes) • [TECH STACK](https://github.com/julescript/well_app#-tech-stack) • [IMPLEMENTATION](https://github.com/julescript/well_app#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
+> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
+
+ **[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
+
 
 </div>
 
 <br><br>
 
 
-<img src="./readme/title2.svg"/>
+<img src="./readme/title2.svg" id="project-philosophy"/>
 
-> The Well app is a mental health and mindfulness app built on top of the science of positive psychology. The Well app is more than just another meditation or journaling app; it encourages you to enhance and reflect on your day with structured, guided activities.
+> Kaffi , the Arabic for "Keep Going", is an independent nonprofit organization founded to ease the burden on the shoulders of the students and allow them to carry on their education. We at Kaffi, know very well the situation of the Lebanese students abroad as most of us have been through this before. We also know that the current economic crisis affecting Lebanon is jeopardizing these students' chance of continuing their education. This has driven us to take immediate action and do our best to help! 
 > 
-> There are 5 daily tasks that the Well app asks you to complete each day: record 3 gratitudes, write a journal entry, perform 3 acts of kindness, exercise for 20 minutes, and meditate for 15 minutes.
+> Kaffi-lb is a website implemented to enable Lebanese students studying abroad to submit scholarship applications, donators to donate money to support the NGO, activists to submit volunteering applications, and connect students with mentors across the world through a chat system.
+#### At Kaffi, we believe that education is the best form of investment for the future of an individual, a family and a community.
+
 ### User Stories
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
+- As a student, I want to be able to apply for scholarships and connect with mentors easily.
+- As a mentor, I want to connect with students through a private chatting system.
+- As a donator, I want to be able to donate money online for the NGO.
+- As an activist, I want to volunteer with the NGO by submitting an online form.
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img src="./readme/title3.svg" id="wireframes"/>
 
 > This design was planned before on paper, then moved to Figma app for the fine details.
-Note that i didn't use any styling library or theme, all from scratch and using pure css modules
-| Landing  | Home/Search  |
+Note that no styling library or theme was used in the project, all from scratch and using pure css modules, except for one component.
+| Landing  | Signup  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/landing.png) | ![Signup]
+(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/register.png) |
 
-| Artists results  | Artist's Albums  |
+| Open Scholarship  | Closed Scholarship  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| ![Open Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/open-scholarship.png) | ![Closed Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/closed-scholarship.png) |
+
+| Donate  | Records  |
+| -----------------| -----|
+| ![Donate](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/donate.png) | ![Records]
+(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/records.png) |
+
+| Team  | Webinars  |
+| -----------------| -----|
+| ![Team](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/team.png) | ![Webinars]
+(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/webinars.png) |
 
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img src="./readme/title4.svg" id="tech-stack"/>
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
@@ -50,7 +66,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img src="./readme/title5.svg" id="implementation"/>
 
 > Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 | Landing  | Home/Search  |
@@ -59,7 +75,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img src="./readme/title6.svg" id="how-to-run"/>
 
 
 > This is an example of how you may give instructions on setting up your project locally.

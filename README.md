@@ -10,7 +10,6 @@
 </div>
 
 <br><br>
-
 <img src="./readme/title2.svg" id="project-philosophy"/>
 
 
@@ -27,7 +26,6 @@
 
 
 <br><br>
-
 <img src="./readme/title3.svg" id="wireframes"/>
 
 
@@ -72,7 +70,6 @@ Note that no styling library or theme was used in the project, all from scratch 
 
 
 <br><br>
-
 <img src="./readme/title4.svg" id="tech-stack"/>
 
 
@@ -80,11 +77,11 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 **Front-end:** The project uses the [React JavaScript Library](https://reactjs.org/). 
--[React](https://reactjs.org/) (also known as [React.js](https://reactjs.org/) or [ReactJS](https://reactjs.org/)) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. React can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like [Next.js](https://nextjs.org/).
+- [React](https://reactjs.org/) (also known as [React.js](https://reactjs.org/) or [ReactJS](https://reactjs.org/)) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. React can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like [Next.js](https://nextjs.org/).
 
-**Back-end:** The project uses the [Node.js] Platform(https://nodejs.org/en/) and [Express.js](https://expressjs.com/) Framework. 
--[Node.js](https://nodejs.org/en/) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. 
--[Express.js](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+**Back-end:** The project uses the [Node.js](https://nodejs.org/en/) Platform and [Express.js](https://expressjs.com/) Framework. 
+- [Node.js](https://nodejs.org/en/) is an open-source, cross-platform, back-end [JavaScript](https://www.javascript.com/) runtime environment that runs on the V8 engine and executes [JavaScript](https://www.javascript.com/) code outside a web browser. 
+- [Express.js](https://expressjs.com/) is a minimal and flexible [Node.js](https://nodejs.org/en/) web application framework that provides a robust set of features for web and mobile applications.
 
 **Database:** The project uses [MySQL](https://www.mysql.com/), [phpMyAdmin](https://www.phpmyadmin.net/) and [Cloud Firestore](https://firebase.google.com/docs/firestore).
 - [MySQL](https://www.mysql.com/) is a relational database management system that uses SQL. SQL is primarily used to query and operate database systems. [MySQL](https://www.mysql.com/) allows you to handle, store, modify and delete data and store data in an organized way.
@@ -95,11 +92,10 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 <br><br>
-
 <img src="./readme/title5.svg" id="implementation"/>
 
 
-> Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and recordings from the real app.
+> Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and recordings from the real app.
 
 
 <table>
@@ -139,7 +135,6 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 <br><br>
-
 <img src="./readme/title6.svg" id="how-to-run"/>
 
 

@@ -11,7 +11,6 @@
 
 <br><br>
 
-
 <img src="./readme/title2.svg" id="project-philosophy"/>
 
 
@@ -28,7 +27,6 @@
 
 
 <br><br>
-
 
 <img src="./readme/title3.svg" id="wireframes"/>
 
@@ -75,7 +73,6 @@ Note that no styling library or theme was used in the project, all from scratch 
 
 <br><br>
 
-
 <img src="./readme/title4.svg" id="tech-stack"/>
 
 
@@ -98,7 +95,6 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 <br><br>
-
 
 <img src="./readme/title5.svg" id="implementation"/>
 
@@ -143,7 +139,6 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 <br><br>
-
 
 <img src="./readme/title6.svg" id="how-to-run"/>
 

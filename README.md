@@ -33,8 +33,7 @@
 Note that no styling library or theme was used in the project, all from scratch and using pure css modules, except for one component.
 | Landing  | Signup  |
 | -----------------| -----|
-| ![Landing](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/landing.png) | ![Signup]
-(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/register.png) |
+| ![Landing](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/landing.png) | ![Signup](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/register.png) |
 
 | Open Scholarship  | Closed Scholarship  |
 | -----------------| -----|
@@ -42,13 +41,11 @@ Note that no styling library or theme was used in the project, all from scratch 
 
 | Donate  | Records  |
 | -----------------| -----|
-| ![Donate](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/donate.png) | ![Records]
-(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/records.png) |
+| ![Donate](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/donate.png) | ![Records](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/records.png) |
 
 | Team  | Webinars  |
 | -----------------| -----|
-| ![Team](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/team.png) | ![Webinars]
-(https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/webinars.png) |
+| ![Team](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/team.png) | ![Webinars](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/webinars.png) |
 
 
 <br><br>
@@ -57,21 +54,38 @@ Note that no styling library or theme was used in the project, all from scratch 
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+-Front-end: The project uses the [React JavaScript Library](https://reactjs.org/). React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like [Next.js](https://nextjs.org/).
+-Back-end: The project uses the [Node.js] Platform(https://nodejs.org/en/) and [Express.js](https://expressjs.com/) Framework. [Node.js](https://nodejs.org/en/) is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. [Express.js](https://expressjs.com/) is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+-Database: The project uses [MySQL](https://www.mysql.com/), [phpMyAdmin](https://www.phpmyadmin.net/) and [Cloud Firestore](https://firebase.google.com/docs/firestore).[MySQL](https://www.mysql.com/) is a relational database management system that uses SQL. SQL is primarily used to query and operate database systems. [MySQL](https://www.mysql.com/) allows you to handle, store, modify and delete data and store data in an organized way. [phpMyAdmin](https://www.phpmyadmin.net/) is a free and open source administration tool for MySQL and MariaDB. As a portable web application written primarily in PHP, it has become one of the most popular MySQL administration tools, especially for web hosting services. [Cloud Firestore](https://firebase.google.com/docs/firestore) is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud. It keeps your data in sync across client apps through realtime listeners and offers offline support for mobile and web so you can build responsive apps that work regardless of network latency or Internet connectivity.
+- - For storing user images, this project uses [Cloudinary](https://cloudinary.com/). Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, optimizations to delivery.
+
+- The app uses the font ["Ubuntu"](https://fonts.google.com/specimen/Ubuntu) as its main font, and the design of the app adheres to the material design guidelines.
 
 
 
 <br><br>
 <img src="./readme/title5.svg" id="implementation"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
-| Landing  | Home/Search  |
+> Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and recordings from the real app.
+| Landing  | Signup  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/landing-project.png) | ![Signup](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/register.gif) |
+
+| Open Scholarship  | Closed Scholarship  |
+| -----------------| -----|
+| ![Open Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/open-scholarship-project.png) | ![Closed Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/closed-scholarship-project.png) |
+
+| Donate  | Records  |
+| -----------------| -----|
+| ![Donate](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/donate-project.png) | ![Records](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/records-project.png) |
+
+| Team  | Webinars  |
+| -----------------| -----|
+| ![Team](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/team-project.png) | ![Webinars](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/webinars-project.png) |
+
+| Dashboard  | Chat  |
+| -----------------| -----|
+| ![Dashboard](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/dashboard.gif) | ![Chat](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/chat.gif) |
 
 
 <br><br>

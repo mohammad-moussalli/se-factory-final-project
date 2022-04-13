@@ -16,7 +16,7 @@
 > Kaffi , the Arabic for "Keep Going", is an independent nonprofit organization founded to ease the burden on the shoulders of the students and allow them to carry on their education. We at Kaffi, know very well the situation of the Lebanese students abroad as most of us have been through this before. We also know that the current economic crisis affecting Lebanon is jeopardizing these students' chance of continuing their education. This has driven us to take immediate action and do our best to help! 
 > 
 > Kaffi-lb is a website implemented to enable Lebanese students studying abroad to submit scholarship applications, donators to donate money to support the NGO, activists to submit volunteering applications, and to connect students with mentors across the world through a chat system.
-> **At Kaffi, we believe that education is the best form of investment for the future of an individual, a family and a community.**
+  #### At Kaffi, we believe that education is the best form of investment for the future of an individual, a family and a community.
 
 ### User Stories
 - As a student, I want to be able to apply for scholarships and connect with mentors easily.
@@ -77,7 +77,7 @@ Here's a brief high-level overview of the tech stack the app uses:
 
 
 **Front-end:** The project uses the [React JavaScript Library](https://reactjs.org/). 
-- [React](https://reactjs.org/) (also known as [React.js](https://reactjs.org/) or [ReactJS](https://reactjs.org/)) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. React can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like [Next.js](https://nextjs.org/).
+- [React](https://reactjs.org/) (also known as [React.js](https://reactjs.org/) or [ReactJS](https://reactjs.org/)) is a free and open-source front-end [JavaScript](https://www.javascript.com/) library for building user interfaces based on UI components. [React](https://reactjs.org/) can be used as a base in the development of single-page, mobile, or server-rendered applications with frameworks like [Next.js](https://nextjs.org/).
 
 **Back-end:** The project uses the [Node.js](https://nodejs.org/en/) Platform and [Express.js](https://expressjs.com/) Framework. 
 - [Node.js](https://nodejs.org/en/) is an open-source, cross-platform, back-end [JavaScript](https://www.javascript.com/) runtime environment that runs on the V8 engine and executes [JavaScript](https://www.javascript.com/) code outside a web browser. 

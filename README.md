@@ -73,55 +73,83 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots and recordings from the real app.
 
-| Landing  | Signup  |
-| -----------------| -----|
-| ![Landing](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/landing-project.png) | ![Signup](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/register.gif) |
-
-| Open Scholarship  | Closed Scholarship  |
-| -----------------| -----|
-| ![Open Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/open-scholarship-project.png) | ![Closed Scholarship](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/closed-scholarship-project.png) |
-
-| Donate  | Records  |
-| -----------------| -----|
-| ![Donate](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/donate-project.png) | ![Records](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/records-project.png) |
-
-| Team  | Webinars  |
-| -----------------| -----|
-| ![Team](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/team-project.png) | ![Webinars](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/webinars-project.png) |
-
-| Dashboard  | Chat  |
-| -----------------| -----|
-| ![Dashboard](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/dashboard.gif) | ![Chat](https://github.com/mohammad-moussalli/se-factory-final-project/blob/main/readme/chat.gif) |
-
+<table>
+   <tr>
+    <td>Landing</td>
+    <td>Signup</td>
+   </tr>
+   <tr>
+    <td><img src="readme/landing-project.png" /></td>
+    <td><img src="readme/register.gif"/></td>
+   </tr>
+   <tr>
+    <td>Open Scholarship</td>
+    <td>Closed Scholarship</td>
+   </tr>
+   <tr>
+    <td><img src="readme/open-scholarship-project.png"/></td>
+    <td><img src="readme/close-scholarship-project.png"/></td>
+   </tr>
+   <tr>
+    <td>Donate</td>
+    <td>Records</td>
+   </tr> 
+   <tr>
+    <td><img src="readme/donate-project.png"/></td>
+    <td><img src="readme/records-project.png"/></td>
+   </tr>
+   <tr>
+    <td>Dashboard</td>
+    <td>Chat</td>
+   </tr> 
+   <tr>
+    <td><img src="readme/chat.gif"/></td>
+    <td><img src="readme/dashboard.gif"/></td>
+   </tr>
+</table>
 
 <br><br>
 <img src="./readme/title6.svg" id="how-to-run"/>
 
 
-> This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
+
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+* Download and install [Node.js](https://nodejs.org/en/)
+
 * npm
   ```sh
   npm install npm@latest -g
   ```
+  ```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/mohammad-moussalli/se-factory-final-project
    ```
-3. Install NPM packages
+2. Navigate to the back-end folder and install dependencies
    ```sh
+   cd back-end/nodejs
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. To run the Express server use this command in the nodejs directory
+   ```sh
+   npm start
    ```
+4. Open a new terminal and navigate to the front-end folder and install dependencies
+ ```sh
+ cd front-end/reactjs
+ npm install
+ ```
+5. To run the React server use this command in the reactjs directory
+   ```sh
+   npm start
+   ```
+6. For the project to function properly you should update your .env file accordingly
+ ```sh
+ cd back-end/nodejs/.env
+ cd front-end/reactjs/.env
+ ```
